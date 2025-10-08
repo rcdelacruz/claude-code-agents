@@ -1,39 +1,83 @@
-# MCP Sub-Agents for Enterprise Next.js Development
+# MCP Sub-Agents for Enterprise Development
 
-A comprehensive collection of specialized Claude Code subagents for building production-ready, enterprise-grade Next.js applications with modern best practices.
+A comprehensive collection of specialized Claude Code subagents with **domain expert savants** and **hybrid workflow commands** for building production-ready, enterprise-grade applications.
 
 ## 🎯 Overview
 
-This repository contains **12 expert subagents**, each specializing in a critical aspect of modern fullstack JavaScript development. These agents help you build scalable, secure, performant, and maintainable applications using Next.js 15+, React, TypeScript, PostgreSQL, Prisma, shadcn/ui, and the latest web development tools.
+This repository implements a **two-tier agent architecture**:
 
-### 🛠️ **Development Agents**
-1. **fullstack-nextjs** - Next.js 15, App Router, Server Components, Server Actions, Streaming
-2. **frontend-ui** - shadcn/ui, Tailwind CSS, Radix UI, Accessibility, Responsive Design
-3. **backend-api** - tRPC, REST APIs, NextAuth.js, Authentication, Middleware
-4. **database** - PostgreSQL, Prisma ORM, Migrations, Query Optimization, Indexing
+### Tier 1: Savant Agents (Orchestrators)
+Master experts with broad, deep knowledge across entire technology ecosystems. Savants make architectural decisions, choose technologies, and orchestrate specialist agents.
 
-### ✅ **Quality Assurance Agents**
-5. **code-reviewer** - Code Quality, Best Practices, Design Patterns, Refactoring
-6. **qa-tester** - Playwright E2E, Vitest Unit Tests, React Testing Library, Coverage
-7. **performance** - Core Web Vitals, Bundle Size, Caching, Image Optimization
-8. **security** - OWASP Top 10, Authentication, Authorization, Input Validation
+### Tier 2: Specialist Agents (Implementers)
+Deep domain experts focusing on specific frameworks, tools, and practices within a stack.
 
-### 🚀 **Operations Agents**
-9. **deployment** - Vercel, Docker, Kubernetes, GitHub Actions, CI/CD Pipelines
-10. **monitoring** - Sentry, OpenTelemetry, Logging, Metrics, Alerting
+### Hybrid Workflow Commands
+Slash commands that combine development workflow stages (design, implement, review, qa, deploy) with technology expertise for guided, structured development.
 
-### 🏗️ **Architecture Agent**
-11. **architect** - System Design, Scalability, Design Patterns, Future-Proofing
+## 🏗️ Agent Architecture
 
-### 📝 **Documentation Agent**
-12. **tech-writer** - Technical Documentation, MkDocs Material, API Docs, User Guides
+### Savant Agents (Technology Stack Experts)
+- **fullstack-js-savant** - JavaScript/TypeScript ecosystem master
+- **java-spring-savant** - Spring ecosystem master
+- *(More savants can be added: Python, Go, .NET, Mobile)*
+
+### Specialist Agents by Stack
+
+#### JavaScript/TypeScript Specialists
+- **fullstack-nextjs** - Next.js 15, App Router, Server Components, Server Actions
+- **frontend-ui** - shadcn/ui, Tailwind CSS, Radix UI, Accessibility
+- **backend-api** - tRPC, REST APIs, NextAuth.js, Authentication
+
+#### Cross-Stack Specialists (Work with all stacks)
+- **database** - PostgreSQL, Prisma ORM, Migrations, Optimization
+- **code-reviewer** - Code Quality, Best Practices, Refactoring
+- **qa-tester** - Playwright E2E, Vitest Unit Tests, Testing Strategy
+- **performance** - Core Web Vitals, Bundle Size, Caching
+- **security** - OWASP Top 10, Authentication, Authorization
+- **deployment** - Vercel, Docker, Kubernetes, CI/CD
+- **monitoring** - Sentry, OpenTelemetry, Logging, Metrics
+- **architect** - System Design, Scalability, Design Patterns
+- **tech-writer** - Technical Documentation, MkDocs Material, API Docs
+
+## 🚀 Hybrid Workflow Commands
+
+Structured slash commands that guide you through development stages:
+
+### Design Phase
+- `/design-architecture` - System architecture and high-level decisions
+- `/design-nextjs` - Next.js application architecture with modern patterns
+
+### Implementation Phase
+- `/implement-fullstack` - Full-stack feature implementation end-to-end
+- `/implement-frontend` - Frontend UI components and client features
+- `/implement-backend` - Backend API, business logic, and data layer
+
+### Review Phase
+- `/review-code` - Comprehensive code quality review
+- `/review-security` - Security audit (OWASP Top 10)
+- `/review-performance` - Performance optimization (Core Web Vitals)
+
+### QA Phase
+- `/qa-e2e` - End-to-end testing with Playwright
+
+### Documentation Phase
+- `/write-docs` - Create comprehensive technical documentation with MkDocs Material
+
+### Deployment Phase
+- `/deploy` - Production deployment with CI/CD
 
 ## 🚀 Installation
+
+> **Note:** Claude Code automatically discovers agents in subdirectories! Agents are identified by their `name:` in frontmatter, not by file path. See [INSTALLATION-GUIDE.md](./INSTALLATION-GUIDE.md) for details.
 
 ### Quick Install (Recommended)
 ```bash
 # Run the installation script
 curl -fsSL https://raw.githubusercontent.com/rcdelacruz/mcp-sub-agents/main/install.sh | bash
+
+# Verify installation
+./verify-agents.sh
 ```
 
 ### Manual Installation
@@ -42,41 +86,132 @@ curl -fsSL https://raw.githubusercontent.com/rcdelacruz/mcp-sub-agents/main/inst
 git clone https://github.com/rcdelacruz/mcp-sub-agents.git
 cd mcp-sub-agents
 
-# Copy subagents to Claude Code's global directory
+# Copy all agents (preserves subdirectories)
 mkdir -p ~/.claude/agents
-cp agents/*.md ~/.claude/agents/
+cp -r agents/* ~/.claude/agents/
 
-# Verify installation
-ls -la ~/.claude/agents/
+# Copy workflow commands
+mkdir -p ~/.claude/commands
+cp -r .claude/commands/* ~/.claude/commands/
+
+# Verify installation (should show 14 agents, 11 commands)
+./verify-agents.sh
 ```
 
 ### Project-Specific Installation
 ```bash
-# For project-specific agents
-mkdir -p .claude/agents
-cp agents/*.md .claude/agents/
+# For project-specific agents and commands
+mkdir -p .claude/agents .claude/commands
+cp -r agents/* .claude/agents/
+cp -r .claude/commands/* .claude/commands/
+
+# Verify
+ls -R .claude/agents/
+ls .claude/commands/
+```
+
+> 📖 **Detailed Installation Guide:** See [INSTALLATION-GUIDE.md](./INSTALLATION-GUIDE.md) for troubleshooting, platform-specific notes, and more installation methods.
+
+### Directory Structure
+```
+~/.claude/
+├── agents/
+│   ├── savants/
+│   │   ├── fullstack-js-savant.md
+│   │   └── java-spring-savant.md
+│   ├── javascript/
+│   │   ├── fullstack-nextjs.md
+│   │   ├── frontend-ui.md
+│   │   └── backend-api.md
+│   └── cross-cutting/
+│       ├── code-reviewer.md
+│       ├── qa-tester.md
+│       ├── performance.md
+│       ├── security.md
+│       ├── deployment.md
+│       ├── monitoring.md
+│       ├── architect.md
+│       ├── database.md
+│       └── tech-writer.md
+└── commands/
+    ├── design-architecture.md
+    ├── design-nextjs.md
+    ├── implement-fullstack.md
+    ├── implement-frontend.md
+    ├── implement-backend.md
+    ├── review-code.md
+    ├── review-security.md
+    ├── review-performance.md
+    ├── qa-e2e.md
+    ├── write-docs.md
+    └── deploy.md
 ```
 
 ## 💡 Usage
 
-### Explicit Invocation
-```
-Use fullstack-nextjs to build the user dashboard with Server Components
-Use frontend-ui to create an accessible navigation menu with shadcn/ui
-Use database to design a scalable schema with Prisma
-Use code-reviewer to review my authentication implementation
-Use qa-tester to write E2E tests for the checkout flow
-Use performance to optimize Core Web Vitals
-Use security to implement OWASP-compliant authentication
-Use deployment to set up CI/CD with GitHub Actions
-Use monitoring to configure Sentry error tracking
-Use backend-api to create a tRPC router for posts
-Use architect to design a scalable multi-tenant architecture
-Use tech-writer to create MkDocs documentation for the API
+### Using Savant Agents (For Architecture & Complex Tasks)
+```bash
+# Use savant for architecture and technology decisions
+Use fullstack-js-savant to design a real-time collaborative app
+
+# Savant will:
+# 1. Analyze requirements
+# 2. Design architecture
+# 3. Choose tech stack
+# 4. Delegate to specialists for implementation
+# 5. Review integration
 ```
 
-### Automatic Suggestion
-Claude Code will automatically suggest the most appropriate subagent based on your request context.
+### Using Specialist Agents (For Focused Implementation)
+```bash
+# Use specialists for specific implementation tasks
+Use fullstack-nextjs to build the dashboard with Server Components
+Use frontend-ui to create an accessible navigation menu with shadcn/ui
+Use backend-api to create a tRPC router for posts
+Use code-reviewer to review my authentication implementation
+Use qa-tester to write E2E tests for the checkout flow
+```
+
+### Using Workflow Commands (For Guided Development)
+```bash
+# Follow structured development workflow
+/design-nextjs           # Design Next.js application architecture
+/implement-fullstack     # Implement feature end-to-end
+/review-code            # Review code quality
+/review-security        # Security audit
+/qa-e2e                 # Write E2E tests
+/deploy                 # Deploy to production
+```
+
+### Workflow Example: Building a Blog Feature
+```bash
+1. /design-nextjs
+   → Design blog architecture (routes, components, data flow)
+
+2. /implement-fullstack
+   → Implement database schema
+   → Create tRPC router
+   → Build Server Components
+   → Create UI with shadcn/ui
+
+3. /review-code
+   → Review code quality and best practices
+
+4. /review-security
+   → Audit authentication and input validation
+
+5. /review-performance
+   → Optimize Core Web Vitals
+
+6. /qa-e2e
+   → Write Playwright E2E tests
+
+7. /write-docs
+   → Create API docs, user guides, and README
+
+8. /deploy
+   → Deploy with CI/CD pipeline
+```
 
 ## 📦 Agent Details
 
