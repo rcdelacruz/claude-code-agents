@@ -6,61 +6,144 @@ This repository implements a **two-tier agent architecture** designed for deep t
 
 ## Architecture
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    TIER 1: SAVANTS                       │
-│  (Orchestrators - Broad expertise, architecture decisions) │
-├─────────────────────────────────────────────────────────┤
-│  - fullstack-js-savant    - Master of JS ecosystem      │
-│  - java-spring-savant     - Master of Spring ecosystem  │
-│  - python-django-savant   - Master of Django ecosystem  │
-│  - golang-savant          - Master of Go ecosystem      │
-│  - dotnet-savant          - Master of .NET ecosystem    │
-└─────────────────────────────────────────────────────────┘
-                            ↓
-                       Delegates to
-                            ↓
-┌─────────────────────────────────────────────────────────┐
-│                  TIER 2: SPECIALISTS                     │
-│     (Implementers - Deep domain-specific expertise)      │
-├─────────────────────────────────────────────────────────┤
-│  JavaScript Stack:                                       │
-│    - nextjs-fullstack, nextjs-frontend-ui                │
-│    - nodejs-express, nodejs-nestjs                       │
-│                                                          │
-│  Java Stack:                                             │
-│    - spring-boot, spring-security, spring-data-jpa       │
-│                                                          │
-│  Python Stack:                                           │
-│    - django-fullstack, fastapi-backend                   │
-│                                                          │
-│  Cross-Cutting:                                          │
-│    - code-reviewer, qa-tester, security, performance     │
-│    - deployment, monitoring, architect, database         │
-└─────────────────────────────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph tier1["TIER 1: SAVANTS<br/>(Orchestrators - Broad expertise, architecture decisions)"]
+        js[fullstack-js-savant<br/>Master of JS ecosystem]
+        java[java-spring-savant<br/>Master of Spring ecosystem]
+        python[python-django-savant<br/>Master of Django ecosystem]
+        go[golang-savant<br/>Master of Go ecosystem]
+        dotnet[dotnet-savant<br/>Master of .NET ecosystem]
+    end
+
+    subgraph tier2["TIER 2: SPECIALISTS<br/>(Implementers - Deep domain-specific expertise)"]
+        subgraph jsstack[JavaScript Stack]
+            jsspec1[nextjs-fullstack]
+            jsspec2[nextjs-frontend-ui]
+            jsspec3[nodejs-express]
+            jsspec4[nodejs-nestjs]
+        end
+
+        subgraph javastack[Java Stack]
+            javaspec1[spring-boot]
+            javaspec2[spring-security]
+            javaspec3[spring-data-jpa]
+        end
+
+        subgraph pystack[Python Stack]
+            pyspec1[django-fullstack]
+            pyspec2[fastapi-backend]
+        end
+
+        subgraph crosscut[Cross-Cutting]
+            cross1[code-reviewer]
+            cross2[qa-tester]
+            cross3[security]
+            cross4[performance]
+            cross5[deployment]
+            cross6[monitoring]
+            cross7[architect]
+            cross8[database]
+        end
+    end
+
+    tier1 -->|Delegates to| tier2
+
+    style tier1 fill:#E0E0E0,stroke:#616161,stroke-width:2px,color:#000
+    style tier2 fill:#F5F5F5,stroke:#9E9E9E,stroke-width:2px,color:#000
+    style jsstack fill:#EEEEEE,stroke:#757575,stroke-width:1px,color:#000
+    style javastack fill:#EEEEEE,stroke:#757575,stroke-width:1px,color:#000
+    style pystack fill:#EEEEEE,stroke:#757575,stroke-width:1px,color:#000
+    style crosscut fill:#FAFAFA,stroke:#BDBDBD,stroke-width:1px,color:#000
 ```
 
 ## Usage Pattern
 
 ### For Simple Tasks → Use Specialists Directly
-```
-User: "Create a Next.js login page with shadcn/ui"
-→ Use nextjs-frontend-ui directly
+
+```mermaid
+flowchart LR
+    A[User: Create Next.js<br/>login page] --> B[nextjs-frontend-ui<br/>specialist]
+    B --> C[Login page<br/>implemented]
+
+    style A fill:#F5F5F5,stroke:#757575,stroke-width:2px,color:#000
+    style B fill:#E0E0E0,stroke:#616161,stroke-width:2px,color:#000
+    style C fill:#EEEEEE,stroke:#9E9E9E,stroke-width:2px,color:#000
 ```
 
 ### For Complex Tasks → Use Savants
-```
-User: "Design a scalable e-commerce platform with microservices"
-→ Use fullstack-js-savant (or java-spring-savant)
-→ Savant designs architecture, makes tech decisions
-→ Savant delegates to specialists for implementation
+
+```mermaid
+flowchart TB
+    A[User: Design scalable<br/>e-commerce platform] --> B[fullstack-js-savant]
+
+    B --> C{Analyze & Design}
+    C --> D[Choose architecture<br/>microservices]
+    C --> E[Select tech stack<br/>Next.js + tRPC + Prisma]
+
+    D --> F{Delegate to Specialists}
+    E --> F
+
+    F --> G[architect<br/>System design]
+    F --> H[database<br/>Schema design]
+    F --> I[backend-api<br/>API implementation]
+    F --> J[frontend-ui<br/>UI components]
+    F --> K[deployment<br/>Infrastructure]
+
+    G --> L[Complete<br/>e-commerce platform]
+    H --> L
+    I --> L
+    J --> L
+    K --> L
+
+    style A fill:#F5F5F5,stroke:#757575,stroke-width:2px,color:#000
+    style B fill:#BDBDBD,stroke:#424242,stroke-width:3px,color:#000
+    style C fill:#E0E0E0,stroke:#616161,stroke-width:2px,color:#000
+    style D fill:#E0E0E0,stroke:#616161,stroke-width:2px,color:#000
+    style E fill:#E0E0E0,stroke:#616161,stroke-width:2px,color:#000
+    style F fill:#EEEEEE,stroke:#757575,stroke-width:2px,color:#000
+    style G fill:#F5F5F5,stroke:#9E9E9E,stroke-width:2px,color:#000
+    style H fill:#F5F5F5,stroke:#9E9E9E,stroke-width:2px,color:#000
+    style I fill:#F5F5F5,stroke:#9E9E9E,stroke-width:2px,color:#000
+    style J fill:#F5F5F5,stroke:#9E9E9E,stroke-width:2px,color:#000
+    style K fill:#F5F5F5,stroke:#9E9E9E,stroke-width:2px,color:#000
+    style L fill:#E0E0E0,stroke:#616161,stroke-width:2px,color:#000
 ```
 
 ### For Full-Stack Features → Use Savants
-```
-User: "Build a real-time chat feature with authentication"
-→ Use fullstack-js-savant
-→ Savant orchestrates: backend-api + frontend-ui + security + database
+
+```mermaid
+flowchart TB
+    A[User: Build real-time<br/>chat with auth] --> B[fullstack-js-savant<br/>Orchestrator]
+
+    B --> C[1. Design architecture]
+    C --> D[2. Orchestrate implementation]
+
+    D --> E[backend-api<br/>WebSocket + tRPC]
+    D --> F[frontend-ui<br/>Chat UI components]
+    D --> G[security<br/>Authentication]
+    D --> H[database<br/>Message storage]
+    D --> I[monitoring<br/>Real-time metrics]
+
+    E --> J[Integrated<br/>chat feature]
+    F --> J
+    G --> J
+    H --> J
+    I --> J
+
+    J --> K[Review & optimize]
+
+    style A fill:#F5F5F5,stroke:#757575,stroke-width:2px,color:#000
+    style B fill:#BDBDBD,stroke:#424242,stroke-width:3px,color:#000
+    style C fill:#E0E0E0,stroke:#616161,stroke-width:2px,color:#000
+    style D fill:#EEEEEE,stroke:#757575,stroke-width:2px,color:#000
+    style E fill:#F5F5F5,stroke:#9E9E9E,stroke-width:2px,color:#000
+    style F fill:#F5F5F5,stroke:#9E9E9E,stroke-width:2px,color:#000
+    style G fill:#F5F5F5,stroke:#9E9E9E,stroke-width:2px,color:#000
+    style H fill:#F5F5F5,stroke:#9E9E9E,stroke-width:2px,color:#000
+    style I fill:#F5F5F5,stroke:#9E9E9E,stroke-width:2px,color:#000
+    style J fill:#E0E0E0,stroke:#757575,stroke-width:2px,color:#000
+    style K fill:#EEEEEE,stroke:#9E9E9E,stroke-width:2px,color:#000
 ```
 
 ## Savant Responsibilities
@@ -283,6 +366,39 @@ agents/
 ```
 
 ## Decision Matrix: When to Create What
+
+```mermaid
+flowchart TB
+    Start([New Agent Needed]) --> Q1{Applies to<br/>all stacks?}
+
+    Q1 -->|Yes| Cross[Create Cross-Cutting Agent<br/>Examples: security, qa-tester,<br/>code-reviewer, deployment]
+
+    Q1 -->|No| Q2{Covers entire<br/>ecosystem?}
+
+    Q2 -->|Yes| Savant[Create Savant Agent<br/>Orchestrator for full stack<br/>Examples: fullstack-js-savant,<br/>java-spring-savant]
+
+    Q2 -->|No| Q3{Specific framework/<br/>deep expertise?}
+
+    Q3 -->|Yes| Specialist[Create Specialist Agent<br/>Domain-specific implementer<br/>Examples: nextjs-fullstack,<br/>spring-boot]
+
+    Q3 -->|No| Review[Review requirements<br/>May not need new agent]
+
+    Cross --> Check1[✅ Technology-agnostic<br/>✅ Consistent approach<br/>✅ Reusable patterns]
+    Savant --> Check2[✅ Architecture guidance<br/>✅ Multiple frameworks<br/>✅ Orchestration capability]
+    Specialist --> Check3[✅ 800+ lines guidance<br/>✅ Unique patterns<br/>✅ Frequently used]
+
+    style Start fill:#E0E0E0,stroke:#616161,stroke-width:2px,color:#000
+    style Q1 fill:#EEEEEE,stroke:#757575,stroke-width:2px,color:#000
+    style Q2 fill:#EEEEEE,stroke:#757575,stroke-width:2px,color:#000
+    style Q3 fill:#EEEEEE,stroke:#757575,stroke-width:2px,color:#000
+    style Cross fill:#F5F5F5,stroke:#9E9E9E,stroke-width:2px,color:#000
+    style Savant fill:#BDBDBD,stroke:#424242,stroke-width:2px,color:#000
+    style Specialist fill:#E0E0E0,stroke:#616161,stroke-width:2px,color:#000
+    style Review fill:#FAFAFA,stroke:#BDBDBD,stroke-width:2px,color:#000
+    style Check1 fill:#EEEEEE,stroke:#757575,stroke-width:2px,color:#000
+    style Check2 fill:#EEEEEE,stroke:#757575,stroke-width:2px,color:#000
+    style Check3 fill:#EEEEEE,stroke:#757575,stroke-width:2px,color:#000
+```
 
 ### Create a Savant Agent When:
 - ✅ You want expertise across an **entire ecosystem** (e.g., all of Spring)

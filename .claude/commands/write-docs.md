@@ -595,6 +595,13 @@ graph TB
     API --> DB
     API --> Cache
     Auth --> DB
+
+    style Client fill:#E0E0E0,stroke:#616161,stroke-width:2px,color:#000
+    style NextJS fill:#F5F5F5,stroke:#757575,stroke-width:2px,color:#000
+    style API fill:#EEEEEE,stroke:#9E9E9E,stroke-width:2px,color:#000
+    style Auth fill:#BDBDBD,stroke:#616161,stroke-width:2px,color:#000
+    style DB fill:#FAFAFA,stroke:#424242,stroke-width:2px,color:#000
+    style Cache fill:#F5F5F5,stroke:#757575,stroke-width:2px,color:#000
 ```
 
 ## Technology Stack
@@ -639,6 +646,18 @@ sequenceDiagram
     Prisma-->>tRPC: Post[]
     tRPC-->>Next.js: Typed data
     Next.js-->>User: Rendered page
+
+    box rgba(224,224,224,0.2) Browser
+    participant User
+    end
+    box rgba(245,245,245,0.2) Application
+    participant Next.js
+    participant tRPC
+    participant Prisma
+    end
+    box rgba(250,250,250,0.2) Database
+    participant PostgreSQL
+    end
 ```
 
 ## Security Architecture
