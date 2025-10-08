@@ -1,0 +1,1 @@
+All the content from cloud-infra.md file
