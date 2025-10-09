@@ -19,12 +19,18 @@ echo "   • Specialist Agents (Implementers)"
 echo "   • Hybrid Workflow Commands"
 echo ""
 
-# Get the directory where this script is located
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+# Detect if running from curl pipe or local file
+if [ -t 0 ] && [ -f "${BASH_SOURCE[0]}" ]; then
+    # Running as local file
+    SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+else
+    # Running from curl pipe - always clone
+    SCRIPT_DIR=""
+fi
 
-# Check if source directories exist
-if [ ! -d "$SCRIPT_DIR/agents" ]; then
-    echo "📥 Source files not found locally. Cloning repository..."
+# If no valid script directory or agents not found, clone the repository
+if [ -z "$SCRIPT_DIR" ] || [ ! -d "$SCRIPT_DIR/agents" ]; then
+    echo "📥 Downloading MCP Sub-Agents repository..."
     echo ""
 
     # Check if git is installed
@@ -40,10 +46,10 @@ if [ ! -d "$SCRIPT_DIR/agents" ]; then
     # Clone to temporary directory
     TEMP_DIR=$(mktemp -d)
     CLEANUP_TEMP=true
-    echo "📦 Downloading from $REPO_URL..."
-    git clone --depth 1 "$REPO_URL" "$TEMP_DIR" 2>&1 | grep -v "Cloning into" || true
+    echo "📦 Cloning from $REPO_URL..."
+    git clone --quiet --depth 1 "$REPO_URL" "$TEMP_DIR" 2>&1
     SCRIPT_DIR="$TEMP_DIR"
-    echo "✅ Repository downloaded"
+    echo "✅ Repository downloaded to temporary directory"
     echo ""
 fi
 
