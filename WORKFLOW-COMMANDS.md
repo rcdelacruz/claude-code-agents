@@ -9,20 +9,20 @@ Workflow commands provide **structured, guided development** through each stage 
 ## Command Structure
 
 ```
-/[stage]-[technology]
+/mcp-[stage]-[technology]
 ```
 
 Examples:
-- `/design-architecture` - General architecture design
-- `/design-nextjs` - Next.js-specific design
-- `/implement-fullstack` - Full-stack implementation
-- `/review-security` - Security-focused review
+- `/mcp-design-architecture` - General architecture design
+- `/mcp-design-nextjs` - Next.js-specific design
+- `/mcp-implement-fullstack` - Full-stack implementation
+- `/mcp-review-security` - Security-focused review
 
 ## Complete Command Reference
 
 ### 🎨 Design Phase
 
-#### `/design-architecture`
+#### `/mcp-design-architecture`
 **Use when:** Starting a new project or major feature
 **Invokes:** `architect` agent
 **Output:** Architecture design document with diagrams, technology stack, ADRs
@@ -36,7 +36,7 @@ Examples:
 
 **Time:** 30-45 mins
 
-#### `/design-nextjs`
+#### `/mcp-design-nextjs`
 **Use when:** Designing a Next.js application structure
 **Invokes:** `fullstack-js-savant` agent
 **Output:** Next.js project structure, routing plan, data flow diagrams
@@ -54,7 +54,7 @@ Examples:
 
 ### 💻 Implementation Phase
 
-#### `/implement-fullstack`
+#### `/mcp-implement-fullstack`
 **Use when:** Building a complete feature end-to-end
 **Invokes:** Multiple agents orchestrated by `fullstack-js-savant`
 **Output:** Complete feature implementation (DB → API → Server Components → UI)
@@ -69,7 +69,7 @@ Examples:
 
 **Time:** 60-90 mins
 
-#### `/implement-frontend`
+#### `/mcp-implement-frontend`
 **Use when:** Building UI components and client-side features
 **Invokes:** `frontend-ui` agent
 **Output:** React components with shadcn/ui, forms, interactions
@@ -86,7 +86,7 @@ Examples:
 
 **Time:** 30-45 mins
 
-#### `/implement-backend`
+#### `/mcp-implement-backend`
 **Use when:** Building APIs, business logic, and data layer
 **Invokes:** `backend-api` and `database` agents
 **Output:** tRPC routers or Route Handlers, Server Actions, business logic
@@ -104,7 +104,7 @@ Examples:
 
 ### 🔍 Review Phase
 
-#### `/review-code`
+#### `/mcp-review-code`
 **Use when:** After implementing features, before merging
 **Invokes:** `code-reviewer` agent
 **Output:** Code quality report with issues, improvements, and approval status
@@ -120,7 +120,7 @@ Examples:
 
 **Time:** 15-25 mins
 
-#### `/review-security`
+#### `/mcp-review-security`
 **Use when:** Before deploying to production, or after auth changes
 **Invokes:** `security` agent
 **Output:** Security audit report with critical/high/medium issues
@@ -137,7 +137,7 @@ Examples:
 
 **Time:** 30-45 mins
 
-#### `/review-performance`
+#### `/mcp-review-performance`
 **Use when:** Performance issues or before major releases
 **Invokes:** `performance` agent
 **Output:** Performance audit with Core Web Vitals scores and optimization recommendations
@@ -156,7 +156,7 @@ Examples:
 
 ### ✅ QA Phase
 
-#### `/qa-e2e`
+#### `/mcp-qa-e2e`
 **Use when:** Need end-to-end tests for critical user flows
 **Invokes:** `qa-tester` agent
 **Output:** Playwright E2E tests with Page Object Model
@@ -174,7 +174,7 @@ Examples:
 
 ### 📝 Documentation Phase
 
-#### `/write-docs`
+#### `/mcp-write-docs`
 **Use when:** Need comprehensive technical documentation
 **Invokes:** `tech-writer` agent
 **Output:** Professional documentation with MkDocs Material, README, API docs, user guides
@@ -201,7 +201,7 @@ Examples:
 
 ### 🚀 Deployment Phase
 
-#### `/deploy`
+#### `/mcp-deploy`
 **Use when:** Ready to deploy to production
 **Invokes:** `deployment` agent
 **Output:** Production deployment with CI/CD pipeline
@@ -222,57 +222,57 @@ Examples:
 
 ### Pattern 1: New Feature Development
 ```bash
-/design-nextjs              # Design the feature
-/implement-fullstack        # Build it end-to-end
-/review-code               # Review quality
-/review-security           # Audit security
-/qa-e2e                    # Write tests
-/write-docs                # Document the feature
+/mcp-design-nextjs              # Design the feature
+/mcp-implement-fullstack        # Build it end-to-end
+/mcp-review-code               # Review quality
+/mcp-review-security           # Audit security
+/mcp-qa-e2e                    # Write tests
+/mcp-write-docs                # Document the feature
 ```
 
 ### Pattern 2: Frontend-Only Feature
 ```bash
-/design-nextjs              # Design UI structure
-/implement-frontend         # Build components
-/review-code               # Review quality
-/qa-e2e                    # Write tests
+/mcp-design-nextjs              # Design UI structure
+/mcp-implement-frontend         # Build components
+/mcp-review-code               # Review quality
+/mcp-qa-e2e                    # Write tests
 ```
 
 ### Pattern 3: Backend API Development
 ```bash
-/design-architecture        # Design API architecture
-/implement-backend          # Build API
-/review-code               # Review quality
-/review-security           # Security audit
+/mcp-design-architecture        # Design API architecture
+/mcp-implement-backend          # Build API
+/mcp-review-code               # Review quality
+/mcp-review-security           # Security audit
 ```
 
 ### Pattern 4: New Project Setup
 ```bash
-/design-architecture        # System architecture
-/design-nextjs             # Next.js structure
-/implement-fullstack       # Build initial features
-/review-code              # Review quality
-/review-security          # Security audit
-/review-performance       # Performance check
-/qa-e2e                   # Write tests
-/write-docs               # Create comprehensive docs
-/deploy                   # Deploy to production
+/mcp-design-architecture        # System architecture
+/mcp-design-nextjs             # Next.js structure
+/mcp-implement-fullstack       # Build initial features
+/mcp-review-code              # Review quality
+/mcp-review-security          # Security audit
+/mcp-review-performance       # Performance check
+/mcp-qa-e2e                   # Write tests
+/mcp-write-docs               # Create comprehensive docs
+/mcp-deploy                   # Deploy to production
 ```
 
 ### Pattern 5: Performance Optimization
 ```bash
-/review-performance        # Identify issues
-/implement-frontend        # Optimize UI (if needed)
-/implement-backend         # Optimize queries (if needed)
-/review-performance        # Verify improvements
+/mcp-review-performance        # Identify issues
+/mcp-implement-frontend        # Optimize UI (if needed)
+/mcp-implement-backend         # Optimize queries (if needed)
+/mcp-review-performance        # Verify improvements
 ```
 
 ### Pattern 6: Security Hardening
 ```bash
-/review-security           # Audit current state
-/implement-backend         # Fix backend issues
-/implement-frontend        # Fix frontend issues
-/review-security          # Re-audit
+/mcp-review-security           # Audit current state
+/mcp-implement-backend         # Fix backend issues
+/mcp-implement-frontend        # Fix frontend issues
+/mcp-review-security          # Re-audit
 ```
 
 ## Best Practices
@@ -297,13 +297,13 @@ Examples:
 
 **✅ Good Sequencing:**
 ```bash
-/design-nextjs → /implement-fullstack → /review-code
+/mcp-design-nextjs → /mcp-implement-fullstack → /mcp-review-code
 ```
 (Design first, implement, then review)
 
 **❌ Poor Sequencing:**
 ```bash
-/implement-fullstack → /design-nextjs
+/mcp-implement-fullstack → /mcp-design-nextjs
 ```
 (Don't implement before designing)
 
@@ -311,10 +311,10 @@ Examples:
 
 Commands can be run multiple times:
 ```bash
-/implement-frontend        # First iteration
-/review-code              # Find issues
-/implement-frontend        # Fix issues
-/review-code              # Verify fixes
+/mcp-implement-frontend        # First iteration
+/mcp-review-code              # Find issues
+/mcp-implement-frontend        # Fix issues
+/mcp-review-code              # Verify fixes
 ```
 
 ## Tips for Effective Usage
@@ -322,9 +322,9 @@ Commands can be run multiple times:
 1. **Read the Checklist** - Each command provides a comprehensive checklist
 2. **Follow the Time Estimates** - Budget appropriate time
 3. **Use Multiple Review Commands** - Security, performance, and code quality are all important
-4. **Run Tests After Implementation** - Use `/qa-e2e` after `/implement-*` commands
+4. **Run Tests After Implementation** - Use `/mcp-qa-e2e` after `/mcp-implement-*` commands
 5. **Document as You Go** - Use agents to generate documentation during development
-6. **Deploy Early and Often** - Use `/deploy` to set up CI/CD early
+6. **Deploy Early and Often** - Use `/mcp-deploy` to set up CI/CD early
 
 ## Customization
 

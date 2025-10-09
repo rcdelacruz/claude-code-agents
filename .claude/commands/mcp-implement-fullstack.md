@@ -123,7 +123,7 @@ Use **security** agent to:
 
 ## After Implementation
 
-- Use `/review-code` to review implementation quality
-- Use `/review-security` to audit security
-- Use `/review-performance` to optimize performance
-- Use `/qa-e2e` to write comprehensive E2E tests
+- Use `/mcp-review-code` to review implementation quality
+- Use `/mcp-review-security` to audit security
+- Use `/mcp-review-performance` to optimize performance
+- Use `/mcp-qa-e2e` to write comprehensive E2E tests

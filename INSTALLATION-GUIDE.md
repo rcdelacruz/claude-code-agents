@@ -45,17 +45,25 @@ Claude Code recursively searches all subdirectories in `~/.claude/agents/`.
 
 ## Installation Methods
 
-### Method 1: Quick Install (Recommended)
+### Method 1: Remote Install (Recommended - No Clone Needed)
 
 ```bash
+# One-line installation
 curl -fsSL https://raw.githubusercontent.com/rcdelacruz/mcp-sub-agents/main/install.sh | bash
 ```
 
-This script:
-1. Clones the repository
+**What it does:**
+1. Auto-downloads the repository to a temporary directory
 2. Copies agents to `~/.claude/agents/` (preserving directory structure)
 3. Copies commands to `~/.claude/commands/`
-4. Verifies installation
+4. Cleans up temporary files
+5. Shows installation summary
+
+**Requirements:**
+- Git must be installed on your system
+- Internet connection
+
+**No repository clone required!** The script handles everything automatically.
 
 ### Method 2: Manual Installation (Global)
 
@@ -134,9 +142,9 @@ ls -la ~/.claude/
   [... more agents ...]
 
 ✅ Found 11 workflow commands
-  ✓ /design-architecture
-  ✓ /design-nextjs
-  ✓ /implement-fullstack
+  ✓ /mcp-design-architecture
+  ✓ /mcp-design-nextjs
+  ✓ /mcp-implement-fullstack
   [... more commands ...]
 
 ✅ Verification complete!
@@ -167,7 +175,7 @@ find ~/.claude/commands -name "*.md" | wc -l
 Use fullstack-js-savant to explain the architecture
 
 # Test workflow command
-/design-nextjs
+/mcp-design-nextjs
 ```
 
 ## Troubleshooting

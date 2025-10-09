@@ -149,6 +149,6 @@ Create components following these patterns:
 
 ## After Implementation
 
-- Use `/review-code` to review component quality
-- Use `/qa-test` to write component tests
-- Use `/review-performance` to optimize rendering
+- Use `/mcp-review-code` to review component quality
+- Use `/mcp-qa-e2e` to write component tests
+- Use `/mcp-review-performance` to optimize rendering

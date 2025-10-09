@@ -45,27 +45,27 @@ Slash commands that combine development workflow stages (design, implement, revi
 Structured slash commands that guide you through development stages:
 
 ### Design Phase
-- `/design-architecture` - System architecture and high-level decisions
-- `/design-nextjs` - Next.js application architecture with modern patterns
+- `/mcp-design-architecture` - System architecture and high-level decisions
+- `/mcp-design-nextjs` - Next.js application architecture with modern patterns
 
 ### Implementation Phase
-- `/implement-fullstack` - Full-stack feature implementation end-to-end
-- `/implement-frontend` - Frontend UI components and client features
-- `/implement-backend` - Backend API, business logic, and data layer
+- `/mcp-implement-fullstack` - Full-stack feature implementation end-to-end
+- `/mcp-implement-frontend` - Frontend UI components and client features
+- `/mcp-implement-backend` - Backend API, business logic, and data layer
 
 ### Review Phase
-- `/review-code` - Comprehensive code quality review
-- `/review-security` - Security audit (OWASP Top 10)
-- `/review-performance` - Performance optimization (Core Web Vitals)
+- `/mcp-review-code` - Comprehensive code quality review
+- `/mcp-review-security` - Security audit (OWASP Top 10)
+- `/mcp-review-performance` - Performance optimization (Core Web Vitals)
 
 ### QA Phase
-- `/qa-e2e` - End-to-end testing with Playwright
+- `/mcp-qa-e2e` - End-to-end testing with Playwright
 
 ### Documentation Phase
-- `/write-docs` - Create comprehensive technical documentation with MkDocs Material
+- `/mcp-write-docs` - Create comprehensive technical documentation with MkDocs Material
 
 ### Deployment Phase
-- `/deploy` - Production deployment with CI/CD
+- `/mcp-deploy` - Production deployment with CI/CD
 
 ## 🚀 Installation
 
@@ -73,11 +73,14 @@ Structured slash commands that guide you through development stages:
 
 ### Quick Install (Recommended)
 ```bash
-# Run the installation script
+# One-line remote installation (no git clone needed)
 curl -fsSL https://raw.githubusercontent.com/rcdelacruz/mcp-sub-agents/main/install.sh | bash
 
-# Verify installation
-./verify-agents.sh
+# This will:
+# 1. Auto-download the repository to a temp directory
+# 2. Install all agents to ~/.claude/agents/
+# 3. Install all commands to ~/.claude/commands/
+# 4. Clean up temp files
 ```
 
 ### Manual Installation
@@ -134,17 +137,17 @@ ls .claude/commands/
 │       ├── database.md
 │       └── tech-writer.md
 └── commands/
-    ├── design-architecture.md
-    ├── design-nextjs.md
-    ├── implement-fullstack.md
-    ├── implement-frontend.md
-    ├── implement-backend.md
-    ├── review-code.md
-    ├── review-security.md
-    ├── review-performance.md
-    ├── qa-e2e.md
-    ├── write-docs.md
-    └── deploy.md
+    ├── mcp-design-architecture.md
+    ├── mcp-design-nextjs.md
+    ├── mcp-implement-fullstack.md
+    ├── mcp-implement-frontend.md
+    ├── mcp-implement-backend.md
+    ├── mcp-review-code.md
+    ├── mcp-review-security.md
+    ├── mcp-review-performance.md
+    ├── mcp-qa-e2e.md
+    ├── mcp-write-docs.md
+    └── mcp-deploy.md
 ```
 
 ## 💡 Usage
@@ -175,41 +178,41 @@ Use qa-tester to write E2E tests for the checkout flow
 ### Using Workflow Commands (For Guided Development)
 ```bash
 # Follow structured development workflow
-/design-nextjs           # Design Next.js application architecture
-/implement-fullstack     # Implement feature end-to-end
-/review-code            # Review code quality
-/review-security        # Security audit
-/qa-e2e                 # Write E2E tests
-/deploy                 # Deploy to production
+/mcp-design-nextjs           # Design Next.js application architecture
+/mcp-implement-fullstack     # Implement feature end-to-end
+/mcp-review-code            # Review code quality
+/mcp-review-security        # Security audit
+/mcp-qa-e2e                 # Write E2E tests
+/mcp-deploy                 # Deploy to production
 ```
 
 ### Workflow Example: Building a Blog Feature
 ```bash
-1. /design-nextjs
+1. /mcp-design-nextjs
    → Design blog architecture (routes, components, data flow)
 
-2. /implement-fullstack
+2. /mcp-implement-fullstack
    → Implement database schema
    → Create tRPC router
    → Build Server Components
    → Create UI with shadcn/ui
 
-3. /review-code
+3. /mcp-review-code
    → Review code quality and best practices
 
-4. /review-security
+4. /mcp-review-security
    → Audit authentication and input validation
 
-5. /review-performance
+5. /mcp-review-performance
    → Optimize Core Web Vitals
 
-6. /qa-e2e
+6. /mcp-qa-e2e
    → Write Playwright E2E tests
 
-7. /write-docs
+7. /mcp-write-docs
    → Create API docs, user guides, and README
 
-8. /deploy
+8. /mcp-deploy
    → Deploy with CI/CD pipeline
 ```
 

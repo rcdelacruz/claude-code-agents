@@ -39,6 +39,6 @@ Use the **architect** agent to:
 **Output**: Comprehensive architecture design document with diagrams, technology stack, and clear rationale for decisions.
 
 **Next Steps After Design**:
-- Use `/design-nextjs` or `/design-spring` for technology-specific design
-- Use `/implement-fullstack` to start implementation
-- Use `/review-code` to review architecture decisions in code
+- Use `/mcp-design-nextjs` or `/mcp-design-spring` for technology-specific design
+- Use `/mcp-implement-fullstack` to start implementation
+- Use `/mcp-review-code` to review architecture decisions in code
