@@ -124,24 +124,74 @@ const example = 'value'
 
 ## Deployment
 
+This documentation site can be deployed to multiple platforms:
+
+### Cloudflare Pages (Recommended)
+
+Fast global CDN with unlimited bandwidth on the free tier.
+
+**Automated deployment via GitHub Actions:**
+
+1. Set up Cloudflare API token and Account ID
+2. Add secrets to GitHub repository:
+   - `CLOUDFLARE_API_TOKEN`
+   - `CLOUDFLARE_ACCOUNT_ID`
+3. Push to `main` branch
+4. GitHub Actions automatically deploys to Cloudflare Pages
+5. Available at `https://mcp-sub-agents-docs.pages.dev`
+
+**Manual deployment with Wrangler CLI:**
+
+```bash
+# Install Wrangler
+npm install -g wrangler
+
+# Login to Cloudflare
+wrangler login
+
+# Build and deploy
+mkdocs build
+wrangler pages deploy site --project-name=mcp-sub-agents-docs
+```
+
+**Features:**
+- 300+ global edge locations
+- Unlimited bandwidth and requests
+- Automatic preview deployments for PRs
+- Custom domain support with automatic SSL
+- Built-in analytics
+- Fast builds with caching
+
+See [CLOUDFLARE-DEPLOYMENT.md](CLOUDFLARE-DEPLOYMENT.md) for complete setup guide.
+
 ### GitHub Pages
 
-Deployed automatically via GitHub Actions when changes are pushed to `main`:
+Traditional GitHub-hosted deployment.
+
+**Automated deployment via GitHub Actions:**
 
 1. Push changes to `main` branch
 2. GitHub Actions runs `mkdocs gh-deploy`
 3. Site published to GitHub Pages
 4. Available at https://rcdelacruz.github.io/mcp-sub-agents
 
-### Manual Deployment
-
-Deploy manually:
+**Manual deployment:**
 
 ```bash
 mkdocs gh-deploy
 ```
 
 This builds the site and pushes to the `gh-pages` branch.
+
+### Comparison
+
+| Feature | Cloudflare Pages | GitHub Pages |
+|---------|------------------|--------------|
+| Speed | 300+ edge locations | GitHub CDN |
+| Bandwidth | Unlimited | 100GB/month |
+| Custom domains | Unlimited | 1 per repo |
+| Preview deploys | Yes | No |
+| Analytics | Built-in | External only |
 
 ## Writing Documentation
 

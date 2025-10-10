@@ -1,0 +1,17 @@
+name = "mcp-sub-agents-docs"
+compatibility_date = "2024-01-01"
+
+# Cloudflare Pages configuration
+# This file is optional - Pages can be configured via dashboard or CLI
+# Use this for advanced configuration options
+
+[site]
+bucket = "./site"
+
+# Build configuration (if using Cloudflare Pages build system)
+# Alternatively, you can build locally and deploy the site/ directory
+
+# For Pages, you can set these in the dashboard:
+# Build command: pip install mkdocs mkdocs-material && mkdocs build
+# Build output directory: site
+# Root directory: /

@@ -501,7 +501,9 @@ Use qa-tester to write E2E tests for the checkout flow
 
 ## 📚 Documentation
 
-Comprehensive documentation is available at: **[https://rcdelacruz.github.io/mcp-sub-agents](https://rcdelacruz.github.io/mcp-sub-agents)**
+Comprehensive documentation is available at:
+- **GitHub Pages:** [https://rcdelacruz.github.io/mcp-sub-agents](https://rcdelacruz.github.io/mcp-sub-agents)
+- **Cloudflare Pages:** [https://mcp-sub-agents-docs.pages.dev](https://mcp-sub-agents-docs.pages.dev)
 
 The documentation includes:
 
@@ -525,7 +527,29 @@ mkdocs serve
 mkdocs build
 ```
 
-See [DOCUMENTATION.md](./DOCUMENTATION.md) for detailed documentation development guide.
+### Deploy Documentation
+
+#### Cloudflare Pages (Recommended)
+
+Fast global CDN with unlimited bandwidth:
+
+```bash
+# Quick deploy with Wrangler CLI
+npm install -g wrangler
+wrangler login
+mkdocs build
+wrangler pages deploy site --project-name=mcp-sub-agents-docs
+```
+
+Or use GitHub Actions for automatic deployment on push. See [QUICK-START-CLOUDFLARE.md](./QUICK-START-CLOUDFLARE.md).
+
+#### GitHub Pages
+
+```bash
+mkdocs gh-deploy
+```
+
+See [DOCUMENTATION.md](./DOCUMENTATION.md) for detailed documentation development guide and [CLOUDFLARE-DEPLOYMENT.md](./CLOUDFLARE-DEPLOYMENT.md) for complete Cloudflare Pages setup.
 
 ## 🤝 Contributing
 

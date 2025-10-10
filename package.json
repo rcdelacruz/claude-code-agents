@@ -1,0 +1,19 @@
+{
+  "name": "mcp-sub-agents-docs",
+  "version": "1.0.0",
+  "description": "Documentation deployment scripts for MCP Sub-Agents",
+  "scripts": {
+    "deploy:cloudflare": "mkdocs build && wrangler pages deploy site --project-name=mcp-sub-agents-docs",
+    "deploy:preview": "mkdocs build && wrangler pages deploy site --project-name=mcp-sub-agents-docs --branch=preview"
+  },
+  "keywords": [
+    "documentation",
+    "mkdocs",
+    "cloudflare-pages"
+  ],
+  "author": "Ronald DC",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.78.0"
+  }
+}

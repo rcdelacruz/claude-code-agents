@@ -16,3 +16,14 @@ Thumbs.db
 # Test files
 test/
 *.test.md
+
+# MkDocs build output
+site/
+
+# Node modules (for Wrangler)
+node_modules/
+package-lock.json
+
+# Cloudflare
+.wrangler/
+wrangler.toml.local
