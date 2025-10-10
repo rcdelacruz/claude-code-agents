@@ -499,9 +499,45 @@ Use qa-tester to write E2E tests for the checkout flow
 | Performance | Basic | Core Web Vitals focused |
 | Quality Assurance | None | Code Review + QA Testing |
 
+## 📚 Documentation
+
+Comprehensive documentation is available at: **[https://rcdelacruz.github.io/mcp-sub-agents](https://rcdelacruz.github.io/mcp-sub-agents)**
+
+The documentation includes:
+
+- **Getting Started** - Installation and quick start guides
+- **Architecture** - Two-tier agent system and workflow commands
+- **Agents** - Detailed reference for all savants and specialists
+- **Guides** - Real-world workflows and best practices
+- **Reference** - Complete technology stack coverage
+- **FAQ** - Common questions and troubleshooting
+
+### Build Documentation Locally
+
+```bash
+# Install MkDocs Material
+pip install mkdocs mkdocs-material
+
+# Serve documentation
+mkdocs serve
+
+# Build static site
+mkdocs build
+```
+
+See [DOCUMENTATION.md](./DOCUMENTATION.md) for detailed documentation development guide.
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit issues or pull requests.
+
+See [CONTRIBUTING.md](docs/contributing.md) for detailed guidelines on:
+
+- Adding new agents
+- Creating workflow commands
+- Improving documentation
+- Reporting issues
+- Pull request process
 
 ## 📝 License
 

@@ -1,0 +1,64 @@
+# MCP Sub-Agents Documentation - Complete File List
+
+## Configuration Files
+
+/Users/ronalddelacruz/Projects/mcp-sub-agents/mkdocs.yml
+/Users/ronalddelacruz/Projects/mcp-sub-agents/.github/workflows/docs.yml
+/Users/ronalddelacruz/Projects/mcp-sub-agents/DOCUMENTATION.md
+/Users/ronalddelacruz/Projects/mcp-sub-agents/DOCUMENTATION-SUMMARY.md
+
+## Documentation Pages (13 pages)
+
+### Core
+/Users/ronalddelacruz/Projects/mcp-sub-agents/docs/index.md
+/Users/ronalddelacruz/Projects/mcp-sub-agents/docs/contributing.md
+/Users/ronalddelacruz/Projects/mcp-sub-agents/docs/faq.md
+
+### Getting Started (2 pages)
+/Users/ronalddelacruz/Projects/mcp-sub-agents/docs/getting-started/installation.md
+/Users/ronalddelacruz/Projects/mcp-sub-agents/docs/getting-started/quick-start.md
+
+### Architecture (2 pages)
+/Users/ronalddelacruz/Projects/mcp-sub-agents/docs/architecture/overview.md
+/Users/ronalddelacruz/Projects/mcp-sub-agents/docs/architecture/workflow-commands.md
+
+### Agents (3 pages)
+/Users/ronalddelacruz/Projects/mcp-sub-agents/docs/agents/savants.md
+/Users/ronalddelacruz/Projects/mcp-sub-agents/docs/agents/javascript-specialists.md
+/Users/ronalddelacruz/Projects/mcp-sub-agents/docs/agents/cross-cutting-specialists.md
+
+### Guides (2 pages)
+/Users/ronalddelacruz/Projects/mcp-sub-agents/docs/guides/workflows.md
+/Users/ronalddelacruz/Projects/mcp-sub-agents/docs/guides/best-practices.md
+
+### Reference (1 page)
+/Users/ronalddelacruz/Projects/mcp-sub-agents/docs/reference/tech-stack.md
+
+## Custom Assets
+
+/Users/ronalddelacruz/Projects/mcp-sub-agents/docs/stylesheets/extra.css
+/Users/ronalddelacruz/Projects/mcp-sub-agents/docs/javascripts/mermaid-init.js
+
+## Updated Files
+
+/Users/ronalddelacruz/Projects/mcp-sub-agents/README.md (added documentation section)
+
+## Total Files Created/Modified: 18 files
+
+## Build Output
+
+/Users/ronalddelacruz/Projects/mcp-sub-agents/site/ (generated directory)
+
+## Quick Commands
+
+# Serve locally
+mkdocs serve
+
+# Build
+cd /Users/ronalddelacruz/Projects/mcp-sub-agents && mkdocs build
+
+# Deploy to GitHub Pages
+cd /Users/ronalddelacruz/Projects/mcp-sub-agents && mkdocs gh-deploy
+
+# View locally
+open http://localhost:8000
