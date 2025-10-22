@@ -56,7 +56,7 @@ documents/00-references/
 └── compliance/        # Legal, security, compliance docs
 ```
 
-See the [Document Organization guide](document-organization.md#reference-documents) for details.
+See the [Document Organization guide](document-organization.md#reference-documents-00-references) for details.
 
 ### Step 1: Create Product Requirements Document (PRD)
 

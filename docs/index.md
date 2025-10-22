@@ -9,8 +9,10 @@ Claude Code Agents implements a two-tier agent architecture designed to provide 
 ```mermaid
 graph TB
     subgraph tier1["TIER 1: SAVANTS"]
-        js[fullstack-js-savant<br/>JavaScript/TypeScript Master]
-        java[java-spring-savant<br/>Spring Ecosystem Master]
+        js[fullstack-js-savant<br/>JavaScript/TypeScript]
+        java[java-spring-savant<br/>Spring Ecosystem]
+        rn[react-native-savant<br/>React Native]
+        flutter[flutter-savant<br/>Flutter/Dart]
     end
 
     subgraph tier2["TIER 2: SPECIALISTS"]
@@ -21,15 +23,18 @@ graph TB
         end
 
         subgraph crosscut[Cross-Cutting]
-            cross1[code-reviewer]
-            cross2[qa-tester]
-            cross3[security]
-            cross4[performance]
-            cross5[deployment]
-            cross6[database]
-            cross7[monitoring]
-            cross8[architect]
-            cross9[tech-writer]
+            cross1[product-manager]
+            cross2[task-planner]
+            cross3[test-planner]
+            cross4[code-reviewer]
+            cross5[qa-tester]
+            cross6[security]
+            cross7[performance]
+            cross8[deployment]
+            cross9[database]
+            cross10[monitoring]
+            cross11[architect]
+            cross12[tech-writer]
         end
     end
 
@@ -44,15 +49,18 @@ graph TB
 
 Master orchestrators with broad, deep knowledge across entire technology ecosystems. Savants make architectural decisions, choose technologies, and coordinate specialist agents.
 
-- fullstack-js-savant - JavaScript/TypeScript ecosystem master
-- java-spring-savant - Spring ecosystem master
+- **fullstack-js-savant** - JavaScript/TypeScript ecosystem master
+- **java-spring-savant** - Spring ecosystem master
+- **react-native-savant** - React Native mobile development master
+- **flutter-savant** - Flutter/Dart mobile development master
 
 **Tier 2: Specialist Agents**
 
 Deep domain experts focusing on specific frameworks, tools, and practices within a stack.
 
-- JavaScript specialists for Next.js, UI, and APIs
-- Cross-cutting specialists for security, testing, performance, and more
+- **JavaScript specialists** for Next.js, UI, and APIs
+- **Workflow specialists** for PRD generation, task planning, and test planning
+- **Cross-cutting specialists** for security, testing, performance, and more
 
 ### Hybrid Workflow Commands
 
@@ -244,6 +252,8 @@ Use backend-api to implement NextAuth.js with GitHub OAuth
 
 - **fullstack-js-savant** - Master of JavaScript/TypeScript ecosystem
 - **java-spring-savant** - Master of Spring ecosystem
+- **react-native-savant** - Master of React Native mobile development
+- **flutter-savant** - Master of Flutter/Dart mobile development
 
 [Learn about savants](agents/savants.md)
 
@@ -257,6 +267,9 @@ Use backend-api to implement NextAuth.js with GitHub OAuth
 
 ### Cross-Cutting Specialists
 
+- **product-manager** - PRD generation from requirements
+- **task-planner** - Development task breakdown (JSON/CSV)
+- **test-planner** - Test case generation (JSON/CSV)
 - **code-reviewer** - Code quality and best practices
 - **qa-tester** - Playwright E2E and Vitest unit testing
 - **security** - OWASP Top 10 and security best practices

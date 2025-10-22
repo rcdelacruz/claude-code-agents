@@ -1,4 +1,4 @@
-name = "workflow-sub-agents-docs"
+name = "claude-code-agents-docs"
 compatibility_date = "2024-01-01"
 
 # Cloudflare Pages configuration

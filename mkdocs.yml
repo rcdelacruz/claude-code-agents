@@ -11,13 +11,17 @@ theme:
   name: material
   language: en
   palette:
-    - scheme: slate
+    # Default to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: black
       accent: light blue
       toggle:
         icon: material/brightness-7
         name: Switch to light mode
-    - scheme: default
+    # Light mode option
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: indigo
       accent: blue
       toggle:
