@@ -35,7 +35,7 @@
 #         with:
 #           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 #           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-#           projectName: mcp-sub-agents-docs
+#           projectName: claude-code-agents-docs
 #           directory: site
 #           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 #           branch: main

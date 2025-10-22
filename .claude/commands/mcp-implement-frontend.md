@@ -149,6 +149,6 @@ Create components following these patterns:
 
 ## After Implementation
 
-- Use `/mcp-review-code` to review component quality
-- Use `/mcp-qa-e2e` to write component tests
-- Use `/mcp-review-performance` to optimize rendering
+- Use `/workflow-review-code` to review component quality
+- Use `/workflow-qa-e2e` to write component tests
+- Use `/workflow-review-performance` to optimize rendering

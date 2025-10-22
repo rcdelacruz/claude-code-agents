@@ -1,6 +1,6 @@
 # Documentation Summary
 
-Complete professional MkDocs Material documentation site has been created for the MCP Sub-Agents project.
+Complete professional MkDocs Material documentation site has been created for the Claude Code Agents project.
 
 ## Files Created
 
@@ -160,7 +160,7 @@ mkdocs build
 
 Once deployed to GitHub Pages:
 
-https://rcdelacruz.github.io/mcp-sub-agents
+https://rcdelacruz.github.io/claude-code-agents
 
 ## Deployment
 
@@ -319,7 +319,7 @@ Update any documentation links in:
 
 Share the documentation URL:
 
-https://rcdelacruz.github.io/mcp-sub-agents
+https://rcdelacruz.github.io/claude-code-agents
 
 ## Maintenance
 
@@ -364,7 +364,7 @@ mkdocs serve   # Review changes
 
 ## Documentation Site Delivered
 
-A complete, professional, production-ready documentation site for MCP Sub-Agents that:
+A complete, professional, production-ready documentation site for Claude Code Agents that:
 
 - Explains the two-tier architecture clearly
 - Provides comprehensive agent reference
@@ -375,4 +375,4 @@ A complete, professional, production-ready documentation site for MCP Sub-Agents
 - Guides contributors
 - Deploys automatically to GitHub Pages
 
-The documentation is ready for use and will help developers understand, install, and use the MCP Sub-Agents system effectively.
+The documentation is ready for use and will help developers understand, install, and use the Claude Code Agents system effectively.

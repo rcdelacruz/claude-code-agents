@@ -1,6 +1,6 @@
 # Documents Directory
 
-This directory contains all generated documents from the MCP Sub-Agents workflow.
+This directory contains all generated documents from the Claude Code Agents workflow.
 
 ## Directory Structure
 

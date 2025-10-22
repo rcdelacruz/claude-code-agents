@@ -1,6 +1,6 @@
 # Document Organization Guide
 
-This guide explains how to organize and manage documents in the MCP Sub-Agents workflow system.
+This guide explains how to organize and manage documents in the Claude Code Agents workflow system.
 
 ## Directory Structure
 
@@ -142,29 +142,34 @@ Use kebab-case (lowercase with hyphens).
 All PRDs follow a consistent 5-section structure:
 
 1. **Objective & Success Metrics**
-   - Problem statement
+
+   - Problem statementmcp
    - Goals (SMART)
    - Success metrics with baselines
 
 2. **Features & Requirements**
+
    - Prioritized features (P0, P1, P2)
    - User stories
    - Functional requirements
    - Acceptance criteria
 
 3. **User Experience Flow**
+
    - Primary user flows
    - Key interactions
    - Design considerations
    - Error states
 
 4. **Technical Context**
+
    - System & environment requirements
    - Dependencies & integrations
    - Technical constraints
    - Assumptions
 
 5. **Open Questions & Next Steps**
+
    - Unresolved questions
    - Risks & mitigation
    - Timeline

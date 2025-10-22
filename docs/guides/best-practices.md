@@ -1,6 +1,6 @@
 # Best Practices
 
-This guide provides best practices for using MCP Sub-Agents effectively to build high-quality, production-ready applications.
+This guide provides best practices for using Claude Code Agents effectively to build high-quality, production-ready applications.
 
 ## Agent Selection
 
@@ -132,20 +132,20 @@ Follow logical progression:
 
 ```bash
 # Recommended sequence
-/mcp-design-nextjs          # 1. Design
-/mcp-implement-fullstack    # 2. Implement
-/mcp-review-code           # 3. Review
-/mcp-review-security       # 4. Security
-/mcp-qa-e2e               # 5. Test
-/mcp-deploy               # 6. Deploy
+/workflow-design-nextjs          # 1. Design
+/workflow-implement-fullstack    # 2. Implement
+/workflow-review-code           # 3. Review
+/workflow-review-security       # 4. Security
+/workflow-qa-e2e               # 5. Test
+/workflow-deploy               # 6. Deploy
 ```
 
 Avoid skipping design:
 
 ```bash
 # Avoid this
-/mcp-implement-fullstack    # Implementing without design
-/mcp-design-nextjs         # Design should come first
+/workflow-implement-fullstack    # Implementing without design
+/workflow-design-nextjs         # Design should come first
 ```
 
 ## Code Quality
@@ -156,12 +156,12 @@ Review code regularly, not just at the end:
 
 ```bash
 # After each feature
-/mcp-implement-fullstack
-/mcp-review-code
+/workflow-implement-fullstack
+/workflow-review-code
 
 # Not just at the end
 # ... multiple features ...
-/mcp-review-code  # Too late
+/workflow-review-code  # Too late
 ```
 
 ### Multi-Aspect Review
@@ -169,9 +169,9 @@ Review code regularly, not just at the end:
 Use multiple review specialists:
 
 ```bash
-/mcp-review-code          # Code quality
-/mcp-review-security     # Security
-/mcp-review-performance  # Performance
+/workflow-review-code          # Code quality
+/workflow-review-security     # Security
+/workflow-review-performance  # Performance
 ```
 
 ### Iterate on Feedback
@@ -179,9 +179,9 @@ Use multiple review specialists:
 Address issues and re-review:
 
 ```bash
-/mcp-review-code                 # Review
+/workflow-review-code                 # Review
 Use code-reviewer to fix issues  # Address feedback
-/mcp-review-code                # Verify fixes
+/workflow-review-code                # Verify fixes
 ```
 
 ## Testing
@@ -191,8 +191,8 @@ Use code-reviewer to fix issues  # Address feedback
 Write tests alongside implementation:
 
 ```bash
-/mcp-implement-fullstack   # Build feature
-/mcp-qa-e2e               # Write tests immediately
+/workflow-implement-fullstack   # Build feature
+/workflow-qa-e2e               # Write tests immediately
 ```
 
 ### Comprehensive Test Coverage
@@ -207,7 +207,7 @@ Use qa-tester to write Vitest unit tests for utility functions
 Use qa-tester to write integration tests for API routes
 
 # E2E tests
-/mcp-qa-e2e
+/workflow-qa-e2e
 ```
 
 ### Test Critical Paths
@@ -228,7 +228,7 @@ Consider performance from the start:
 
 ```bash
 # During design
-/mcp-design-nextjs
+/workflow-design-nextjs
 # Ask about performance considerations
 
 # During implementation
@@ -241,7 +241,7 @@ Monitor performance continuously:
 
 ```bash
 # Weekly or bi-weekly
-/mcp-review-performance
+/workflow-review-performance
 ```
 
 ### Measure Before Optimizing
@@ -250,9 +250,9 @@ Always audit before optimizing:
 
 ```bash
 # Good approach
-/mcp-review-performance     # Identify issues
+/workflow-review-performance     # Identify issues
 Use performance to fix      # Address specific problems
-/mcp-review-performance    # Verify improvements
+/workflow-review-performance    # Verify improvements
 
 # Avoid premature optimization
 Use performance to optimize  # Without measuring first
@@ -266,7 +266,7 @@ Consider security from day one:
 
 ```bash
 # Early in development
-/mcp-review-security
+/workflow-review-security
 ```
 
 ### Regular Security Audits
@@ -275,7 +275,7 @@ Schedule regular security reviews:
 
 ```bash
 # Monthly security audits
-/mcp-review-security
+/workflow-review-security
 ```
 
 ### Defense in Depth
@@ -296,8 +296,8 @@ Apply security at multiple layers:
 Create documentation alongside code:
 
 ```bash
-/mcp-implement-fullstack   # Build feature
-/mcp-write-docs           # Document it
+/workflow-implement-fullstack   # Build feature
+/workflow-write-docs           # Document it
 ```
 
 ### Comprehensive Documentation
@@ -327,7 +327,7 @@ Set up CI/CD from the start:
 
 ```bash
 # Early in project
-/mcp-deploy
+/workflow-deploy
 ```
 
 ### Multiple Environments
@@ -406,8 +406,8 @@ Use workflow commands for consistency:
 
 ```bash
 # Team uses same workflows
-/mcp-implement-fullstack
-/mcp-review-code
+/workflow-implement-fullstack
+/workflow-review-code
 ```
 
 ### Code Review with Agents
@@ -416,7 +416,7 @@ Use code-reviewer before human review:
 
 ```bash
 # Automated pre-review
-/mcp-review-code
+/workflow-review-code
 # Then human review
 ```
 
@@ -439,9 +439,9 @@ Schedule regular comprehensive audits:
 
 ```bash
 # Monthly comprehensive review
-/mcp-review-code
-/mcp-review-security
-/mcp-review-performance
+/workflow-review-code
+/workflow-review-security
+/workflow-review-performance
 ```
 
 ### Stay Updated
@@ -450,7 +450,7 @@ Keep agents and practices current:
 
 ```bash
 # Regular updates
-cd ~/mcp-sub-agents
+cd ~/claude-code-agents
 git pull
 ```
 
@@ -460,11 +460,11 @@ git pull
 
 ```bash
 # Avoid
-/mcp-implement-fullstack  # Without design
+/workflow-implement-fullstack  # Without design
 
 # Better
-/mcp-design-nextjs
-/mcp-implement-fullstack
+/workflow-design-nextjs
+/workflow-implement-fullstack
 ```
 
 ### Don't Ignore Security
@@ -472,22 +472,22 @@ git pull
 ```bash
 # Avoid
 # ... build entire app ...
-/mcp-review-security  # Too late
+/workflow-review-security  # Too late
 
 # Better
-/mcp-review-security  # Regular audits during development
+/workflow-review-security  # Regular audits during development
 ```
 
 ### Don't Skip Testing
 
 ```bash
 # Avoid
-/mcp-implement-fullstack
+/workflow-implement-fullstack
 # Move to next feature without tests
 
 # Better
-/mcp-implement-fullstack
-/mcp-qa-e2e
+/workflow-implement-fullstack
+/workflow-qa-e2e
 ```
 
 ### Don't Optimize Prematurely
@@ -497,7 +497,7 @@ git pull
 Use performance to optimize  # Without measuring
 
 # Better
-/mcp-review-performance  # Measure first
+/workflow-review-performance  # Measure first
 Use performance to fix issues  # Then optimize
 ```
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# MCP Sub-Agents Uninstallation Script
+# Claude Code Agents Uninstallation Script
 # Removes all agents and workflow commands from Claude Code
 
 set -e
@@ -8,7 +8,7 @@ set -e
 AGENTS_DIR="$HOME/.claude/agents"
 COMMANDS_DIR="$HOME/.claude/commands"
 
-echo "🗑️  MCP Sub-Agents Uninstaller"
+echo "🗑️  Claude Code Agents Uninstaller"
 echo ""
 
 # Check what will be removed
@@ -32,7 +32,7 @@ else
 fi
 
 echo ""
-echo "⚠️  WARNING: This will permanently delete all MCP Sub-Agents"
+echo "⚠️  WARNING: This will permanently delete all Claude Code Agents"
 echo ""
 read -p "Continue with uninstallation? (y/N) " -n 1 -r
 echo ""
@@ -43,7 +43,7 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 echo ""
-echo "🗑️  Removing MCP Sub-Agents..."
+echo "🗑️  Removing Claude Code Agents..."
 
 # Remove agents
 if [ -d "$AGENTS_DIR" ]; then

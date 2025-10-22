@@ -1,6 +1,6 @@
 # Technology Stack Reference
 
-Complete reference of technologies covered by MCP Sub-Agents with version information and expertise areas.
+Complete reference of technologies covered by Claude Code Agents with version information and expertise areas.
 
 ## Frontend Technologies
 

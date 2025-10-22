@@ -248,7 +248,7 @@ Additional context:
 
 ### Use Case 3: Migrating Existing Documentation
 
-Converting existing documentation into MCP Sub-Agents workflow:
+Converting existing documentation into Claude Code Agents workflow:
 
 ```bash
 # 1. Copy all existing docs to 00-references

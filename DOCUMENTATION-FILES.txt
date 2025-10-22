@@ -1,4 +1,4 @@
-# MCP Sub-Agents Documentation - Complete File List
+# Claude Code Agents Documentation - Complete File List
 
 ## Configuration Files
 

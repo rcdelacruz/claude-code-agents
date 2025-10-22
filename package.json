@@ -1,10 +1,10 @@
 {
-  "name": "mcp-sub-agents-docs",
+  "name": "claude-code-agents-docs",
   "version": "1.0.0",
-  "description": "Documentation deployment scripts for MCP Sub-Agents",
+  "description": "Documentation deployment scripts for Claude Code Agents",
   "scripts": {
-    "deploy:cloudflare": "mkdocs build && wrangler pages deploy site --project-name=mcp-sub-agents-docs",
-    "deploy:preview": "mkdocs build && wrangler pages deploy site --project-name=mcp-sub-agents-docs --branch=preview"
+    "deploy:cloudflare": "mkdocs build && wrangler pages deploy site --project-name=claude-code-agents-docs",
+    "deploy:preview": "mkdocs build && wrangler pages deploy site --project-name=claude-code-agents-docs --branch=preview"
   },
   "keywords": [
     "documentation",

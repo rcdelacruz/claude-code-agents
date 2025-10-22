@@ -1,6 +1,6 @@
 # Requirements to Implementation Workflow
 
-This guide walks you through the complete workflow from gathering requirements to generating implementation artifacts using the MCP Sub-Agents system.
+This guide walks you through the complete workflow from gathering requirements to generating implementation artifacts using the Claude Code Agents system.
 
 ## Workflow Overview
 
@@ -455,7 +455,7 @@ Focus areas:
 
 ## Related Documentation
 
-- [New Project Setup](new-project-setup.md) - Setting up MCP Sub-Agents in a new project
+- [New Project Setup](new-project-setup.md) - Setting up Claude Code Agents in a new project
 - [Document Organization](document-organization.md) - Directory structure and file management
 - [Product Manager Agent](../agents/cross-cutting-specialists.md#product-manager)
 - [Task Planner Agent](../agents/cross-cutting-specialists.md#task-planner)

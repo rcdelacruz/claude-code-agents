@@ -1,13 +1,13 @@
 # Installation
 
-This guide explains how to install the MCP Sub-Agents system with the two-tier architecture.
+This guide explains how to install the Claude Code Agents system with the two-tier architecture.
 
 ## Quick Install (Recommended)
 
 Install all agents and workflow commands with a single command:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/rcdelacruz/mcp-sub-agents/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install.sh | bash
 ```
 
 This will:
@@ -28,7 +28,7 @@ This will:
 The recommended one-line installation:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/rcdelacruz/mcp-sub-agents/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install.sh | bash
 ```
 
 **Requirements:**
@@ -43,8 +43,8 @@ For more control over the installation process:
 
 ```bash
 # Clone repository
-git clone https://github.com/rcdelacruz/mcp-sub-agents.git
-cd mcp-sub-agents
+git clone https://github.com/rcdelacruz/claude-code-agents.git
+cd claude-code-agents
 
 # Copy agents (preserves subdirectories)
 mkdir -p ~/.claude/agents
@@ -65,8 +65,8 @@ Install agents for a specific project only:
 
 ```bash
 # In your project directory
-git clone https://github.com/rcdelacruz/mcp-sub-agents.git
-cd mcp-sub-agents
+git clone https://github.com/rcdelacruz/claude-code-agents.git
+cd claude-code-agents
 
 # Copy to project's .claude directory
 mkdir -p .claude/agents .claude/commands
@@ -84,8 +84,8 @@ For development or to auto-sync with updates:
 
 ```bash
 # Clone repository
-git clone https://github.com/rcdelacruz/mcp-sub-agents.git
-cd mcp-sub-agents
+git clone https://github.com/rcdelacruz/claude-code-agents.git
+cd claude-code-agents
 
 # Create symlinks (changes sync automatically)
 mkdir -p ~/.claude
@@ -121,17 +121,17 @@ After installation, your directory structure should look like this:
 │       ├── security.md
 │       └── tech-writer.md
 └── commands/
-    ├── mcp-design-architecture.md
-    ├── mcp-design-nextjs.md
-    ├── mcp-implement-fullstack.md
-    ├── mcp-implement-frontend.md
-    ├── mcp-implement-backend.md
-    ├── mcp-review-code.md
-    ├── mcp-review-security.md
-    ├── mcp-review-performance.md
-    ├── mcp-qa-e2e.md
-    ├── mcp-write-docs.md
-    └── mcp-deploy.md
+    ├── workflow-design-architecture.md
+    ├── workflow-design-nextjs.md
+    ├── workflow-implement-fullstack.md
+    ├── workflow-implement-frontend.md
+    ├── workflow-implement-backend.md
+    ├── workflow-review-code.md
+    ├── workflow-review-security.md
+    ├── workflow-review-performance.md
+    ├── workflow-qa-e2e.md
+    ├── workflow-write-docs.md
+    └── workflow-deploy.md
 ```
 
 ## Understanding Agent Discovery
@@ -163,7 +163,7 @@ What matters is the `name` field in the frontmatter.
 After installation, verify that all agents and commands are properly installed:
 
 ```bash
-cd mcp-sub-agents
+cd claude-code-agents
 ./verify-agents.sh
 ```
 
@@ -191,17 +191,17 @@ cd mcp-sub-agents
   ✓ tech-writer
 
 ✅ Found 11 workflow commands
-  ✓ /mcp-design-architecture
-  ✓ /mcp-design-nextjs
-  ✓ /mcp-implement-fullstack
-  ✓ /mcp-implement-frontend
-  ✓ /mcp-implement-backend
-  ✓ /mcp-review-code
-  ✓ /mcp-review-security
-  ✓ /mcp-review-performance
-  ✓ /mcp-qa-e2e
-  ✓ /mcp-write-docs
-  ✓ /mcp-deploy
+  ✓ /workflow-design-architecture
+  ✓ /workflow-design-nextjs
+  ✓ /workflow-implement-fullstack
+  ✓ /workflow-implement-frontend
+  ✓ /workflow-implement-backend
+  ✓ /workflow-review-code
+  ✓ /workflow-review-security
+  ✓ /workflow-review-performance
+  ✓ /workflow-qa-e2e
+  ✓ /workflow-write-docs
+  ✓ /workflow-deploy
 
 ✅ Verification complete!
 ```
@@ -233,7 +233,7 @@ Test that agents and commands are accessible:
 Use fullstack-js-savant to explain the two-tier architecture
 
 # Test workflow command
-/mcp-design-nextjs
+/workflow-design-nextjs
 ```
 
 ## Troubleshooting
@@ -306,7 +306,7 @@ Use fullstack-js-savant to explain the two-tier architecture
 chmod -R 755 ~/.claude/
 
 # If using symlinks, verify source directory permissions
-chmod -R 755 /path/to/mcp-sub-agents/
+chmod -R 755 /path/to/claude-code-agents/
 ```
 
 ### Subdirectory Issues
@@ -337,7 +337,7 @@ chmod -R 755 /path/to/mcp-sub-agents/
 ### Update Global Installation
 
 ```bash
-cd mcp-sub-agents
+cd claude-code-agents
 git pull origin main
 cp -r agents/* ~/.claude/agents/
 cp -r .claude/commands/* ~/.claude/commands/
@@ -346,7 +346,7 @@ cp -r .claude/commands/* ~/.claude/commands/
 ### Update with Symlinks
 
 ```bash
-cd mcp-sub-agents
+cd claude-code-agents
 git pull origin main
 # Changes automatically reflected via symlinks
 ```
@@ -356,7 +356,7 @@ git pull origin main
 Add to your shell profile (`~/.bashrc` or `~/.zshrc`):
 
 ```bash
-alias update-agents='cd ~/mcp-sub-agents && git pull && cp -r agents/* ~/.claude/agents/ && cp -r .claude/commands/* ~/.claude/commands/'
+alias update-agents='cd ~/claude-code-agents && git pull && cp -r agents/* ~/.claude/agents/ && cp -r .claude/commands/* ~/.claude/commands/'
 ```
 
 Then just run:
@@ -444,7 +444,7 @@ Regularly update to get the latest improvements:
 
 ```bash
 # Weekly update
-cd ~/mcp-sub-agents
+cd ~/claude-code-agents
 git pull
 cp -r agents/* ~/.claude/agents/
 cp -r .claude/commands/* ~/.claude/commands/
@@ -466,4 +466,4 @@ If you encounter issues:
 1. Run verification script: `./verify-agents.sh`
 2. Check [FAQ](../faq.md) for common questions
 3. Review [troubleshooting section](#troubleshooting)
-4. Open an issue: [GitHub Issues](https://github.com/rcdelacruz/mcp-sub-agents/issues)
+4. Open an issue: [GitHub Issues](https://github.com/rcdelacruz/claude-code-agents/issues)

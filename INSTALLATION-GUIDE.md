@@ -1,6 +1,6 @@
 # Installation Guide
 
-This guide explains how to install the MCP Sub-Agents system with the two-tier architecture.
+This guide explains how to install the Claude Code Agents system with the two-tier architecture.
 
 ## Understanding the Installation
 
@@ -49,7 +49,7 @@ Claude Code recursively searches all subdirectories in `~/.claude/agents/`.
 
 ```bash
 # One-line installation
-curl -fsSL https://raw.githubusercontent.com/rcdelacruz/mcp-sub-agents/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install.sh | bash
 ```
 
 **What it does:**
@@ -69,8 +69,8 @@ curl -fsSL https://raw.githubusercontent.com/rcdelacruz/mcp-sub-agents/main/inst
 
 ```bash
 # Clone repository
-git clone https://github.com/rcdelacruz/mcp-sub-agents.git
-cd mcp-sub-agents
+git clone https://github.com/rcdelacruz/claude-code-agents.git
+cd claude-code-agents
 
 # Copy agents (preserves subdirectories)
 mkdir -p ~/.claude/agents
@@ -89,8 +89,8 @@ ls ~/.claude/commands/
 
 ```bash
 # In your project directory
-git clone https://github.com/rcdelacruz/mcp-sub-agents.git
-cd mcp-sub-agents
+git clone https://github.com/rcdelacruz/claude-code-agents.git
+cd claude-code-agents
 
 # Copy to project's .claude directory
 mkdir -p .claude/agents .claude/commands
@@ -106,8 +106,8 @@ ls .claude/commands/
 
 ```bash
 # Clone repository
-git clone https://github.com/rcdelacruz/mcp-sub-agents.git
-cd mcp-sub-agents
+git clone https://github.com/rcdelacruz/claude-code-agents.git
+cd claude-code-agents
 
 # Create symlinks (changes sync automatically)
 mkdir -p ~/.claude
@@ -142,9 +142,9 @@ ls -la ~/.claude/
   [... more agents ...]
 
 ✅ Found 11 workflow commands
-  ✓ /mcp-design-architecture
-  ✓ /mcp-design-nextjs
-  ✓ /mcp-implement-fullstack
+  ✓ /workflow-design-architecture
+  ✓ /workflow-design-nextjs
+  ✓ /workflow-implement-fullstack
   [... more commands ...]
 
 ✅ Verification complete!
@@ -175,7 +175,7 @@ find ~/.claude/commands -name "*.md" | wc -l
 Use fullstack-js-savant to explain the architecture
 
 # Test workflow command
-/mcp-design-nextjs
+/workflow-design-nextjs
 ```
 
 ## Troubleshooting
@@ -265,7 +265,7 @@ Use fullstack-js-savant to explain the architecture
 ### Update Global Installation
 
 ```bash
-cd mcp-sub-agents
+cd claude-code-agents
 git pull origin main
 cp -r agents/* ~/.claude/agents/
 cp -r .claude/commands/* ~/.claude/commands/
@@ -274,7 +274,7 @@ cp -r .claude/commands/* ~/.claude/commands/
 ### Update with Symlinks
 
 ```bash
-cd mcp-sub-agents
+cd claude-code-agents
 git pull origin main
 # Changes automatically reflected via symlinks!
 ```
@@ -314,7 +314,7 @@ rm -rf .claude/commands
 
 ```bash
 # Add to your shell profile (~/.bashrc or ~/.zshrc)
-alias update-agents='cd ~/mcp-sub-agents && git pull && cp -r agents/* ~/.claude/agents/ && cp -r .claude/commands/* ~/.claude/commands/'
+alias update-agents='cd ~/claude-code-agents && git pull && cp -r agents/* ~/.claude/agents/ && cp -r .claude/commands/* ~/.claude/commands/'
 
 # Then just run:
 update-agents
@@ -349,7 +349,7 @@ Copy-Item -Recurse .claude\commands\* $env:USERPROFILE\.claude\commands\
 If you encounter issues:
 
 1. Run verification script: `./verify-agents.sh`
-2. Check GitHub Issues: https://github.com/rcdelacruz/mcp-sub-agents/issues
+2. Check GitHub Issues: https://github.com/rcdelacruz/claude-code-agents/issues
 3. Read documentation: README.md, SAVANT-ARCHITECTURE.md, WORKFLOW-COMMANDS.md
 
 ## Summary

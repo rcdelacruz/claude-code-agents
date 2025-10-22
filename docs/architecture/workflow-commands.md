@@ -7,21 +7,21 @@ Workflow commands provide structured, step-by-step guidance through each stage o
 All workflow commands follow this pattern:
 
 ```
-/mcp-[stage]-[technology]
+/workflow-[stage]-[technology]
 ```
 
 Examples:
 
-- `/mcp-design-architecture` - General architecture design
-- `/mcp-design-nextjs` - Next.js-specific design
-- `/mcp-implement-fullstack` - Full-stack implementation
-- `/mcp-review-security` - Security-focused review
+- `/workflow-design-architecture` - General architecture design
+- `/workflow-design-nextjs` - Next.js-specific design
+- `/workflow-implement-fullstack` - Full-stack implementation
+- `/workflow-review-security` - Security-focused review
 
 ## Complete Command Reference
 
 ### Design Phase
 
-#### /mcp-design-architecture
+#### /workflow-design-architecture
 
 **Purpose:** Design system architecture and make high-level technical decisions
 
@@ -53,7 +53,7 @@ Examples:
 - Refactoring architecture
 - Making technology decisions
 
-#### /mcp-design-nextjs
+#### /workflow-design-nextjs
 
 **Purpose:** Design Next.js application structure with modern patterns
 
@@ -89,7 +89,7 @@ Examples:
 
 ### Implementation Phase
 
-#### /mcp-implement-fullstack
+#### /workflow-implement-fullstack
 
 **Purpose:** Build complete features end-to-end with full-stack orchestration
 
@@ -124,7 +124,7 @@ Examples:
 - Want orchestrated development
 - Learning full-stack patterns
 
-#### /mcp-implement-frontend
+#### /workflow-implement-frontend
 
 **Purpose:** Build UI components and client-side features
 
@@ -158,7 +158,7 @@ Examples:
 - Implementing client features
 - Ensuring accessibility
 
-#### /mcp-implement-backend
+#### /workflow-implement-backend
 
 **Purpose:** Build APIs, business logic, and data layer
 
@@ -194,7 +194,7 @@ Examples:
 
 ### Review Phase
 
-#### /mcp-review-code
+#### /workflow-review-code
 
 **Purpose:** Comprehensive code quality review
 
@@ -260,7 +260,7 @@ Examples:
 - Ensuring code quality
 - Learning best practices
 
-#### /mcp-review-security
+#### /workflow-review-security
 
 **Purpose:** Security audit based on OWASP Top 10
 
@@ -315,7 +315,7 @@ Examples:
 - Regular security audits
 - Compliance requirements
 
-#### /mcp-review-performance
+#### /workflow-review-performance
 
 **Purpose:** Performance audit and Core Web Vitals optimization
 
@@ -380,7 +380,7 @@ Examples:
 
 ### QA Phase
 
-#### /mcp-qa-e2e
+#### /workflow-qa-e2e
 
 **Purpose:** Create comprehensive end-to-end tests with Playwright
 
@@ -443,7 +443,7 @@ Examples:
 
 ### Documentation Phase
 
-#### /mcp-write-docs
+#### /workflow-write-docs
 
 **Purpose:** Create comprehensive technical documentation
 
@@ -506,7 +506,7 @@ Examples:
 
 ### Deployment Phase
 
-#### /mcp-deploy
+#### /workflow-deploy
 
 **Purpose:** Production deployment with CI/CD pipeline
 
@@ -574,13 +574,13 @@ Examples:
 Complete feature from design to deployment:
 
 ```bash
-/mcp-design-nextjs              # Design architecture
-/mcp-implement-fullstack        # Build feature
-/mcp-review-code               # Review quality
-/mcp-review-security           # Security audit
-/mcp-qa-e2e                    # Write tests
-/mcp-write-docs                # Document feature
-/mcp-deploy                    # Deploy to production
+/workflow-design-nextjs              # Design architecture
+/workflow-implement-fullstack        # Build feature
+/workflow-review-code               # Review quality
+/workflow-review-security           # Security audit
+/workflow-qa-e2e                    # Write tests
+/workflow-write-docs                # Document feature
+/workflow-deploy                    # Deploy to production
 ```
 
 **Time:** 4-6 hours
@@ -590,10 +590,10 @@ Complete feature from design to deployment:
 UI-focused development:
 
 ```bash
-/mcp-design-nextjs              # Plan UI structure
-/mcp-implement-frontend         # Build components
-/mcp-review-code               # Review quality
-/mcp-qa-e2e                    # Test UI flows
+/workflow-design-nextjs              # Plan UI structure
+/workflow-implement-frontend         # Build components
+/workflow-review-code               # Review quality
+/workflow-qa-e2e                    # Test UI flows
 ```
 
 **Time:** 2-3 hours
@@ -603,10 +603,10 @@ UI-focused development:
 API-focused development:
 
 ```bash
-/mcp-design-architecture        # Design API architecture
-/mcp-implement-backend          # Build API
-/mcp-review-code               # Review quality
-/mcp-review-security           # Security audit
+/workflow-design-architecture        # Design API architecture
+/workflow-implement-backend          # Build API
+/workflow-review-code               # Review quality
+/workflow-review-security           # Security audit
 ```
 
 **Time:** 2-3 hours
@@ -616,10 +616,10 @@ API-focused development:
 Optimize existing application:
 
 ```bash
-/mcp-review-performance        # Identify issues
-/mcp-implement-frontend        # Optimize UI (if needed)
-/mcp-implement-backend         # Optimize queries (if needed)
-/mcp-review-performance        # Verify improvements
+/workflow-review-performance        # Identify issues
+/workflow-implement-frontend        # Optimize UI (if needed)
+/workflow-implement-backend         # Optimize queries (if needed)
+/workflow-review-performance        # Verify improvements
 ```
 
 **Time:** 2-4 hours
@@ -629,11 +629,11 @@ Optimize existing application:
 Security improvement cycle:
 
 ```bash
-/mcp-review-security           # Audit current state
-/mcp-implement-backend         # Fix backend issues
-/mcp-implement-frontend        # Fix frontend issues
-/mcp-review-security          # Re-audit
-/mcp-qa-e2e                   # Test security features
+/workflow-review-security           # Audit current state
+/workflow-implement-backend         # Fix backend issues
+/workflow-implement-frontend        # Fix frontend issues
+/workflow-review-security          # Re-audit
+/workflow-qa-e2e                   # Test security features
 ```
 
 **Time:** 3-4 hours
@@ -646,13 +646,13 @@ Always design before implementing:
 
 ```bash
 # Good
-/mcp-design-nextjs
-/mcp-implement-fullstack
-/mcp-review-code
+/workflow-design-nextjs
+/workflow-implement-fullstack
+/workflow-review-code
 
 # Not ideal
-/mcp-implement-fullstack    # Implementing without design
-/mcp-design-nextjs         # Design should come first
+/workflow-implement-fullstack    # Implementing without design
+/workflow-design-nextjs         # Design should come first
 ```
 
 ### Iterative Development
@@ -660,10 +660,10 @@ Always design before implementing:
 Commands can be run multiple times:
 
 ```bash
-/mcp-implement-frontend        # First iteration
-/mcp-review-code              # Find issues
-/mcp-implement-frontend        # Fix issues
-/mcp-review-code              # Verify fixes
+/workflow-implement-frontend        # First iteration
+/workflow-review-code              # Find issues
+/workflow-implement-frontend        # Fix issues
+/workflow-review-code              # Verify fixes
 ```
 
 ### Multi-Review Approach
@@ -671,10 +671,10 @@ Commands can be run multiple times:
 Use multiple review commands:
 
 ```bash
-/mcp-implement-fullstack       # Implementation
-/mcp-review-code              # Code quality
-/mcp-review-security          # Security
-/mcp-review-performance       # Performance
+/workflow-implement-fullstack       # Implementation
+/workflow-review-code              # Code quality
+/workflow-review-security          # Security
+/workflow-review-performance       # Performance
 ```
 
 ## Tips for Effective Usage
@@ -700,9 +700,9 @@ Don't hesitate to repeat commands to improve quality.
 Mix workflow commands with direct agent invocation:
 
 ```bash
-/mcp-implement-fullstack       # Guided implementation
+/workflow-implement-fullstack       # Guided implementation
 Use performance to optimize specific query  # Direct optimization
-/mcp-review-code              # Final review
+/workflow-review-code              # Final review
 ```
 
 ## When to Use Commands vs Direct Agent Invocation

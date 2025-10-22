@@ -1,6 +1,6 @@
 # Cloudflare Pages Deployment - Setup Complete
 
-Your MCP Sub-Agents documentation is now ready to deploy to Cloudflare Pages!
+Your Claude Code Agents documentation is now ready to deploy to Cloudflare Pages!
 
 ## What Was Created
 
@@ -202,12 +202,12 @@ npm run deploy:preview
 - **Full Guide:** [CLOUDFLARE-DEPLOYMENT.md](./CLOUDFLARE-DEPLOYMENT.md)
 - **Cloudflare Docs:** https://developers.cloudflare.com/pages
 - **MkDocs Docs:** https://www.mkdocs.org
-- **GitHub Issues:** https://github.com/rcdelacruz/mcp-sub-agents/issues
+- **GitHub Issues:** https://github.com/rcdelacruz/claude-code-agents/issues
 
 ## File Locations Reference
 
 ```
-mcp-sub-agents/
+claude-code-agents/
 ├── .github/
 │   └── workflows/
 │       └── cloudflare-pages.yml      # GitHub Actions workflow

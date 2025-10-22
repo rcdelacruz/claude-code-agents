@@ -56,7 +56,7 @@ Visual guide to understanding the deployment process.
        ▼
 ┌──────────────────────────────────────────────────────────┐
 │  Cloudflare Pages                                        │
-│  Project: mcp-sub-agents-docs                            │
+│  Project: claude-code-agents-docs                            │
 ├──────────────────────────────────────────────────────────┤
 │  1. Receives build artifacts                             │
 │  2. Deploys to CDN                                       │
@@ -67,7 +67,7 @@ Visual guide to understanding the deployment process.
        ▼
 ┌──────────────────────────────────────────────────────────┐
 │  Live Site                                               │
-│  https://mcp-sub-agents-docs.pages.dev                   │
+│  https://claude-code-agents-docs.pages.dev                   │
 │  (300+ edge locations worldwide)                         │
 └──────────────────────────────────────────────────────────┘
 ```
@@ -95,7 +95,7 @@ Visual guide to understanding the deployment process.
 │  Wrangler CLI Deployment                                 │
 ├──────────────────────────────────────────────────────────┤
 │  $ wrangler pages deploy site \                          │
-│    --project-name=mcp-sub-agents-docs                    │
+│    --project-name=claude-code-agents-docs                    │
 │                                                          │
 │  Actions:                                                │
 │  1. Authenticates with Cloudflare                        │
@@ -109,7 +109,7 @@ Visual guide to understanding the deployment process.
 │  Cloudflare Pages                                        │
 │  Deployment ID: xxxxxxxx                                 │
 │                                                          │
-│  Live at: https://mcp-sub-agents-docs.pages.dev          │
+│  Live at: https://claude-code-agents-docs.pages.dev          │
 └──────────────────────────────────────────────────────────┘
 ```
 
@@ -149,7 +149,7 @@ Visual guide to understanding the deployment process.
        ▼
 ┌──────────────────────────────────────────────────────────┐
 │  Live Site with Analytics                                │
-│  https://mcp-sub-agents-docs.pages.dev                   │
+│  https://claude-code-agents-docs.pages.dev                   │
 └──────────────────────────────────────────────────────────┘
 ```
 
@@ -243,7 +243,7 @@ Project Repository
 └──────┬───────────────────────────────────────────────────┘
        │
        │ DNS Configuration
-       │ CNAME → mcp-sub-agents-docs.pages.dev
+       │ CNAME → claude-code-agents-docs.pages.dev
        ▼
 ┌──────────────────────────────────────────────────────────┐
 │  Cloudflare Pages                                        │
@@ -275,7 +275,7 @@ Project Repository
 1. Install: `npm install -g wrangler`
 2. Login: `wrangler login`
 3. Build: `mkdocs build`
-4. Deploy: `wrangler pages deploy site --project-name=mcp-sub-agents-docs`
+4. Deploy: `wrangler pages deploy site --project-name=claude-code-agents-docs`
 
 ### For Dashboard Setup:
 

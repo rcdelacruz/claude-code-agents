@@ -85,6 +85,6 @@ app/
    - Shared UI components
 
 **After Design, Proceed To**:
-- `/mcp-implement-fullstack` - Implement full-stack features
-- `/mcp-implement-frontend` - Build UI components
-- `/mcp-implement-backend` - Create API layer
+- `/workflow-implement-fullstack` - Implement full-stack features
+- `/workflow-implement-frontend` - Build UI components
+- `/workflow-implement-backend` - Create API layer

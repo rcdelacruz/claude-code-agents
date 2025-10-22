@@ -1,6 +1,6 @@
 # Architecture Overview
 
-MCP Sub-Agents implements a two-tier agent architecture designed to provide both breadth and depth of expertise across technology stacks.
+Claude Code Agents implements a two-tier agent architecture designed to provide both breadth and depth of expertise across technology stacks.
 
 ## Two-Tier Architecture
 
@@ -10,6 +10,8 @@ graph TB
         direction LR
         js[fullstack-js-savant<br/>JavaScript/TypeScript Master]
         java[java-spring-savant<br/>Spring Ecosystem Master]
+        rn[react-native-savant<br/>React Native Master]
+        flutter[flutter-savant<br/>Flutter/Dart Master]
     end
 
     subgraph tier2["TIER 2: SPECIALISTS (Implementers)"]
@@ -22,15 +24,18 @@ graph TB
 
         subgraph crosscut[Cross-Cutting Concerns]
             direction TB
-            cross1[code-reviewer<br/>Quality]
-            cross2[qa-tester<br/>Testing]
-            cross3[security<br/>Security]
-            cross4[performance<br/>Performance]
-            cross5[deployment<br/>DevOps]
-            cross6[database<br/>Data]
-            cross7[monitoring<br/>Observability]
-            cross8[architect<br/>Design]
-            cross9[tech-writer<br/>Documentation]
+            cross1[product-manager<br/>PRD Generation]
+            cross2[task-planner<br/>Task Breakdown]
+            cross3[test-planner<br/>Test Cases]
+            cross4[code-reviewer<br/>Quality]
+            cross5[qa-tester<br/>Testing]
+            cross6[security<br/>Security]
+            cross7[performance<br/>Performance]
+            cross8[deployment<br/>DevOps]
+            cross9[database<br/>Data]
+            cross10[monitoring<br/>Observability]
+            cross11[architect<br/>Design]
+            cross12[tech-writer<br/>Documentation]
         end
     end
 
@@ -152,6 +157,54 @@ Master of Spring ecosystem:
 - Microservices planning
 - Spring Security implementation
 
+#### react-native-savant
+
+Master of React Native mobile development:
+
+- React Native (Expo and bare workflow)
+- Cross-platform mobile architecture
+- Native modules and platform-specific code
+- Navigation (React Navigation, Expo Router)
+- State management (Redux, Zustand, Jotai)
+- Mobile UI libraries (React Native Paper, NativeBase)
+- Performance optimization and profiling
+- App deployment (App Store, Google Play)
+- Push notifications and background tasks
+- Offline-first architecture and data sync
+
+**When to use:**
+
+- Designing mobile app architecture
+- Choosing between Expo and bare React Native
+- Planning navigation and routing strategies
+- Selecting state management solutions
+- Implementing offline-first features
+- Planning app deployment and distribution
+
+#### flutter-savant
+
+Master of Flutter/Dart ecosystem:
+
+- Flutter framework and Dart language
+- Cross-platform mobile architecture
+- Widget composition and custom widgets
+- State management (Provider, Riverpod, Bloc)
+- Platform channels and native integration
+- Material Design and Cupertino widgets
+- Performance optimization and DevTools
+- App deployment and distribution
+- Firebase integration and backend services
+- Offline data and local storage
+
+**When to use:**
+
+- Designing Flutter app architecture
+- Choosing state management approaches
+- Planning platform-specific implementations
+- Implementing custom UI components
+- Integrating with native platforms
+- Backend service integration strategies
+
 ### Savant Workflow
 
 ```mermaid
@@ -208,15 +261,29 @@ Experts in particular technology stacks:
 
 Experts that work across all stacks:
 
+**Workflow & Planning:**
+
+- **product-manager** - PRD generation from requirements
+- **task-planner** - Development task breakdown (JSON/CSV)
+- **test-planner** - Test case generation (JSON/CSV)
+
+**Quality & Review:**
+
 - **code-reviewer** - Code quality and best practices
-- **qa-tester** - Testing strategies and implementation
+- **qa-tester** - Testing strategies and implementation (Playwright, Vitest)
 - **security** - Security audits and OWASP compliance
+
+**Performance & Infrastructure:**
+
 - **performance** - Optimization and Core Web Vitals
-- **deployment** - CI/CD and infrastructure
-- **database** - Schema design and query optimization
-- **monitoring** - Observability and error tracking
+- **deployment** - CI/CD and infrastructure (Vercel, Docker, Kubernetes)
+- **monitoring** - Observability and error tracking (Sentry, OpenTelemetry)
+
+**Architecture & Documentation:**
+
+- **database** - Schema design and query optimization (PostgreSQL, Prisma)
 - **architect** - System design and scalability
-- **tech-writer** - Technical documentation
+- **tech-writer** - Technical documentation (MkDocs Material)
 
 ### Specialist Characteristics
 
@@ -281,7 +348,7 @@ flowchart TB
 For learning or ensuring best practices:
 
 ```bash
-/mcp-implement-fullstack
+/workflow-implement-fullstack
 ```
 
 **Flow:**
@@ -308,20 +375,20 @@ For complete feature development:
 
 ```bash
 # Phase 1: Design
-/mcp-design-nextjs
+/workflow-design-nextjs
 
 # Phase 2: Implementation
-/mcp-implement-fullstack
+/workflow-implement-fullstack
 
 # Phase 3: Review
-/mcp-review-code
-/mcp-review-security
+/workflow-review-code
+/workflow-review-security
 
 # Phase 4: QA
-/mcp-qa-e2e
+/workflow-qa-e2e
 
 # Phase 5: Deploy
-/mcp-deploy
+/workflow-deploy
 ```
 
 ## Decision Matrix
@@ -433,6 +500,15 @@ sequenceDiagram
 
 ## Extensibility
 
+### Current Savants
+
+The architecture currently includes savants for:
+
+- ✅ **fullstack-js-savant** - JavaScript/TypeScript ecosystem
+- ✅ **java-spring-savant** - Spring ecosystem
+- ✅ **react-native-savant** - React Native mobile development
+- ✅ **flutter-savant** - Flutter/Dart mobile development
+
 ### Adding New Savants
 
 The architecture supports additional savants for other ecosystems:
@@ -440,7 +516,7 @@ The architecture supports additional savants for other ecosystems:
 - **python-django-savant** - Python/Django ecosystem
 - **golang-savant** - Go ecosystem
 - **dotnet-savant** - .NET/C# ecosystem
-- **mobile-savant** - React Native/Flutter
+- **rust-savant** - Rust ecosystem
 
 ### Adding New Specialists
 
@@ -484,7 +560,7 @@ For standardized processes:
 
 ```bash
 # Instead of manual steps
-/mcp-review-security  # Comprehensive security audit
+/workflow-review-security  # Comprehensive security audit
 
 # Instead of
 Use security to check for XSS

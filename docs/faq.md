@@ -1,6 +1,6 @@
 # Frequently Asked Questions
 
-Common questions about MCP Sub-Agents installation, usage, and troubleshooting.
+Common questions about Claude Code Agents installation, usage, and troubleshooting.
 
 ## Installation
 
@@ -18,7 +18,7 @@ Most users prefer global installation for convenience.
 **A:** No! Use the one-line remote installation:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/rcdelacruz/mcp-sub-agents/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install.sh | bash
 ```
 
 The script handles everything automatically.
@@ -28,7 +28,7 @@ The script handles everything automatically.
 **A:** Run the verification script:
 
 ```bash
-cd mcp-sub-agents
+cd claude-code-agents
 ./verify-agents.sh
 ```
 
@@ -43,7 +43,7 @@ You should see 14 agents and 11 commands.
 **A:** For global installation:
 
 ```bash
-cd ~/mcp-sub-agents
+cd ~/claude-code-agents
 git pull origin main
 cp -r agents/* ~/.claude/agents/
 cp -r .claude/commands/* ~/.claude/commands/
@@ -180,12 +180,12 @@ description: Your custom workflow
 Your guidance here...
 ```
 
-### Q: What's the difference between `/mcp-implement-fullstack` and `/mcp-implement-frontend`?
+### Q: What's the difference between `/workflow-implement-fullstack` and `/workflow-implement-frontend`?
 
 **A:**
 
-- `/mcp-implement-fullstack` - Complete feature (database → API → UI)
-- `/mcp-implement-frontend` - UI components only
+- `/workflow-implement-fullstack` - Complete feature (database → API → UI)
+- `/workflow-implement-frontend` - UI components only
 
 Choose based on scope of work.
 
@@ -242,11 +242,11 @@ Use savant for decisions, specialist for implementation.
 
 ### Q: Should I review code after every implementation?
 
-**A:** Yes! Use `/mcp-review-code` proactively:
+**A:** Yes! Use `/workflow-review-code` proactively:
 
 ```bash
-/mcp-implement-fullstack
-/mcp-review-code    # Review immediately
+/workflow-implement-fullstack
+/workflow-review-code    # Review immediately
 ```
 
 ### Q: How often should I run security audits?
@@ -263,7 +263,7 @@ Use savant for decisions, specialist for implementation.
 **A:** Follow this approach:
 
 1. Build feature first
-2. Run `/mcp-review-performance` to measure
+2. Run `/workflow-review-performance` to measure
 3. Optimize identified issues
 4. Re-measure to verify improvements
 
@@ -274,8 +274,8 @@ Don't optimize prematurely.
 **A:** Write tests alongside code:
 
 ```bash
-/mcp-implement-fullstack   # Build feature
-/mcp-qa-e2e               # Write tests immediately
+/workflow-implement-fullstack   # Build feature
+/workflow-qa-e2e               # Write tests immediately
 ```
 
 This prevents bugs and ensures testability.
@@ -287,7 +287,7 @@ This prevents bugs and ensures testability.
 **A:** Update to latest version:
 
 ```bash
-cd ~/mcp-sub-agents
+cd ~/claude-code-agents
 git pull origin main
 # Copy updated agents
 ```
@@ -358,7 +358,7 @@ Copy-Item -Recurse .claude\commands\* $env:USERPROFILE\.claude\commands\
 
 ## Team Usage
 
-### Q: How do teams use MCP Sub-Agents?
+### Q: How do teams use Claude Code Agents?
 
 **A:** Use project-specific installation:
 
@@ -385,8 +385,8 @@ Commit `.claude/` to version control for team consistency.
 
 ```bash
 # Everyone uses same workflows
-/mcp-implement-fullstack
-/mcp-review-code
+/workflow-implement-fullstack
+/workflow-review-code
 ```
 
 This ensures consistent patterns.
@@ -419,14 +419,14 @@ This ensures consistent patterns.
 
 **A:** Multiple options:
 
-1. [Documentation](https://rcdelacruz.github.io/mcp-sub-agents)
-2. [GitHub Issues](https://github.com/rcdelacruz/mcp-sub-agents/issues)
-3. [GitHub Discussions](https://github.com/rcdelacruz/mcp-sub-agents/discussions)
+1. [Documentation](https://rcdelacruz.github.io/claude-code-agents)
+2. [GitHub Issues](https://github.com/rcdelacruz/claude-code-agents/issues)
+3. [GitHub Discussions](https://github.com/rcdelacruz/claude-code-agents/discussions)
 4. Read existing agent documentation in `agents/` directories
 
 ### Q: How do I report a bug?
 
-**A:** Open a [GitHub Issue](https://github.com/rcdelacruz/mcp-sub-agents/issues) with:
+**A:** Open a [GitHub Issue](https://github.com/rcdelacruz/claude-code-agents/issues) with:
 
 - Clear description
 - Steps to reproduce
@@ -474,7 +474,7 @@ See [Contributing Guide](contributing.md) for details.
 
 If your question isn't answered here:
 
-1. Check the [documentation](https://rcdelacruz.github.io/mcp-sub-agents)
-2. Search [closed issues](https://github.com/rcdelacruz/mcp-sub-agents/issues?q=is%3Aissue+is%3Aclosed)
-3. Ask in [GitHub Discussions](https://github.com/rcdelacruz/mcp-sub-agents/discussions)
-4. Create a [new issue](https://github.com/rcdelacruz/mcp-sub-agents/issues/new)
+1. Check the [documentation](https://rcdelacruz.github.io/claude-code-agents)
+2. Search [closed issues](https://github.com/rcdelacruz/claude-code-agents/issues?q=is%3Aissue+is%3Aclosed)
+3. Ask in [GitHub Discussions](https://github.com/rcdelacruz/claude-code-agents/discussions)
+4. Create a [new issue](https://github.com/rcdelacruz/claude-code-agents/issues/new)

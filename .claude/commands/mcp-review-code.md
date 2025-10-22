@@ -319,5 +319,5 @@ Provide:
 
 - Fix critical issues immediately
 - Plan refactoring for improvements
-- Use `/mcp-review-security` for deeper security audit
-- Use `/mcp-review-performance` for performance optimization
+- Use `/workflow-review-security` for deeper security audit
+- Use `/workflow-review-performance` for performance optimization

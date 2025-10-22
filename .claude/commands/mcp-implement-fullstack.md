@@ -123,7 +123,7 @@ Use **security** agent to:
 
 ## After Implementation
 
-- Use `/mcp-review-code` to review implementation quality
-- Use `/mcp-review-security` to audit security
-- Use `/mcp-review-performance` to optimize performance
-- Use `/mcp-qa-e2e` to write comprehensive E2E tests
+- Use `/workflow-review-code` to review implementation quality
+- Use `/workflow-review-security` to audit security
+- Use `/workflow-review-performance` to optimize performance
+- Use `/workflow-qa-e2e` to write comprehensive E2E tests

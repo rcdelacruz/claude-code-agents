@@ -1,4 +1,4 @@
-# MCP Sub-Agents Installation Guide
+# Claude Code Agents Installation Guide
 
 Quick guide for installing the enterprise web development subagents.
 
@@ -6,8 +6,8 @@ Quick guide for installing the enterprise web development subagents.
 
 ```bash
 # Clone the repository
-git clone https://github.com/rcdelacruz/mcp-sub-agents.git
-cd mcp-sub-agents
+git clone https://github.com/rcdelacruz/claude-code-agents.git
+cd claude-code-agents
 
 # Copy to Claude Code global directory
 mkdir -p ~/.claude/agents

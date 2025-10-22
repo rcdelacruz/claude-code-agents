@@ -331,7 +331,7 @@ export class UnauthorizedError extends AppError {
 
 ## After Implementation
 
-- Use `/mcp-review-code` to review API quality
-- Use `/mcp-review-security` to audit security
-- Use `/mcp-qa-e2e` to write comprehensive tests
-- Use `/mcp-review-performance` to optimize queries
+- Use `/workflow-review-code` to review API quality
+- Use `/workflow-review-security` to audit security
+- Use `/workflow-qa-e2e` to write comprehensive tests
+- Use `/workflow-review-performance` to optimize queries

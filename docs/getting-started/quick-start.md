@@ -1,11 +1,11 @@
 # Quick Start
 
-Get started with MCP Sub-Agents in minutes. This guide walks you through your first workflows and basic usage patterns.
+Get started with Claude Code Agents in minutes. This guide walks you through your first workflows and basic usage patterns.
 
 ## Prerequisites
 
 - Claude Code installed
-- MCP Sub-Agents installed ([installation guide](installation.md))
+- Claude Code Agents installed ([installation guide](installation.md))
 - Basic understanding of Next.js and TypeScript
 
 ## Your First Workflow
@@ -136,7 +136,7 @@ For a more guided experience, use workflow commands:
 ### Design Phase
 
 ```bash
-/mcp-design-nextjs
+/workflow-design-nextjs
 ```
 
 This command will guide you through:
@@ -153,7 +153,7 @@ This command will guide you through:
 ### Implementation Phase
 
 ```bash
-/mcp-implement-fullstack
+/workflow-implement-fullstack
 ```
 
 This command orchestrates:
@@ -169,7 +169,7 @@ This command orchestrates:
 ### Review Phase
 
 ```bash
-/mcp-review-code
+/workflow-review-code
 ```
 
 Comprehensive code review covering:
@@ -185,7 +185,7 @@ Comprehensive code review covering:
 ### QA Phase
 
 ```bash
-/mcp-qa-e2e
+/workflow-qa-e2e
 ```
 
 Creates E2E tests with Playwright:
@@ -217,9 +217,9 @@ For learning or ensuring best practices:
 
 ```bash
 # Use workflow commands
-/mcp-design-nextjs          # Plan first
-/mcp-implement-frontend     # Build step-by-step
-/mcp-review-code           # Ensure quality
+/workflow-design-nextjs          # Plan first
+/workflow-implement-frontend     # Build step-by-step
+/workflow-review-code           # Ensure quality
 ```
 
 ### Pattern 3: Architecture-First
@@ -270,7 +270,7 @@ Use backend-api to implement NextAuth.js configuration
 Use frontend-ui to create login and signup forms
 
 # 3. Security Review
-/mcp-review-security
+/workflow-review-security
 
 # 4. Testing
 Use qa-tester to write E2E tests for authentication flow
@@ -280,7 +280,7 @@ Use qa-tester to write E2E tests for authentication flow
 
 ```bash
 # 1. Design
-/mcp-design-nextjs
+/workflow-design-nextjs
 
 # 2. Build Components
 Use fullstack-nextjs to create the dashboard layout with App Router
@@ -291,15 +291,15 @@ Use database to create analytics schema
 Use backend-api to create analytics API endpoints
 
 # 4. Review
-/mcp-review-code
-/mcp-review-performance
+/workflow-review-code
+/workflow-review-performance
 ```
 
 ### Optimizing Performance
 
 ```bash
 # 1. Audit
-/mcp-review-performance
+/workflow-review-performance
 
 # 2. Fix Issues
 Use fullstack-nextjs to implement Suspense and streaming
@@ -307,7 +307,7 @@ Use performance to optimize Core Web Vitals
 Use database to add database indexes
 
 # 3. Verify
-/mcp-review-performance
+/workflow-review-performance
 ```
 
 ## Understanding Agent Responses
@@ -436,7 +436,7 @@ Use qa-tester to write comprehensive tests
 If you're new to a pattern or technology, use workflow commands:
 
 ```bash
-/mcp-implement-fullstack  # Provides step-by-step guidance
+/workflow-implement-fullstack  # Provides step-by-step guidance
 ```
 
 If you're experienced, use direct agent invocation:
@@ -451,12 +451,12 @@ Don't wait until the end to review:
 
 ```bash
 # After each major feature
-/mcp-review-code
-/mcp-review-security
+/workflow-review-code
+/workflow-review-security
 
 # Before deployment
-/mcp-review-performance
-/mcp-deploy
+/workflow-review-performance
+/workflow-deploy
 ```
 
 ## Common Commands Reference
@@ -464,32 +464,32 @@ Don't wait until the end to review:
 ### Design Commands
 
 ```bash
-/mcp-design-architecture    # General system architecture
-/mcp-design-nextjs         # Next.js specific design
+/workflow-design-architecture    # General system architecture
+/workflow-design-nextjs         # Next.js specific design
 ```
 
 ### Implementation Commands
 
 ```bash
-/mcp-implement-fullstack   # Complete feature end-to-end
-/mcp-implement-frontend    # UI components and client features
-/mcp-implement-backend     # API and business logic
+/workflow-implement-fullstack   # Complete feature end-to-end
+/workflow-implement-frontend    # UI components and client features
+/workflow-implement-backend     # API and business logic
 ```
 
 ### Review Commands
 
 ```bash
-/mcp-review-code           # Code quality review
-/mcp-review-security       # Security audit
-/mcp-review-performance    # Performance optimization
+/workflow-review-code           # Code quality review
+/workflow-review-security       # Security audit
+/workflow-review-performance    # Performance optimization
 ```
 
 ### QA and Deployment
 
 ```bash
-/mcp-qa-e2e               # End-to-end testing
-/mcp-write-docs           # Technical documentation
-/mcp-deploy               # Production deployment
+/workflow-qa-e2e               # End-to-end testing
+/workflow-write-docs           # Technical documentation
+/workflow-deploy               # Production deployment
 ```
 
 ## Next Steps
@@ -506,4 +506,4 @@ Now that you understand the basics:
 
 - [FAQ](../faq.md) - Common questions
 - [Best Practices](../guides/best-practices.md) - Effective patterns
-- [GitHub Issues](https://github.com/rcdelacruz/mcp-sub-agents/issues) - Report problems
+- [GitHub Issues](https://github.com/rcdelacruz/claude-code-agents/issues) - Report problems

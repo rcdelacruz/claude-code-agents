@@ -1,10 +1,10 @@
-# MCP Sub-Agents for Enterprise Development
+# Claude Code Agents for Enterprise Development
 
 A comprehensive collection of specialized Claude Code agents with domain expert savants and hybrid workflow commands for building production-ready, enterprise-grade applications.
 
 ## Overview
 
-MCP Sub-Agents implements a two-tier agent architecture designed to provide deep technical expertise across multiple technology stacks. This system combines the broad knowledge of savant orchestrators with the focused expertise of specialist implementers.
+Claude Code Agents implements a two-tier agent architecture designed to provide deep technical expertise across multiple technology stacks. This system combines the broad knowledge of savant orchestrators with the focused expertise of specialist implementers.
 
 ```mermaid
 graph TB
@@ -58,15 +58,15 @@ Deep domain experts focusing on specific frameworks, tools, and practices within
 
 Structured slash commands that combine development workflow stages with technology expertise for guided, structured development:
 
-- `/mcp-design-architecture` - System architecture design
-- `/mcp-implement-fullstack` - End-to-end feature implementation
-- `/mcp-review-code` - Comprehensive code quality review
-- `/mcp-qa-e2e` - End-to-end testing with Playwright
-- `/mcp-deploy` - Production deployment with CI/CD
+- `/workflow-design-architecture` - System architecture design
+- `/workflow-implement-fullstack` - End-to-end feature implementation
+- `/workflow-review-code` - Comprehensive code quality review
+- `/workflow-qa-e2e` - End-to-end testing with Playwright
+- `/workflow-deploy` - Production deployment with CI/CD
 
 [View all workflow commands](architecture/workflow-commands.md)
 
-## Why Use MCP Sub-Agents?
+## Why Use Claude Code Agents?
 
 ### Production-Ready Expertise
 
@@ -91,7 +91,7 @@ Deep expertise in modern JavaScript/TypeScript stack including Next.js 15+, Reac
 Install all agents and workflow commands with one command:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/rcdelacruz/mcp-sub-agents/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install.sh | bash
 ```
 
 [View detailed installation instructions](getting-started/installation.md)
@@ -111,9 +111,9 @@ curl -fsSL https://raw.githubusercontent.com/rcdelacruz/mcp-sub-agents/main/inst
 
 3. Use workflow commands for guided development:
     ```bash
-    /mcp-design-nextjs
-    /mcp-implement-fullstack
-    /mcp-review-code
+    /workflow-design-nextjs
+    /workflow-implement-fullstack
+    /workflow-review-code
     ```
 
 [View complete quick start guide](getting-started/quick-start.md)
@@ -160,7 +160,7 @@ flowchart LR
 
 ## Technology Stack
 
-MCP Sub-Agents provides expertise in modern JavaScript/TypeScript development:
+Claude Code Agents provides expertise in modern JavaScript/TypeScript development:
 
 ### Frontend
 
@@ -205,22 +205,22 @@ MCP Sub-Agents provides expertise in modern JavaScript/TypeScript development:
 
 ```bash
 # 1. Design the architecture
-/mcp-design-nextjs
+/workflow-design-nextjs
 
 # 2. Implement end-to-end
-/mcp-implement-fullstack
+/workflow-implement-fullstack
 
 # 3. Review code quality
-/mcp-review-code
+/workflow-review-code
 
 # 4. Security audit
-/mcp-review-security
+/workflow-review-security
 
 # 5. Write tests
-/mcp-qa-e2e
+/workflow-qa-e2e
 
 # 6. Deploy to production
-/mcp-deploy
+/workflow-deploy
 ```
 
 ### Creating an Authentication System
@@ -233,7 +233,7 @@ Use fullstack-js-savant to design authentication with NextAuth.js
 Use backend-api to implement NextAuth.js with GitHub OAuth
 
 # Review security
-/mcp-review-security
+/workflow-review-security
 ```
 
 [View more workflow examples](guides/workflows.md)
@@ -275,7 +275,7 @@ Use backend-api to implement NextAuth.js with GitHub OAuth
 - [Quick Start](getting-started/quick-start.md)
 - [Best Practices](guides/best-practices.md)
 - [FAQ](faq.md)
-- [GitHub Issues](https://github.com/rcdelacruz/mcp-sub-agents/issues)
+- [GitHub Issues](https://github.com/rcdelacruz/claude-code-agents/issues)
 
 ## Contributing
 
@@ -288,7 +288,7 @@ Contributions are welcome! See our [contributing guide](contributing.md) for det
 
 ## License
 
-MIT License - See [LICENSE](https://github.com/rcdelacruz/mcp-sub-agents/blob/main/LICENSE) for details.
+MIT License - See [LICENSE](https://github.com/rcdelacruz/claude-code-agents/blob/main/LICENSE) for details.
 
 ---
 

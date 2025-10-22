@@ -47,7 +47,7 @@ npm run deploy:preview
 
 ```bash
 mkdocs build
-wrangler pages deploy site --project-name=mcp-sub-agents-docs
+wrangler pages deploy site --project-name=claude-code-agents-docs
 ```
 
 ### Using GitHub Actions

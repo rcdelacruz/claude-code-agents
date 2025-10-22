@@ -4,7 +4,7 @@ This project uses MkDocs Material for comprehensive technical documentation.
 
 ## View Documentation
 
-Online documentation: [https://rcdelacruz.github.io/mcp-sub-agents](https://rcdelacruz.github.io/mcp-sub-agents)
+Online documentation: [https://rcdelacruz.github.io/claude-code-agents](https://rcdelacruz.github.io/claude-code-agents)
 
 ## Local Development
 
@@ -138,7 +138,7 @@ Fast global CDN with unlimited bandwidth on the free tier.
    - `CLOUDFLARE_ACCOUNT_ID`
 3. Push to `main` branch
 4. GitHub Actions automatically deploys to Cloudflare Pages
-5. Available at `https://mcp-sub-agents-docs.pages.dev`
+5. Available at `https://claude-code-agents-docs.pages.dev`
 
 **Manual deployment with Wrangler CLI:**
 
@@ -151,7 +151,7 @@ wrangler login
 
 # Build and deploy
 mkdocs build
-wrangler pages deploy site --project-name=mcp-sub-agents-docs
+wrangler pages deploy site --project-name=claude-code-agents-docs
 ```
 
 **Features:**
@@ -173,7 +173,7 @@ Traditional GitHub-hosted deployment.
 1. Push changes to `main` branch
 2. GitHub Actions runs `mkdocs gh-deploy`
 3. Site published to GitHub Pages
-4. Available at https://rcdelacruz.github.io/mcp-sub-agents
+4. Available at https://rcdelacruz.github.io/claude-code-agents
 
 **Manual deployment:**
 

@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for your interest in contributing to MCP Sub-Agents! This guide will help you understand how to contribute effectively.
+Thank you for your interest in contributing to Claude Code Agents! This guide will help you understand how to contribute effectively.
 
 ## Ways to Contribute
 
@@ -8,7 +8,7 @@ Thank you for your interest in contributing to MCP Sub-Agents! This guide will h
 
 Found a bug or have a suggestion? Open an issue:
 
-- [GitHub Issues](https://github.com/rcdelacruz/mcp-sub-agents/issues)
+- [GitHub Issues](https://github.com/rcdelacruz/claude-code-agents/issues)
 
 **When reporting issues, include:**
 
@@ -65,8 +65,8 @@ Improve existing agents:
 
 ```bash
 # Fork on GitHub, then clone
-git clone https://github.com/YOUR_USERNAME/mcp-sub-agents.git
-cd mcp-sub-agents
+git clone https://github.com/YOUR_USERNAME/claude-code-agents.git
+cd claude-code-agents
 ```
 
 ### 2. Create a Branch
@@ -257,14 +257,14 @@ What to do after completing this workflow.
 
 ### Command Naming
 
-Use format: `mcp-[phase]-[technology]`
+Use format: `workflow-[phase]-[technology]`
 
 Examples:
 
-- `mcp-design-architecture`
-- `mcp-implement-fullstack`
-- `mcp-review-security`
-- `mcp-qa-e2e`
+- `workflow-design-architecture`
+- `workflow-implement-fullstack`
+- `workflow-review-security`
+- `workflow-qa-e2e`
 
 ## Documentation Improvements
 
@@ -466,9 +466,9 @@ PRs are evaluated on:
 
 ### Resources
 
-- [GitHub Discussions](https://github.com/rcdelacruz/mcp-sub-agents/discussions)
-- [GitHub Issues](https://github.com/rcdelacruz/mcp-sub-agents/issues)
-- [Documentation](https://rcdelacruz.github.io/mcp-sub-agents)
+- [GitHub Discussions](https://github.com/rcdelacruz/claude-code-agents/discussions)
+- [GitHub Issues](https://github.com/rcdelacruz/claude-code-agents/issues)
+- [Documentation](https://rcdelacruz.github.io/claude-code-agents)
 
 ### Questions
 
@@ -487,4 +487,4 @@ Contributors will be:
 - Mentioned in release notes
 - Acknowledged in documentation
 
-Thank you for contributing to MCP Sub-Agents!
+Thank you for contributing to Claude Code Agents!

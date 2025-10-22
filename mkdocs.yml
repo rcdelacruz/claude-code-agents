@@ -1,10 +1,10 @@
-site_name: MCP Sub-Agents
+site_name: Claude Code Agents
 site_description: A comprehensive collection of specialized Claude Code agents for enterprise development
 site_author: Ronald DC
-site_url: https://rcdelacruz.github.io/mcp-sub-agents
+site_url: https://rcdelacruz.github.io/claude-code-agents
 
-repo_name: rcdelacruz/mcp-sub-agents
-repo_url: https://github.com/rcdelacruz/mcp-sub-agents
+repo_name: rcdelacruz/claude-code-agents
+repo_url: https://github.com/rcdelacruz/claude-code-agents
 edit_uri: edit/main/docs/
 
 theme:
@@ -74,7 +74,7 @@ markdown_extensions:
   - pymdownx.magiclink:
       repo_url_shorthand: true
       user: rcdelacruz
-      repo: mcp-sub-agents
+      repo: claude-code-agents
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences:
@@ -119,6 +119,6 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/rcdelacruz/mcp-sub-agents
+      link: https://github.com/rcdelacruz/claude-code-agents
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/in/ronalddelacruz

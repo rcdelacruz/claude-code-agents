@@ -1,6 +1,6 @@
 # Cloudflare Pages Deployment Guide
 
-This guide explains how to deploy the MCP Sub-Agents documentation to Cloudflare Pages.
+This guide explains how to deploy the Claude Code Agents documentation to Cloudflare Pages.
 
 ## Why Cloudflare Pages?
 
@@ -14,7 +14,7 @@ This guide explains how to deploy the MCP Sub-Agents documentation to Cloudflare
 ## Prerequisites
 
 1. **Cloudflare Account:** Sign up at [cloudflare.com](https://cloudflare.com)
-2. **GitHub Repository:** Your MCP Sub-Agents repository
+2. **GitHub Repository:** Your Claude Code Agents repository
 3. **API Token:** Cloudflare API token with Pages permissions
 
 ## Deployment Options
@@ -110,7 +110,7 @@ This option connects your GitHub repository directly to Cloudflare without GitHu
 1. Go to **Cloudflare Dashboard** > **Pages**
 2. Click **Create a project** > **Connect to Git**
 3. Authorize Cloudflare to access your GitHub account
-4. Select repository: `rcdelacruz/mcp-sub-agents`
+4. Select repository: `rcdelacruz/claude-code-agents`
 5. Configure build settings:
    - **Production branch:** `main`
    - **Build command:** `pip install mkdocs mkdocs-material && mkdocs build`

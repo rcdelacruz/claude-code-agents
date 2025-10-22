@@ -33,7 +33,7 @@ git commit -m "Add Cloudflare Pages deployment"
 git push origin main
 ```
 
-Done! Your site will be live at `https://mcp-sub-agents-docs.pages.dev`
+Done! Your site will be live at `https://claude-code-agents-docs.pages.dev`
 
 ## Method 2: Wrangler CLI (Manual)
 
@@ -59,7 +59,7 @@ pip install mkdocs mkdocs-material
 mkdocs build
 
 # Deploy to Cloudflare Pages
-wrangler pages deploy site --project-name=mcp-sub-agents-docs
+wrangler pages deploy site --project-name=claude-code-agents-docs
 ```
 
 Your site is now live!
@@ -96,7 +96,7 @@ chmod +x .cloudflare/deploy.sh
 ./.cloudflare/deploy.sh
 
 # Using Wrangler directly
-wrangler pages deploy site --project-name=mcp-sub-agents-docs
+wrangler pages deploy site --project-name=claude-code-agents-docs
 ```
 
 ## Troubleshooting
@@ -110,7 +110,7 @@ npm install -g wrangler
 
 Or use npx:
 ```bash
-npx wrangler pages deploy site --project-name=mcp-sub-agents-docs
+npx wrangler pages deploy site --project-name=claude-code-agents-docs
 ```
 
 ### "Authentication required"
@@ -136,8 +136,8 @@ mkdocs serve
 ## Your Live URLs
 
 After deployment:
-- **Production:** `https://mcp-sub-agents-docs.pages.dev`
-- **Dashboard:** `https://dash.cloudflare.com/pages/mcp-sub-agents-docs`
+- **Production:** `https://claude-code-agents-docs.pages.dev`
+- **Dashboard:** `https://dash.cloudflare.com/pages/claude-code-agents-docs`
 
 ## Support
 

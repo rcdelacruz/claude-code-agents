@@ -9,7 +9,7 @@ echo "Building MkDocs documentation..."
 mkdocs build
 
 echo "Deploying to Cloudflare Pages..."
-wrangler pages deploy site --project-name=mcp-sub-agents-docs
+wrangler pages deploy site --project-name=claude-code-agents-docs
 
 echo "Deployment complete!"
-echo "Your site will be available at: https://mcp-sub-agents-docs.pages.dev"
+echo "Your site will be available at: https://claude-code-agents-docs.pages.dev"

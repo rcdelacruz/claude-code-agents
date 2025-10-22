@@ -1,6 +1,6 @@
 # Workflow Examples
 
-This guide provides real-world workflow examples showing how to use MCP Sub-Agents effectively for common development tasks.
+This guide provides real-world workflow examples showing how to use Claude Code Agents effectively for common development tasks.
 
 ## Building a Blog Feature
 
@@ -9,7 +9,7 @@ Complete end-to-end blog feature with posts, comments, and likes.
 ### Step 1: Design Architecture
 
 ```bash
-/mcp-design-nextjs
+/workflow-design-nextjs
 ```
 
 **Questions to answer:**
@@ -105,9 +105,9 @@ Use frontend-ui to create blog post forms and comment sections with shadcn/ui
 ### Step 6: Review and Test
 
 ```bash
-/mcp-review-code
-/mcp-review-security
-/mcp-qa-e2e
+/workflow-review-code
+/workflow-review-security
+/workflow-qa-e2e
 ```
 
 **Reviews:**
@@ -189,7 +189,7 @@ Use fullstack-nextjs to implement middleware for protecting routes and pages
 ### Step 5: Security Review
 
 ```bash
-/mcp-review-security
+/workflow-review-security
 ```
 
 **Focus areas:**
@@ -212,7 +212,7 @@ Optimize an existing application for better Core Web Vitals.
 ### Step 1: Performance Audit
 
 ```bash
-/mcp-review-performance
+/workflow-review-performance
 ```
 
 **Analysis:**
@@ -271,7 +271,7 @@ Use performance to implement multi-layer caching strategy with Redis
 ### Step 5: Verify Improvements
 
 ```bash
-/mcp-review-performance
+/workflow-review-performance
 ```
 
 **Verification:**
@@ -293,7 +293,7 @@ Complete CI/CD pipeline from scratch.
 ### Step 1: Plan Deployment Strategy
 
 ```bash
-/mcp-deploy
+/workflow-deploy
 ```
 
 **Planning:**
@@ -425,8 +425,8 @@ Use frontend-ui to create chat interface with message list, input, and real-time
 ### Step 5: Testing and Review
 
 ```bash
-/mcp-review-code
-/mcp-qa-e2e
+/workflow-review-code
+/workflow-qa-e2e
 ```
 
 **Testing:**
@@ -450,11 +450,11 @@ Always begin with architecture or design commands:
 
 ```bash
 # Good workflow
-/mcp-design-nextjs
-/mcp-implement-fullstack
+/workflow-design-nextjs
+/workflow-implement-fullstack
 
 # Avoid starting with implementation
-/mcp-implement-fullstack  # Without design first
+/workflow-implement-fullstack  # Without design first
 ```
 
 ### 2. Review Frequently
@@ -462,9 +462,9 @@ Always begin with architecture or design commands:
 Review after each major implementation:
 
 ```bash
-/mcp-implement-fullstack
-/mcp-review-code        # Immediate review
-/mcp-review-security   # Before moving on
+/workflow-implement-fullstack
+/workflow-review-code        # Immediate review
+/workflow-review-security   # Before moving on
 ```
 
 ### 3. Iterate on Feedback
@@ -472,9 +472,9 @@ Review after each major implementation:
 Use review feedback to improve:
 
 ```bash
-/mcp-review-code                    # First review
+/workflow-review-code                    # First review
 Use code-reviewer to fix issues     # Address problems
-/mcp-review-code                    # Verify fixes
+/workflow-review-code                    # Verify fixes
 ```
 
 ### 4. Combine Commands and Direct Invocation
@@ -482,9 +482,9 @@ Use code-reviewer to fix issues     # Address problems
 Mix workflow commands with direct agent calls:
 
 ```bash
-/mcp-implement-fullstack           # Structured implementation
+/workflow-implement-fullstack           # Structured implementation
 Use performance to optimize query  # Quick optimization
-/mcp-review-code                  # Final review
+/workflow-review-code                  # Final review
 ```
 
 ### 5. Document as You Build
@@ -492,8 +492,8 @@ Use performance to optimize query  # Quick optimization
 Create documentation alongside development:
 
 ```bash
-/mcp-implement-fullstack  # Build feature
-/mcp-write-docs          # Document it
+/workflow-implement-fullstack  # Build feature
+/workflow-write-docs          # Document it
 ```
 
 ## Summary

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# MCP Sub-Agents Installation Script
+# Claude Code Agents Installation Script
 # Installs savant agents, specialist agents, and workflow commands for Claude Code
 # Version: 2.0 - Two-Tier Architecture with Hybrid Workflow Commands
 
@@ -8,10 +8,10 @@ set -e
 
 AGENTS_DIR="$HOME/.claude/agents"
 COMMANDS_DIR="$HOME/.claude/commands"
-REPO_URL="https://github.com/rcdelacruz/mcp-sub-agents.git"
+REPO_URL="https://github.com/rcdelacruz/claude-code-agents.git"
 CLEANUP_TEMP=false
 
-echo "🚀 Installing MCP Sub-Agents for Claude Code..."
+echo "🚀 Installing Claude Code Agents for Claude Code..."
 echo ""
 echo "📦 Two-Tier Architecture:"
 echo "   • Savant Agents (Orchestrators)"
@@ -30,7 +30,7 @@ fi
 
 # If no valid script directory or agents not found, clone the repository
 if [ -z "$SCRIPT_DIR" ] || [ ! -d "$SCRIPT_DIR/agents" ]; then
-    echo "📥 Downloading MCP Sub-Agents repository..."
+    echo "📥 Downloading Claude Code Agents repository..."
     echo ""
 
     # Check if git is installed
@@ -195,4 +195,4 @@ if [ "$CLEANUP_TEMP" = true ] && [ -d "$TEMP_DIR" ]; then
     rm -rf "$TEMP_DIR"
 fi
 
-echo "✨ Happy coding with MCP Sub-Agents!"
+echo "✨ Happy coding with Claude Code Agents!"

@@ -1,4 +1,4 @@
-# MCP Sub-Agents for Enterprise Development
+# Claude Code Agents for Enterprise Development
 
 A comprehensive collection of specialized Claude Code subagents with **domain expert savants** and **hybrid workflow commands** for building production-ready, enterprise-grade applications.
 
@@ -45,27 +45,27 @@ Slash commands that combine development workflow stages (design, implement, revi
 Structured slash commands that guide you through development stages:
 
 ### Design Phase
-- `/mcp-design-architecture` - System architecture and high-level decisions
-- `/mcp-design-nextjs` - Next.js application architecture with modern patterns
+- `/workflow-design-architecture` - System architecture and high-level decisions
+- `/workflow-design-nextjs` - Next.js application architecture with modern patterns
 
 ### Implementation Phase
-- `/mcp-implement-fullstack` - Full-stack feature implementation end-to-end
-- `/mcp-implement-frontend` - Frontend UI components and client features
-- `/mcp-implement-backend` - Backend API, business logic, and data layer
+- `/workflow-implement-fullstack` - Full-stack feature implementation end-to-end
+- `/workflow-implement-frontend` - Frontend UI components and client features
+- `/workflow-implement-backend` - Backend API, business logic, and data layer
 
 ### Review Phase
-- `/mcp-review-code` - Comprehensive code quality review
-- `/mcp-review-security` - Security audit (OWASP Top 10)
-- `/mcp-review-performance` - Performance optimization (Core Web Vitals)
+- `/workflow-review-code` - Comprehensive code quality review
+- `/workflow-review-security` - Security audit (OWASP Top 10)
+- `/workflow-review-performance` - Performance optimization (Core Web Vitals)
 
 ### QA Phase
-- `/mcp-qa-e2e` - End-to-end testing with Playwright
+- `/workflow-qa-e2e` - End-to-end testing with Playwright
 
 ### Documentation Phase
-- `/mcp-write-docs` - Create comprehensive technical documentation with MkDocs Material
+- `/workflow-write-docs` - Create comprehensive technical documentation with MkDocs Material
 
 ### Deployment Phase
-- `/mcp-deploy` - Production deployment with CI/CD
+- `/workflow-deploy` - Production deployment with CI/CD
 
 ## 🚀 Installation
 
@@ -74,7 +74,7 @@ Structured slash commands that guide you through development stages:
 ### Quick Install (Recommended)
 ```bash
 # One-line remote installation (no git clone needed)
-curl -fsSL https://raw.githubusercontent.com/rcdelacruz/mcp-sub-agents/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install.sh | bash
 
 # This will:
 # 1. Auto-download the repository to a temp directory
@@ -86,8 +86,8 @@ curl -fsSL https://raw.githubusercontent.com/rcdelacruz/mcp-sub-agents/main/inst
 ### Manual Installation
 ```bash
 # Clone the repository
-git clone https://github.com/rcdelacruz/mcp-sub-agents.git
-cd mcp-sub-agents
+git clone https://github.com/rcdelacruz/claude-code-agents.git
+cd claude-code-agents
 
 # Copy all agents (preserves subdirectories)
 mkdir -p ~/.claude/agents
@@ -137,17 +137,17 @@ ls .claude/commands/
 │       ├── database.md
 │       └── tech-writer.md
 └── commands/
-    ├── mcp-design-architecture.md
-    ├── mcp-design-nextjs.md
-    ├── mcp-implement-fullstack.md
-    ├── mcp-implement-frontend.md
-    ├── mcp-implement-backend.md
-    ├── mcp-review-code.md
-    ├── mcp-review-security.md
-    ├── mcp-review-performance.md
-    ├── mcp-qa-e2e.md
-    ├── mcp-write-docs.md
-    └── mcp-deploy.md
+    ├── workflow-design-architecture.md
+    ├── workflow-design-nextjs.md
+    ├── workflow-implement-fullstack.md
+    ├── workflow-implement-frontend.md
+    ├── workflow-implement-backend.md
+    ├── workflow-review-code.md
+    ├── workflow-review-security.md
+    ├── workflow-review-performance.md
+    ├── workflow-qa-e2e.md
+    ├── workflow-write-docs.md
+    └── workflow-deploy.md
 ```
 
 ## 💡 Usage
@@ -178,41 +178,41 @@ Use qa-tester to write E2E tests for the checkout flow
 ### Using Workflow Commands (For Guided Development)
 ```bash
 # Follow structured development workflow
-/mcp-design-nextjs           # Design Next.js application architecture
-/mcp-implement-fullstack     # Implement feature end-to-end
-/mcp-review-code            # Review code quality
-/mcp-review-security        # Security audit
-/mcp-qa-e2e                 # Write E2E tests
-/mcp-deploy                 # Deploy to production
+/workflow-design-nextjs           # Design Next.js application architecture
+/workflow-implement-fullstack     # Implement feature end-to-end
+/workflow-review-code            # Review code quality
+/workflow-review-security        # Security audit
+/workflow-qa-e2e                 # Write E2E tests
+/workflow-deploy                 # Deploy to production
 ```
 
 ### Workflow Example: Building a Blog Feature
 ```bash
-1. /mcp-design-nextjs
+1. /workflow-design-nextjs
    → Design blog architecture (routes, components, data flow)
 
-2. /mcp-implement-fullstack
+2. /workflow-implement-fullstack
    → Implement database schema
    → Create tRPC router
    → Build Server Components
    → Create UI with shadcn/ui
 
-3. /mcp-review-code
+3. /workflow-review-code
    → Review code quality and best practices
 
-4. /mcp-review-security
+4. /workflow-review-security
    → Audit authentication and input validation
 
-5. /mcp-review-performance
+5. /workflow-review-performance
    → Optimize Core Web Vitals
 
-6. /mcp-qa-e2e
+6. /workflow-qa-e2e
    → Write Playwright E2E tests
 
-7. /mcp-write-docs
+7. /workflow-write-docs
    → Create API docs, user guides, and README
 
-8. /mcp-deploy
+8. /workflow-deploy
    → Deploy with CI/CD pipeline
 ```
 
@@ -502,8 +502,8 @@ Use qa-tester to write E2E tests for the checkout flow
 ## 📚 Documentation
 
 Comprehensive documentation is available at:
-- **GitHub Pages:** [https://rcdelacruz.github.io/mcp-sub-agents](https://rcdelacruz.github.io/mcp-sub-agents)
-- **Cloudflare Pages:** [https://mcp-sub-agents-docs.pages.dev](https://mcp-sub-agents-docs.pages.dev)
+- **GitHub Pages:** [https://rcdelacruz.github.io/claude-code-agents](https://rcdelacruz.github.io/claude-code-agents)
+- **Cloudflare Pages:** [https://claude-code-agents-docs.pages.dev](https://claude-code-agents-docs.pages.dev)
 
 The documentation includes:
 
@@ -538,7 +538,7 @@ Fast global CDN with unlimited bandwidth:
 npm install -g wrangler
 wrangler login
 mkdocs build
-wrangler pages deploy site --project-name=mcp-sub-agents-docs
+wrangler pages deploy site --project-name=claude-code-agents-docs
 ```
 
 Or use GitHub Actions for automatic deployment on push. See [QUICK-START-CLOUDFLARE.md](./QUICK-START-CLOUDFLARE.md).

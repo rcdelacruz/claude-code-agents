@@ -1,6 +1,6 @@
 # Cloudflare Pages Deployment - Setup Summary
 
-This document summarizes the Cloudflare Pages deployment setup for MCP Sub-Agents documentation.
+This document summarizes the Cloudflare Pages deployment setup for Claude Code Agents documentation.
 
 ## Files Created
 
@@ -21,7 +21,7 @@ Automated deployment pipeline that:
 **File:** `wrangler.toml`
 
 Cloudflare Pages project configuration:
-- Project name: `mcp-sub-agents-docs`
+- Project name: `claude-code-agents-docs`
 - Build output: `site/` directory
 - Optional configuration for advanced features
 
@@ -118,7 +118,7 @@ Push to main → GitHub Actions → Build → Deploy → Live
 npm install -g wrangler
 wrangler login
 mkdocs build
-wrangler pages deploy site --project-name=mcp-sub-agents-docs
+wrangler pages deploy site --project-name=claude-code-agents-docs
 ```
 
 ### Method 3: Cloudflare Dashboard (Git Integration)
@@ -171,7 +171,7 @@ For immediate deployment, follow one of these paths:
 1. Read: `QUICK-START-CLOUDFLARE.md` → "Method 2: Wrangler CLI"
 2. Install Wrangler: `npm install -g wrangler`
 3. Login: `wrangler login`
-4. Deploy: `wrangler pages deploy site --project-name=mcp-sub-agents-docs`
+4. Deploy: `wrangler pages deploy site --project-name=claude-code-agents-docs`
 
 ### Path C: Dashboard
 1. Read: `CLOUDFLARE-DEPLOYMENT.md` → "Option 2: Cloudflare Dashboard"
@@ -182,7 +182,7 @@ For immediate deployment, follow one of these paths:
 ## Project Structure
 
 ```
-mcp-sub-agents/
+claude-code-agents/
 ├── .github/
 │   └── workflows/
 │       └── cloudflare-pages.yml    # GitHub Actions workflow
@@ -201,8 +201,8 @@ mcp-sub-agents/
 
 ## URLs After Deployment
 
-- **Production:** `https://mcp-sub-agents-docs.pages.dev`
-- **Dashboard:** `https://dash.cloudflare.com/pages/mcp-sub-agents-docs`
+- **Production:** `https://claude-code-agents-docs.pages.dev`
+- **Dashboard:** `https://dash.cloudflare.com/pages/claude-code-agents-docs`
 - **Custom Domain:** Configure in Cloudflare Dashboard
 
 ## Next Steps
@@ -227,7 +227,7 @@ After successful deployment:
 - **Cloudflare Pages Docs:** https://developers.cloudflare.com/pages
 - **Wrangler Docs:** https://developers.cloudflare.com/workers/wrangler
 - **MkDocs Docs:** https://www.mkdocs.org
-- **GitHub Issues:** https://github.com/rcdelacruz/mcp-sub-agents/issues
+- **GitHub Issues:** https://github.com/rcdelacruz/claude-code-agents/issues
 
 ## Summary
 

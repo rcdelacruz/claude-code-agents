@@ -1,6 +1,6 @@
 # Complete Workflow Guide: From Requirements to Implementation
 
-This guide walks you through the complete workflow from gathering requirements to generating implementation artifacts using the MCP Sub-Agents system.
+This guide walks you through the complete workflow from gathering requirements to generating implementation artifacts using the Claude Code Agents system.
 
 ## Table of Contents
 
@@ -227,7 +227,7 @@ curl -X POST https://your-domain.testrail.io/index.php?/api/v2/add_cases/1 \
 ## Directory Structure
 
 ```
-mcp-sub-agents/
+claude-code-agents/
 ├── documents/
 │   ├── README.md                    # Main workflow documentation
 │   ├── 00-references/               # Input documents
@@ -460,7 +460,7 @@ Focus areas:
 
 - Check individual directory README files
 - Review agent documentation: `docs/agents/cross-cutting-specialists.md`
-- Consult MCP Sub-Agents architecture: `SAVANT-ARCHITECTURE.md`
+- Consult Claude Code Agents architecture: `SAVANT-ARCHITECTURE.md`
 
 ## Next Steps
 
@@ -476,5 +476,5 @@ After completing this workflow:
 - [Product Manager Agent](docs/agents/cross-cutting-specialists.md#product-manager)
 - [Task Planner Agent](docs/agents/cross-cutting-specialists.md#task-planner)
 - [Test Planner Agent](docs/agents/cross-cutting-specialists.md#test-planner)
-- [MCP Sub-Agents Architecture](SAVANT-ARCHITECTURE.md)
+- [Claude Code Agents Architecture](SAVANT-ARCHITECTURE.md)
 - [Documents Directory](documents/README.md)

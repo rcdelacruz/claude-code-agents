@@ -1,20 +1,20 @@
 # New Project Setup Guide
 
-This guide explains how to use MCP Sub-Agents when starting a new project, whether you're building from scratch or integrating into an existing codebase.
+This guide explains how to use Claude Code Agents when starting a new project, whether you're building from scratch or integrating into an existing codebase.
 
 ## Quick Start
 
-### Step 1: Install MCP Sub-Agents (One-time)
+### Step 1: Install Claude Code Agents (One-time)
 
 Agents are installed **globally** to `~/.claude/agents/` and can be used across all your projects.
 
 ```bash
 # Run from any directory
-curl -sSL https://raw.githubusercontent.com/rcdelacruz/mcp-sub-agents/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install.sh | bash
 
 # Or clone and run locally
-git clone https://github.com/rcdelacruz/mcp-sub-agents.git
-cd mcp-sub-agents
+git clone https://github.com/rcdelacruz/claude-code-agents.git
+cd claude-code-agents
 ./install.sh
 ```
 
@@ -58,7 +58,7 @@ That's it! You're ready to use the complete workflow.
 
 - All 4 Savant Agents (fullstack-js-savant, java-spring-savant, react-native-savant, flutter-savant)
 - All 12 Cross-Cutting Specialists (product-manager, task-planner, test-planner, etc.)
-- All Workflow Commands (/mcp-design-architecture, /mcp-implement-fullstack, etc.)
+- All Workflow Commands (/workflow-design-architecture, /workflow-implement-fullstack, etc.)
 
 **Why Global?**:
 
@@ -105,7 +105,7 @@ mkdir -p documents/{00-references,01-prds,02-dev-tasks,03-test-cases}
 
 # 4. Create .gitignore to exclude temporary files
 cat > .gitignore << 'EOF'
-# MCP Sub-Agents temporary files
+# Claude Code Agents temporary files
 tmp/
 
 # Node modules (if using Node.js)
@@ -135,7 +135,7 @@ my-new-project/
 
 ### Scenario 2: Next.js Project
 
-Setting up MCP Sub-Agents for a Next.js project:
+Setting up Claude Code Agents for a Next.js project:
 
 ```bash
 # 1. Create Next.js project
@@ -147,7 +147,7 @@ mkdir -p documents/{00-references,01-prds,02-dev-tasks,03-test-cases}
 
 # 3. Update .gitignore
 echo "" >> .gitignore
-echo "# MCP Sub-Agents" >> .gitignore
+echo "# Claude Code Agents" >> .gitignore
 echo "tmp/" >> .gitignore
 
 # 4. Start workflow with Next.js context
@@ -163,7 +163,7 @@ echo "tmp/" >> .gitignore
 my-nextjs-app/
 ├── app/
 ├── public/
-├── documents/              # ← Added for MCP Sub-Agents
+├── documents/              # ← Added for Claude Code Agents
 │   ├── 00-references/      # Input docs (BRDs, specs, research)
 │   ├── 01-prds/
 │   ├── 02-dev-tasks/
@@ -186,7 +186,7 @@ mkdir -p documents/{00-references,01-prds,02-dev-tasks,03-test-cases}
 
 # 3. Update .gitignore
 echo "" >> .gitignore
-echo "# MCP Sub-Agents" >> .gitignore
+echo "# Claude Code Agents" >> .gitignore
 echo "tmp/" >> .gitignore
 
 # 4. Start with React Native savant
@@ -198,7 +198,7 @@ echo "tmp/" >> .gitignore
 
 ### Adding to an Established Codebase
 
-If you have an existing project and want to add MCP Sub-Agents workflow:
+If you have an existing project and want to add Claude Code Agents workflow:
 
 ```bash
 # 1. Navigate to existing project
@@ -209,7 +209,7 @@ mkdir -p documents/{00-references,01-prds,02-dev-tasks,03-test-cases}
 
 # 3. Add to .gitignore (if not already present)
 echo "" >> .gitignore
-echo "# MCP Sub-Agents" >> .gitignore
+echo "# Claude Code Agents" >> .gitignore
 echo "documents/" >> .gitignore  # Or commit documents/ if you want version control
 echo "tmp/" >> .gitignore
 
@@ -242,7 +242,7 @@ echo "tmp/" >> .gitignore
 ```bash
 # Keep documents/ in git
 git add documents/
-git commit -m "Add MCP Sub-Agents workflow artifacts"
+git commit -m "Add Claude Code Agents workflow artifacts"
 ```
 
 #### Option 2: Exclude documents/ (.gitignore)
@@ -276,7 +276,7 @@ your-project/
 │   ├── components/               # React components
 │   ├── lib/                      # Utilities
 │   └── server/                   # Backend code
-├── documents/                    # MCP Sub-Agents artifacts
+├── documents/                    # Claude Code Agents artifacts
 │   ├── README.md                 # Workflow guide
 │   ├── 00-references/            # Input documents
 │   │   ├── README.md
@@ -431,7 +431,7 @@ Use code-reviewer to review the notification implementation
 ls -la ~/.claude/agents/
 
 # 2. If empty, run install script
-curl -sSL https://raw.githubusercontent.com/rcdelacruz/mcp-sub-agents/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install.sh | bash
 
 # 3. Restart Claude Code
 # Exit and relaunch Claude Code
@@ -464,7 +464,7 @@ mkdir -p documents/{00-references,01-prds,02-dev-tasks,03-test-cases}
 
 ## Next Steps
 
-After setting up your project with MCP Sub-Agents:
+After setting up your project with Claude Code Agents:
 
 1. **Create Your First PRD**
    ```bash
