@@ -367,11 +367,70 @@ update-agents
 
 ## Uninstallation
 
-### Remove Global Installation
+### Quick Uninstall (Recommended)
+
+Safely remove only the agents and commands installed by this repository:
+
+```bash
+bash <(curl -sSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/uninstall.sh)
+```
+
+This will:
+
+1. List all files that will be removed (19 agents, 11 commands)
+2. Ask for confirmation before proceeding
+3. Remove only the specific files from this repository
+4. Preserve any custom agents/commands you've created
+5. Clean up empty directories
+6. Show a summary of what was removed
+
+!!! info "Safe Uninstallation"
+    The uninstall script only removes the specific agents and commands installed by this repository. Your custom agents and commands will be preserved.
+
+**Example output:**
+
+```
+🗑️  Claude Code Agents Uninstaller
+
+📋 This script will remove only the files installed by this repository:
+
+   • 19 agents (from 19 installed)
+   • 11 commands (from 11 installed)
+
+⚠️  WARNING: This will permanently delete these files
+   Your other custom agents and commands will be preserved
+
+Continue with uninstallation? (y/N)
+```
+
+### Manual Uninstallation
+
+#### Remove All Agents and Commands
+
+!!! warning "Complete Removal"
+    This removes **all** agents and commands, including your custom ones.
 
 ```bash
 rm -rf ~/.claude/agents
 rm -rf ~/.claude/commands
+```
+
+#### Remove Specific Agents/Commands
+
+To remove only certain agents while keeping others:
+
+```bash
+# Remove a specific agent
+rm ~/.claude/agents/savants/savant-fullstack-js.md
+
+# Remove a specific command
+rm ~/.claude/commands/workflow-design-nextjs.md
+
+# Remove all savant agents
+rm -rf ~/.claude/agents/savants/
+
+# Remove all workflow commands
+rm ~/.claude/commands/workflow-*.md
 ```
 
 ### Remove Project-Specific Installation
@@ -383,9 +442,34 @@ rm -rf .claude/commands
 
 ### Remove Symlinks
 
+If you installed using the symlink method:
+
 ```bash
+# Remove symlinks (doesn't delete the actual files)
+unlink ~/.claude/agents
+unlink ~/.claude/commands
+
+# Or
 rm ~/.claude/agents
 rm ~/.claude/commands
+```
+
+### Verify Uninstallation
+
+After uninstalling, verify that files are removed:
+
+```bash
+# Check if agents directory exists
+ls ~/.claude/agents/ 2>/dev/null || echo "Agents removed successfully"
+
+# Check if commands directory exists
+ls ~/.claude/commands/ 2>/dev/null || echo "Commands removed successfully"
+
+# Count remaining agents (if any)
+find ~/.claude/agents -name "*.md" 2>/dev/null | wc -l
+
+# Count remaining commands (if any)
+find ~/.claude/commands -name "*.md" 2>/dev/null | wc -l
 ```
 
 ## Platform-Specific Notes
