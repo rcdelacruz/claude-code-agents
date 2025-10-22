@@ -25,6 +25,223 @@ Use savants when you need:
 
 ## Current Savants
 
+### react-native-savant
+
+**Name:** `react-native-savant`
+
+**Description:** Master expert in React Native and mobile cross-platform development. Deep knowledge of React Native, Expo, React Navigation, native modules, iOS and Android development.
+
+#### Core Expertise
+
+**React Native Framework (0.73+):**
+
+- Core Architecture (Fabric, Turbo Modules, JSI, Bridge)
+- Components (FlatList, SectionList, Pressable, Modal)
+- Hooks (useState, useEffect, useCallback, useMemo)
+- Native Modules (Bridging, Turbo Modules, JSI)
+- Performance (Hermes, FlatList optimization, bundle size)
+- New Architecture (Fabric renderer, CodeGen)
+
+**Expo Framework (SDK 50+):**
+
+- Expo Router (File-based routing, layouts, deep linking)
+- EAS Build (Cloud builds, development builds, preview builds)
+- EAS Submit (App Store and Play Store automation)
+- EAS Update (Over-the-air updates, channels, rollbacks)
+- Expo Prebuild (Generate native projects, config plugins)
+- Expo Modules API (Swift/Kotlin native modules)
+
+**iOS Development:**
+
+- Swift (async/await, Combine, SwiftUI interop)
+- SwiftUI (Declarative UI, state management)
+- UIKit (View controllers, Auto Layout)
+- CocoaPods (Dependency management)
+- Xcode (Build settings, code signing)
+- App Store (TestFlight, App Store Connect)
+
+**Android Development:**
+
+- Kotlin (Coroutines, Flow, sealed classes)
+- Jetpack Compose (Declarative UI)
+- Gradle (Build configuration, variants)
+- Android SDK (Activities, Fragments, Services)
+- Play Store (Play Console, App Bundles)
+
+**State Management:**
+
+- Zustand, Redux Toolkit, Jotai, TanStack Query
+- Context API, MobX
+
+**Mobile-Specific:**
+
+- Data Persistence (AsyncStorage, SQLite, Realm, WatermelonDB)
+- Networking (Fetch, Axios, TanStack Query, GraphQL)
+- Authentication (OAuth 2.0, biometrics, SecureStore, JWT)
+- Animation (Reanimated, Gesture Handler, Lottie, Skia)
+- Push Notifications (Expo Notifications, FCM, APNs)
+
+**DevOps:**
+
+- EAS Build/Submit/Update
+- Fastlane, GitHub Actions
+- Sentry, Firebase
+
+#### Usage Examples
+
+**Architecture Decision:**
+
+```
+Use react-native-savant to design a cross-platform social media app with offline-first architecture
+```
+
+**Technology Selection:**
+
+```
+Use react-native-savant to choose between Expo managed workflow and bare workflow for my e-commerce app
+```
+
+**Complex Problem:**
+
+```
+Use react-native-savant to optimize app performance and reduce bundle size from 50MB to under 20MB
+```
+
+**Full-Stack Integration:**
+
+```
+Use react-native-savant to integrate GraphQL API with React Native app using Apollo Client
+```
+
+**When to Delegate:**
+
+After architectural decisions, the savant may delegate to:
+
+- **frontend-ui** - Component design, accessibility
+- **backend-api** - API integration, GraphQL queries
+- **database** - SQLite schema, query optimization
+- **security** - Authentication flows, secure storage
+- **qa-tester** - E2E testing with Detox/Maestro
+- **deployment** - EAS Build configuration, app store submission
+- **performance** - Performance profiling, bundle analysis
+- **monitoring** - Crash reporting, analytics setup
+
+---
+
+### flutter-savant
+
+**Name:** `flutter-savant`
+
+**Description:** Master expert in Flutter and Dart mobile development. Deep knowledge of Flutter SDK, Dart language, state management (BLoC, Riverpod, Provider), platform channels, iOS and Android development.
+
+#### Core Expertise
+
+**Flutter SDK (3.x+):**
+
+- Framework Architecture (Widget tree, Element tree, RenderObject tree)
+- Material Design 3 (Theming, dynamic color, adaptive layouts)
+- Cupertino (iOS-style widgets)
+- Widgets (StatelessWidget, StatefulWidget, InheritedWidget)
+- Layout (Row, Column, Stack, Flex, Slivers)
+- Advanced (CustomPaint, CustomScrollView, Hero animations)
+
+**Dart Language (3.x+):**
+
+- Null safety, sound type system
+- Pattern matching, switch expressions
+- Records, sealed classes
+- Async/Await (Future, Stream, isolates)
+- Extension methods, mixins, generics
+
+**State Management:**
+
+- BLoC (flutter_bloc, Cubit, BlocProvider)
+- Riverpod (StateNotifier, FutureProvider, family, autoDispose)
+- Provider (ChangeNotifier, MultiProvider)
+- GetX, MobX, Redux
+
+**Navigation:**
+
+- go_router (Declarative routing, deep linking)
+- Navigator 2.0 (RouterDelegate, declarative navigation)
+- Navigator 1.0 (push, pop, MaterialPageRoute)
+
+**Platform Channels:**
+
+- MethodChannel, EventChannel
+- FFI (Foreign Function Interface)
+- Pigeon (Type-safe platform channels)
+- Swift/Kotlin integration
+
+**Firebase:**
+
+- Authentication (Email, OAuth, phone auth)
+- Cloud Firestore (Real-time database, queries)
+- Cloud Functions, Cloud Storage
+- Analytics, Crashlytics, Cloud Messaging
+- Remote Config, Performance Monitoring
+
+**Data Persistence:**
+
+- Hive, Isar, sqflite, drift
+- shared_preferences, secure_storage
+
+**Mobile Platforms:**
+
+- iOS (Swift, SwiftUI, UIKit, CocoaPods, Xcode, App Store)
+- Android (Kotlin, Jetpack Compose, Gradle, Play Store)
+
+**DevOps:**
+
+- Fastlane, Codemagic, GitHub Actions
+- Firebase App Distribution
+
+**Testing:**
+
+- Unit tests, widget tests, golden tests
+- Integration tests, mockito
+
+#### Usage Examples
+
+**Architecture Decision:**
+
+```
+Use flutter-savant to design a Flutter e-commerce app with offline-first architecture and Firestore sync
+```
+
+**Technology Selection:**
+
+```
+Use flutter-savant to choose between BLoC and Riverpod for a large-scale enterprise application
+```
+
+**Complex Problem:**
+
+```
+Use flutter-savant to optimize Flutter app performance and reduce memory usage by 40%
+```
+
+**Full-Stack Integration:**
+
+```
+Use flutter-savant to integrate Firebase Authentication and Firestore with clean architecture pattern
+```
+
+**When to Delegate:**
+
+After architectural decisions, the savant may delegate to:
+
+- **frontend-ui** - Material Design 3 theming, advanced animations
+- **backend-api** - API integration, GraphQL setup
+- **database** - Firestore security rules, complex queries
+- **security** - Authentication flows, encryption
+- **qa-tester** - Widget testing, integration testing
+- **deployment** - Fastlane setup, CI/CD pipelines
+- **performance** - Performance profiling, optimization
+- **monitoring** - Crashlytics setup, analytics
+
+---
+
 ### fullstack-js-savant
 
 **Name:** `fullstack-js-savant`

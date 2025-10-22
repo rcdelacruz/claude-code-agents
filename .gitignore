@@ -27,3 +27,13 @@ package-lock.json
 # Cloudflare
 .wrangler/
 wrangler.toml.local
+
+# Generated documents (project-specific, not part of agent framework)
+documents/01-prds/*.md
+documents/02-dev-tasks/*.json
+documents/02-dev-tasks/*.csv
+documents/03-test-cases/*.json
+documents/03-test-cases/*.csv
+# Keep the README.md files
+!documents/README.md
+!documents/*/README.md

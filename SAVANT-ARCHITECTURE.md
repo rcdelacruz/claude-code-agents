@@ -11,6 +11,8 @@ graph TB
     subgraph tier1["TIER 1: SAVANTS<br/>(Orchestrators - Broad expertise, architecture decisions)"]
         js[fullstack-js-savant<br/>Master of JS ecosystem]
         java[java-spring-savant<br/>Master of Spring ecosystem]
+        rn[react-native-savant<br/>Master of React Native]
+        flutter[flutter-savant<br/>Master of Flutter/Dart]
         python[python-django-savant<br/>Master of Django ecosystem]
         go[golang-savant<br/>Master of Go ecosystem]
         dotnet[dotnet-savant<br/>Master of .NET ecosystem]
@@ -36,14 +38,18 @@ graph TB
         end
 
         subgraph crosscut[Cross-Cutting]
-            cross1[code-reviewer]
-            cross2[qa-tester]
-            cross3[security]
-            cross4[performance]
-            cross5[deployment]
-            cross6[monitoring]
-            cross7[architect]
-            cross8[database]
+            cross0[product-manager]
+            cross1[task-planner]
+            cross2[test-planner]
+            cross3[code-reviewer]
+            cross4[qa-tester]
+            cross5[security]
+            cross6[performance]
+            cross7[deployment]
+            cross8[monitoring]
+            cross9[architect]
+            cross10[database]
+            cross11[tech-writer]
         end
     end
 
@@ -293,22 +299,48 @@ Core Expertise:
 - Effect-TS - Functional programming
 ```
 
-#### 5. Mobile Savant
+#### 5. React Native Savant (✅ Created)
 ```markdown
 ---
-name: mobile-savant
-description: Master expert in mobile development. Deep knowledge of React Native, Flutter, iOS (Swift), Android (Kotlin). Use for cross-platform and native mobile architecture.
+name: react-native-savant
+description: Master expert in React Native and mobile cross-platform development. Deep knowledge of React Native, Expo, React Navigation, native modules, iOS and Android development. Use for mobile architecture, complex mobile problems, and high-level technical decisions.
 tools: Read, Write, Edit, Bash, Task
 model: sonnet
 ---
 
 Core Expertise:
-- React Native - Expo, React Navigation, native modules
-- Flutter - Widgets, state management, platform channels
-- Swift/SwiftUI - iOS development, Combine framework
-- Kotlin/Jetpack Compose - Android development
-- Mobile DevOps - App Center, Fastlane, CI/CD
-- Mobile testing - Detox, Appium, XCTest
+- React Native 0.73+ - Fabric, Turbo Modules, JSI, new architecture
+- Expo SDK 50+ - EAS Build, Expo Router, Prebuild, Config Plugins
+- React Navigation 6+ - Navigation patterns, deep linking, type safety
+- iOS Development - Swift, SwiftUI, CocoaPods, Xcode
+- Android Development - Kotlin, Jetpack Compose, Gradle
+- Native Modules - Expo Modules API, Turbo Modules, bridging
+- Performance - Hermes, FlatList optimization, bundle size
+- Mobile DevOps - EAS Build/Submit/Update, Fastlane, CI/CD
+- Mobile testing - Jest, Detox, Maestro, React Native Testing Library
+```
+
+#### 6. Flutter Savant (✅ Created)
+```markdown
+---
+name: flutter-savant
+description: Master expert in Flutter and Dart mobile development. Deep knowledge of Flutter SDK, Dart language, state management (BLoC, Riverpod, Provider), platform channels, iOS and Android development. Use for Flutter architecture, complex mobile problems, and high-level technical decisions.
+tools: Read, Write, Edit, Bash, Task
+model: sonnet
+---
+
+Core Expertise:
+- Flutter SDK 3.x+ - Widgets, Material 3, Cupertino, rendering, platform views
+- Dart 3.x+ - Null safety, pattern matching, records, sealed classes, isolates
+- State Management - BLoC, Riverpod, Provider, GetX, MobX, Redux
+- Navigation - go_router, Navigator 2.0, deep linking
+- Platform Channels - MethodChannel, EventChannel, FFI, Pigeon
+- Firebase - Auth, Firestore, Cloud Functions, Storage, Analytics, Crashlytics
+- Data Persistence - Hive, Isar, sqflite, drift, shared_preferences
+- iOS Development - Swift, SwiftUI, UIKit, CocoaPods, Xcode, App Store
+- Android Development - Kotlin, Jetpack Compose, Gradle, Play Store
+- DevOps - Fastlane, Codemagic, GitHub Actions, Firebase App Distribution
+- Testing - Unit tests, widget tests, golden tests, integration tests
 ```
 
 ## Specialist Agent Naming Convention

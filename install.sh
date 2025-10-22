@@ -54,7 +54,7 @@ if [ -z "$SCRIPT_DIR" ] || [ ! -d "$SCRIPT_DIR/agents" ]; then
 fi
 
 # Verify required directories exist
-if [ ! -d "$SCRIPT_DIR/agents" ]; then
+if [ ! -d "$SCRIPT_DIR/.clade/agents" ]; then
     echo "❌ Error: agents/ directory not found in $SCRIPT_DIR"
     exit 1
 fi
@@ -71,7 +71,7 @@ mkdir -p "$COMMANDS_DIR"
 
 # Copy agents (preserves subdirectory structure)
 echo "📦 Installing agents..."
-cp -r "$SCRIPT_DIR/agents/"* "$AGENTS_DIR/"
+cp -r "$SCRIPT_DIR/.claude/agents/"* "$AGENTS_DIR/"
 
 # Copy workflow commands
 echo "🔧 Installing workflow commands..."
@@ -95,6 +95,8 @@ echo ""
 echo "   Savant Agents (Orchestrators):"
 echo "      • fullstack-js-savant - JavaScript/TypeScript ecosystem master"
 echo "      • java-spring-savant - Spring ecosystem master"
+echo "      • react-native-savant - React Native mobile development master"
+echo "      • flutter-savant - Flutter/Dart mobile development master"
 echo ""
 echo "   Specialist Agents (JavaScript/TypeScript):"
 echo "      • fullstack-nextjs - Next.js 15, App Router, Server Components"
@@ -102,6 +104,9 @@ echo "      • frontend-ui - shadcn/ui, Tailwind CSS, Accessibility"
 echo "      • backend-api - tRPC, REST APIs, NextAuth.js"
 echo ""
 echo "   Cross-Stack Specialists:"
+echo "      • product-manager - PRD generation from requirements"
+echo "      • task-planner - Development task breakdown (JSON/CSV)"
+echo "      • test-planner - Test case generation (JSON/CSV)"
 echo "      • architect - System Design, Scalability"
 echo "      • code-reviewer - Code Quality, Best Practices"
 echo "      • qa-tester - Playwright E2E, Vitest"
@@ -137,8 +142,17 @@ echo ""
 
 echo "💡 Usage Examples:"
 echo ""
+echo "   Requirements to Implementation Workflow:"
+echo "      0. Optional: Add reference docs to documents/00-references/ (BRDs, specs, research)"
+echo "      1. Use product-manager to create a PRD for [feature]"
+echo "      2. Use task-planner to generate tasks from documents/01-prds/[feature]-prd.md"
+echo "      3. Use test-planner to generate test cases from documents/01-prds/[feature]-prd.md"
+echo "      → Outputs: JSON + CSV for Jira/TestRail import"
+echo ""
 echo "   Using Savant Agents (for architecture & complex tasks):"
 echo "      Use fullstack-js-savant to design a real-time chat app"
+echo "      Use react-native-savant to design a mobile app architecture"
+echo "      Use flutter-savant to choose state management for app"
 echo ""
 echo "   Using Specialist Agents (for focused implementation):"
 echo "      Use fullstack-nextjs to build a dashboard with Server Components"
@@ -158,8 +172,10 @@ echo ""
 echo "📖 Documentation:"
 echo "   • README.md - Main documentation"
 echo "   • SAVANT-ARCHITECTURE.md - Two-tier architecture guide"
+echo "   • WORKFLOW-GUIDE.md - Requirements to implementation workflow"
 echo "   • WORKFLOW-COMMANDS.md - Complete workflow reference"
 echo "   • INSTALLATION-GUIDE.md - Detailed installation guide"
+echo "   • documents/README.md - Document organization guide"
 echo ""
 
 echo "🔍 Verify Installation:"
