@@ -54,8 +54,8 @@ if [ -z "$SCRIPT_DIR" ] || [ ! -d "$SCRIPT_DIR/agents" ]; then
 fi
 
 # Verify required directories exist
-if [ ! -d "$SCRIPT_DIR/.clade/agents" ]; then
-    echo "❌ Error: agents/ directory not found in $SCRIPT_DIR"
+if [ ! -d "$SCRIPT_DIR/.claude/agents" ]; then
+    echo "❌ Error: .claude/agents/ directory not found in $SCRIPT_DIR"
     exit 1
 fi
 
