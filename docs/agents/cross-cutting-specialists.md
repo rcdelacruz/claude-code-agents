@@ -16,8 +16,9 @@ Cross-cutting specialists include:
 - **deployment** - CI/CD and infrastructure
 - **database** - Schema design and query optimization
 - **monitoring** - Observability and error tracking
-- **architect** - System design and scalability
 - **tech-writer** - Technical documentation
+
+For architecture-related specialists, see the dedicated [Architecture Agents](architecture-agents.md) page.
 
 ## product-manager
 
@@ -123,7 +124,9 @@ After creating a PRD, may delegate to:
 
 - **task-planner** - Break down PRD into development tasks
 - **test-planner** - Generate test cases from PRD
-- **architect** - System architecture design based on PRD
+- **solution-architect** - Enterprise-level, multi-system architecture
+- **solution-designer** - Detailed technical design and API specifications
+- **software-architect** - Application-level architecture design
 - **frontend-ui** - Detailed UI/UX design after PRD approval
 - **backend-api** - API design and implementation
 - **database** - Data model and schema design
@@ -580,41 +583,6 @@ Use monitoring to set up comprehensive monitoring with Sentry for error tracking
 
 ---
 
-## architect
-
-**Name:** `architect`
-
-**Description:** Expert in system architecture, design patterns, and scalability.
-
-### Expertise Areas
-
-- **Architecture Patterns** - Monolith, microservices, serverless
-- **Design Patterns** - Repository, Service, Factory patterns
-- **Scalability** - Horizontal and vertical scaling
-- **Event-Driven** - Event sourcing, CQRS
-- **Caching Strategies** - Multi-layer caching
-- **Database Scaling** - Read replicas, sharding
-- **API Design** - REST, tRPC, GraphQL
-- **Resilience Patterns** - Circuit breaker, retry logic
-- **Future-Proofing** - Extensibility and maintainability
-
-### When to Use
-
-- Designing system architecture
-- Planning scalability
-- Making architectural decisions
-- Refactoring architecture
-- Solving scaling challenges
-- Technology selection
-
-### Usage Example
-
-```bash
-Use architect to design a scalable architecture for a real-time collaboration platform that needs to support 100,000 concurrent users
-```
-
----
-
 ## tech-writer
 
 **Name:** `tech-writer`
@@ -766,7 +734,7 @@ Use monitoring to set up error tracking
 
 - **security** - Monthly audits
 - **performance** - Weekly checks
-- **architect** - Quarterly reviews
+- **software-architect** - Quarterly reviews
 - **monitoring** - Dashboard reviews
 
 ## Summary

@@ -105,6 +105,7 @@ nav:
       - React Native Savant: agents/react-native-savant.md
       - Flutter Savant: agents/flutter-savant.md
       - JavaScript Specialists: agents/javascript-specialists.md
+      - Architecture Agents: agents/architecture-agents.md
       - Cross-Cutting Specialists: agents/cross-cutting-specialists.md
   - Guides:
       - New Project Setup: guides/new-project-setup.md
