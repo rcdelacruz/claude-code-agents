@@ -29,11 +29,13 @@ package-lock.json
 wrangler.toml.local
 
 # Generated documents (project-specific, not part of agent framework)
-documents/01-prds/*.md
-documents/02-dev-tasks/*.json
-documents/02-dev-tasks/*.csv
-documents/03-test-cases/*.json
-documents/03-test-cases/*.csv
+documents/00-references/
+documents/01-prds/
+documents/02-dev-tasks/
+documents/02-architecture/
+documents/03-dev-tasks/
+documents/04-test-cases/
+
 # Keep the README.md files
 !documents/README.md
 !documents/*/README.md
