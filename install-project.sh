@@ -33,11 +33,16 @@ elif [ -n "$INSTALL_DIR" ]; then
 else
     # No argument or env var: prompt user
     echo -e "${YELLOW}Please enter the full path to your project directory:${NC}"
-    echo -e "${YELLOW}(or press Ctrl+C to cancel and run: cd your-project && bash <(curl ...))${NC}"
+    echo -e "${YELLOW}(or just press Enter to use current directory: $(pwd))${NC}"
     read -p "Project path: " PROJECT_DIR
 
-    # Expand ~ to home directory if present
-    PROJECT_DIR="${PROJECT_DIR/#\~/$HOME}"
+    # If empty, use current directory
+    if [ -z "$PROJECT_DIR" ]; then
+        PROJECT_DIR="$(pwd)"
+    else
+        # Expand ~ to home directory if present
+        PROJECT_DIR="${PROJECT_DIR/#\~/$HOME}"
+    fi
 fi
 
 # Validate directory exists
