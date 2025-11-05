@@ -78,6 +78,17 @@ cd "$TEMP_DIR"
 git clone --depth 1 https://github.com/rcdelacruz/claude-code-agents.git
 cd claude-code-agents
 
+# Verify required directories exist
+if [ ! -d "$TEMP_DIR/claude-code-agents/.claude/agents" ]; then
+    echo -e "${RED}❌ Error: .claude/agents/ directory not found${NC}"
+    exit 1
+fi
+
+if [ ! -d "$TEMP_DIR/claude-code-agents/.claude/commands" ]; then
+    echo -e "${RED}❌ Error: .claude/commands/ directory not found${NC}"
+    exit 1
+fi
+
 # Create .claude directory structure in project
 echo -e "${BLUE}Creating .claude directory structure...${NC}"
 mkdir -p "$PROJECT_DIR/.claude/agents"
@@ -85,11 +96,11 @@ mkdir -p "$PROJECT_DIR/.claude/commands"
 
 # Copy agents (preserving subdirectory structure)
 echo -e "${BLUE}Installing agents to .claude/agents/...${NC}"
-cp -r agents/* "$PROJECT_DIR/.claude/agents/"
+cp -r "$TEMP_DIR/claude-code-agents/.claude/agents/"* "$PROJECT_DIR/.claude/agents/"
 
 # Copy workflow commands
 echo -e "${BLUE}Installing workflow commands to .claude/commands/...${NC}"
-cp -r .claude/commands/* "$PROJECT_DIR/.claude/commands/"
+cp -r "$TEMP_DIR/claude-code-agents/.claude/commands/"* "$PROJECT_DIR/.claude/commands/"
 
 # Count installed files
 AGENT_COUNT=$(find "$PROJECT_DIR/.claude/agents" -name "*.md" | wc -l | tr -d ' ')
