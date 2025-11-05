@@ -50,9 +50,36 @@ npx playwright install
 
 ### 3. Configure MCP Servers
 
-MCP (Model Context Protocol) servers enhance Claude Code with additional capabilities. Configure these in your project.
+MCP (Model Context Protocol) servers enhance Claude Code with additional capabilities.
 
-Create or update `.claude/mcp.json` in your project root:
+**Configuration Scopes**: Claude Code supports three configuration scopes:
+
+- **Local** (default): Private to you within the current project
+- **Project**: Shared with team via `.mcp.json` in project root
+- **User**: Available across all your projects
+
+For this workshop, we'll use **Project scope** so team members can share the same MCP configuration.
+
+#### Method 1: Using CLI Commands (Recommended)
+
+Add MCP servers using the `claude mcp add` command:
+
+```bash
+# Add Playwright MCP (Docker-based)
+claude mcp add --transport stdio --scope project playwright -- docker run -i --rm mcp/playwright
+
+# Add Context7 MCP (for latest library docs)
+claude mcp add --transport stdio --scope project context7 -- npx -y @context7/mcp-server
+
+# Add GitHub MCP (requires personal access token)
+claude mcp add --transport stdio --scope project github -- npx -y @modelcontextprotocol/server-github
+```
+
+This creates a `.mcp.json` file in your project root.
+
+#### Method 2: Manual Configuration (Alternative)
+
+Create or update `.mcp.json` in your project root:
 
 ```json
 {
@@ -75,6 +102,8 @@ Create or update `.claude/mcp.json` in your project root:
   }
 }
 ```
+
+**Note**: Restart Claude Code after configuration changes.
 
 **MCP Servers Explained**:
 
@@ -124,9 +153,9 @@ Why each developer needs their own token:
 6. Click "Generate token"
 7. **Copy the token immediately** (you won't see it again!)
 
-**Add Token to Your Local Configuration:**
+**Add Token to Your Configuration:**
 
-**Option 1: Environment Variable (Recommended for teams)**
+**Option 1: Environment Variable (Recommended for security)**
 
 Add to your shell profile (`~/.zshrc` or `~/.bashrc`):
 
@@ -139,9 +168,11 @@ Reload your shell:
 source ~/.zshrc  # or source ~/.bashrc
 ```
 
-**Option 2: In Project Config (Less secure - token in file)**
+The GitHub MCP server will automatically read the token from the environment variable.
 
-Add to `.claude/mcp.json` (make sure this file is in `.gitignore`):
+**Option 2: In Project `.mcp.json` (Less secure - token in file)**
+
+Add to `.mcp.json` (make sure this file is in `.gitignore`):
 
 ```json
 {
@@ -159,7 +190,7 @@ Add to `.claude/mcp.json` (make sure this file is in `.gitignore`):
 
 **Verify `.gitignore` includes:**
 ```
-.claude/mcp.json
+.mcp.json
 ```
 
 This prevents accidentally committing tokens to the repository.
@@ -586,14 +617,19 @@ Playwright MCP allows Claude Code to control your browser for testing and debugg
 # You should see mcp__MCP_DOCKER__browser_navigate, browser_click, etc.
 ```
 
-**If Playwright MCP is not available**, configure Docker MCP in your project:
+**If Playwright MCP is not available**, configure it using one of these methods:
 
-Add to `.claude/mcp.json` in your project root:
+**Using CLI (Recommended):**
+```bash
+claude mcp add --transport stdio --scope project playwright -- docker run -i --rm mcp/playwright
+```
+
+**Or manually add to `.mcp.json` in your project root:**
 
 ```json
 {
   "mcpServers": {
-    "MCP_DOCKER": {
+    "playwright": {
       "command": "docker",
       "args": [
         "run",
@@ -606,7 +642,7 @@ Add to `.claude/mcp.json` in your project root:
 }
 ```
 
-**No restart needed** - Claude Code loads MCP servers automatically from project configuration.
+**Restart required** - Restart Claude Code after configuration changes.
 
 **Troubleshooting**:
 
