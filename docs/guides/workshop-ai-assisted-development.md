@@ -52,32 +52,32 @@ MCP (Model Context Protocol) servers enhance Claude Code with additional capabil
 
 **Configuration Scopes**: Claude Code supports three configuration scopes:
 
-- **Local** (default): Private to you within the current project
+- **Local** (default): Private to you within the current project (`.claude/mcp.json`)
 - **Project**: Shared with team via `.mcp.json` in project root
 - **User**: Available across all your projects
 
-For this workshop, we'll use **Project scope** so team members can share the same MCP configuration.
+For this workshop, we'll use **Local scope (default)** for security best practices. This keeps your API keys and tokens private and prevents accidentally committing sensitive credentials to the repository.
 
 #### Method 1: Using CLI Commands (Recommended)
 
-Add MCP servers using the `claude mcp add` command:
+Add MCP servers using the `claude mcp add` command (uses local scope by default):
 
 ```bash
 # Add Playwright MCP
-claude mcp add --scope project playwright npx '@playwright/mcp@latest'
+claude mcp add playwright npx '@playwright/mcp@latest'
 
 # Add Context7 MCP (for latest library docs)
-claude mcp add --transport stdio --scope project context7 -- npx -y @context7/mcp-server
+claude mcp add --transport stdio context7 -- npx -y @context7/mcp-server
 
 # Add GitHub MCP (requires personal access token)
-claude mcp add --transport stdio --scope project github -- npx -y @modelcontextprotocol/server-github
+claude mcp add --transport stdio github -- npx -y @modelcontextprotocol/server-github
 ```
 
-This creates a `.mcp.json` file in your project root.
+This creates a `.claude/mcp.json` file in your project (local scope, private to you).
 
 #### Method 2: Manual Configuration (Alternative)
 
-Create or update `.mcp.json` in your project root:
+Create or update `.claude/mcp.json` in your project (local scope):
 
 ```json
 {
@@ -100,6 +100,8 @@ Create or update `.mcp.json` in your project root:
   }
 }
 ```
+
+**Note**: `.claude/` directory is automatically ignored by git, keeping your tokens safe.
 
 **Note**: Restart Claude Code after configuration changes.
 
@@ -168,9 +170,9 @@ source ~/.zshrc  # or source ~/.bashrc
 
 The GitHub MCP server will automatically read the token from the environment variable.
 
-**Option 2: In Project `.mcp.json` (Less secure - token in file)**
+**Option 2: In Local `.claude/mcp.json` (Token in file - still secure)**
 
-Add to `.mcp.json` (make sure this file is in `.gitignore`):
+Add to `.claude/mcp.json`:
 
 ```json
 {
@@ -186,12 +188,7 @@ Add to `.mcp.json` (make sure this file is in `.gitignore`):
 }
 ```
 
-**Verify `.gitignore` includes:**
-```
-.mcp.json
-```
-
-This prevents accidentally committing tokens to the repository.
+**Security**: The `.claude/` directory is automatically ignored by git, so your tokens are safe and won't be accidentally committed.
 
 ### 5. Verify Setup
 
