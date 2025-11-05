@@ -1,5 +1,5 @@
 // Initialize Mermaid diagrams
-window.addEventListener('DOMContentLoaded', (event) => {
+function initializeMermaid() {
   mermaid.initialize({
     startOnLoad: true,
     theme: 'default',
@@ -55,6 +55,81 @@ window.addEventListener('DOMContentLoaded', (event) => {
       useMaxWidth: true
     }
   });
+}
+
+// Add click-to-zoom functionality for Mermaid diagrams
+function addMermaidZoom() {
+  document.querySelectorAll('.mermaid').forEach((diagram) => {
+    // Skip if already has zoom handler (prevent duplicate listeners)
+    if (diagram.hasAttribute('data-zoom-enabled')) {
+      return;
+    }
+
+    // Mark as having zoom enabled
+    diagram.setAttribute('data-zoom-enabled', 'true');
+
+    // Add zoom cursor style
+    diagram.style.cursor = 'zoom-in';
+    diagram.style.transition = 'transform 0.3s ease';
+
+    // Click handler for zoom
+    diagram.addEventListener('click', function(e) {
+      // Check if already zoomed
+      if (this.classList.contains('mermaid-zoomed')) {
+        // Zoom out
+        this.classList.remove('mermaid-zoomed');
+        this.style.position = '';
+        this.style.top = '';
+        this.style.left = '';
+        this.style.width = '';
+        this.style.height = '';
+        this.style.zIndex = '';
+        this.style.backgroundColor = '';
+        this.style.cursor = 'zoom-in';
+        this.style.transform = '';
+        this.style.padding = '';
+        this.style.boxShadow = '';
+        document.body.style.overflow = '';
+      } else {
+        // Zoom in
+        this.classList.add('mermaid-zoomed');
+        this.style.position = 'fixed';
+        this.style.top = '50%';
+        this.style.left = '50%';
+        this.style.width = '90vw';
+        this.style.height = '90vh';
+        this.style.zIndex = '9999';
+        this.style.backgroundColor = 'var(--md-default-bg-color)';
+        this.style.cursor = 'zoom-out';
+        this.style.transform = 'translate(-50%, -50%)';
+        this.style.padding = '20px';
+        this.style.boxShadow = '0 0 0 9999px rgba(0,0,0,0.8)';
+        document.body.style.overflow = 'hidden';
+      }
+      e.stopPropagation();
+    });
+  });
+}
+
+// Setup Mermaid with all features
+function setupMermaid() {
+  // Store original mermaid source for re-rendering
+  document.querySelectorAll('.mermaid').forEach((element) => {
+    if (!element.hasAttribute('data-mermaid-src')) {
+      element.setAttribute('data-mermaid-src', element.innerHTML);
+    }
+  });
+
+  // Add zoom functionality
+  addMermaidZoom();
+}
+
+// Initialize on first load
+document.addEventListener('DOMContentLoaded', function() {
+  initializeMermaid();
+
+  // Setup after mermaid renders
+  setTimeout(setupMermaid, 500);
 
   // Update Mermaid theme based on color scheme
   const observer = new MutationObserver((mutations) => {
@@ -78,6 +153,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         });
 
         mermaid.init(undefined, '.mermaid');
+        setTimeout(setupMermaid, 500);
       }
     });
   });
@@ -86,65 +162,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
     attributes: true,
     attributeFilter: ['data-md-color-scheme']
   });
+});
 
-  // Store original mermaid source for re-rendering
-  document.querySelectorAll('.mermaid').forEach((element) => {
-    element.setAttribute('data-mermaid-src', element.innerHTML);
-  });
+// Handle MkDocs Material instant navigation (AJAX page loads)
+// This is the key fix - listen for navigation events
+document$.subscribe(function() {
+  // Re-initialize mermaid for new content
+  initializeMermaid();
 
-  // Add click-to-zoom functionality for Mermaid diagrams
-  function addMermaidZoom() {
-    document.querySelectorAll('.mermaid').forEach((diagram) => {
-      // Add zoom cursor style
-      diagram.style.cursor = 'zoom-in';
-      diagram.style.transition = 'transform 0.3s ease';
-
-      // Click handler for zoom
-      diagram.addEventListener('click', function(e) {
-        // Check if already zoomed
-        if (this.classList.contains('mermaid-zoomed')) {
-          // Zoom out
-          this.classList.remove('mermaid-zoomed');
-          this.style.position = '';
-          this.style.top = '';
-          this.style.left = '';
-          this.style.width = '';
-          this.style.height = '';
-          this.style.zIndex = '';
-          this.style.backgroundColor = '';
-          this.style.cursor = 'zoom-in';
-          this.style.transform = '';
-          this.style.padding = '';
-          this.style.boxShadow = '';
-          document.body.style.overflow = '';
-        } else {
-          // Zoom in
-          this.classList.add('mermaid-zoomed');
-          this.style.position = 'fixed';
-          this.style.top = '50%';
-          this.style.left = '50%';
-          this.style.width = '90vw';
-          this.style.height = '90vh';
-          this.style.zIndex = '9999';
-          this.style.backgroundColor = 'var(--md-default-bg-color)';
-          this.style.cursor = 'zoom-out';
-          this.style.transform = 'translate(-50%, -50%)';
-          this.style.padding = '20px';
-          this.style.boxShadow = '0 0 0 9999px rgba(0,0,0,0.8)';
-          document.body.style.overflow = 'hidden';
-        }
-        e.stopPropagation();
-      });
-    });
-  }
-
-  // Add zoom functionality after initial render
-  setTimeout(addMermaidZoom, 500);
-
-  // Re-add zoom after theme changes
-  const originalInit = mermaid.init;
-  mermaid.init = function(...args) {
-    originalInit.apply(this, args);
-    setTimeout(addMermaidZoom, 500);
-  };
+  // Setup zoom for newly loaded diagrams
+  setTimeout(setupMermaid, 500);
 });

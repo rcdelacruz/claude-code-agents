@@ -2,9 +2,46 @@
 
 This guide explains how to install the Claude Code Agents system with the two-tier architecture.
 
-## Quick Install (Recommended)
+## Choose Your Installation Type
 
-Install all agents and workflow commands with a single command:
+!!! question "Global or Project-Specific?"
+    **Global Installation** - Agents available in all projects (install to `~/.claude/`)
+
+    **Project-Specific Installation** - Agents only in current project (install to `.claude/`)
+
+    Choose based on your needs below.
+
+## Quick Install - Project-Specific (Recommended for Teams)
+
+Install agents and commands to your current project only:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh | bash
+```
+
+This will:
+
+1. Auto-download the repository to a temporary directory
+2. Copy agents to `.claude/agents/` in your current project
+3. Copy workflow commands to `.claude/commands/`
+4. Optionally add `.claude/` to `.gitignore`
+5. Clean up temporary files
+6. Show installation summary
+
+!!! success "Project-Scoped Installation"
+    Agents are installed only for this project. Perfect for teams who want version-controlled agent configurations without committing the actual agent files.
+
+**Why Project-Specific?**
+
+- ✅ Each project has isolated agents
+- ✅ Team members can use same installation command
+- ✅ `.claude/` in `.gitignore` keeps repo clean
+- ✅ Easy to update per-project
+- ✅ No global configuration conflicts
+
+## Quick Install - Global (Available Everywhere)
+
+Install all agents and workflow commands globally:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install.sh | bash
@@ -18,28 +55,51 @@ This will:
 4. Clean up temporary files
 5. Show installation summary
 
-!!! success "No Repository Clone Required"
-    The installation script handles everything automatically. You don't need to clone the repository manually.
+!!! success "Global Installation"
+    Agents are available in all your projects. Great for solo developers or when you want consistent agents everywhere.
 
-## Installation Methods
+## Manual Installation Methods
 
-### Method 1: Remote Install (No Clone)
+### Method 1: Manual Project-Specific Installation
 
-The recommended one-line installation:
+Install agents for your current project only (recommended for teams):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install.sh | bash
+# Navigate to your project directory first
+cd /path/to/your/project
+
+# Clone repository to a temporary location
+git clone https://github.com/rcdelacruz/claude-code-agents.git /tmp/claude-agents
+cd /tmp/claude-agents
+
+# Copy to your project's .claude directory
+mkdir -p /path/to/your/project/.claude/agents
+mkdir -p /path/to/your/project/.claude/commands
+cp -r agents/* /path/to/your/project/.claude/agents/
+cp -r .claude/commands/* /path/to/your/project/.claude/commands/
+
+# Add to .gitignore (important!)
+echo ".claude/" >> /path/to/your/project/.gitignore
+
+# Clean up
+cd /path/to/your/project
+rm -rf /tmp/claude-agents
+
+# Verify
+ls -R .claude/agents/
+ls .claude/commands/
 ```
 
-**Requirements:**
+**Add to your project's `.gitignore`:**
 
-- Git installed on your system
-- Internet connection
-- Bash shell
+```gitignore
+# Claude Code Agents (project-specific installation)
+.claude/
+```
 
-### Method 2: Manual Installation (Global)
+### Method 2: Manual Global Installation
 
-For more control over the installation process:
+Install globally for all projects:
 
 ```bash
 # Clone repository
@@ -57,25 +117,6 @@ cp -r .claude/commands/* ~/.claude/commands/
 # Verify installation
 ls -R ~/.claude/agents/
 ls ~/.claude/commands/
-```
-
-### Method 3: Project-Specific Installation
-
-Install agents for a specific project only:
-
-```bash
-# In your project directory
-git clone https://github.com/rcdelacruz/claude-code-agents.git
-cd claude-code-agents
-
-# Copy to project's .claude directory
-mkdir -p .claude/agents .claude/commands
-cp -r agents/* .claude/agents/
-cp -r .claude/commands/* .claude/commands/
-
-# Verify
-ls -R .claude/agents/
-ls .claude/commands/
 ```
 
 ### Method 4: Symlink (Development)
@@ -509,22 +550,94 @@ Copy-Item -Recurse .claude\commands\* $env:USERPROFILE\.claude\commands\
 
 ### Global vs Project-Specific
 
+**Use Project-Specific Installation When (Recommended for Teams):**
+
+- ✅ Working in a team (everyone uses same install command)
+- ✅ Want to keep repository clean (add `.claude/` to `.gitignore`)
+- ✅ Different projects need different agent versions
+- ✅ Project has custom agents or configurations
+- ✅ Want isolated agent environments per project
+- ✅ Need to track which agents a project uses (via documentation)
+
 **Use Global Installation When:**
 
-- You want agents available across all projects
-- You're the only developer
-- You want consistent agent versions
+- You're the only developer on all projects
+- You want consistent agent versions across all work
+- You rarely switch between different agent versions
+- You prefer one-time setup for all projects
 
-**Use Project-Specific Installation When:**
+### Project-Specific: .gitignore Configuration
 
-- Team needs same agent versions
-- Project has custom agents
-- Different projects need different agents
-- Version control for agents is needed
+!!! warning "Important: Add .claude/ to .gitignore"
+    When using project-specific installation, **always** add `.claude/` to your `.gitignore` to avoid committing agent files.
+
+**Why ignore `.claude/`?**
+
+- Agent files are large and unnecessary in version control
+- Team members can install using the same script
+- Prevents merge conflicts from agent updates
+- Keeps repository clean and focused on project code
+- Similar to ignoring `node_modules/`, `.vscode/`, `.idea/`
+
+**Recommended `.gitignore` entry:**
+
+```gitignore
+# Claude Code Agents (project-specific installation)
+# Install with: curl -fsSL https://raw.githubusercontent.com/.../install-project.sh | bash
+.claude/
+```
+
+**Alternative: Commit only configuration (advanced)**
+
+If you want to track agent configuration without committing the files:
+
+```gitignore
+# Claude Code - Ignore agents but keep config
+.claude/agents/
+.claude/commands/
+
+# Keep configuration file (if you create custom config)
+!.claude/agents.json
+!.claude/README.md
+```
+
+Then create `.claude/README.md` in your project:
+
+```markdown
+# Claude Code Agents
+
+This project uses Claude Code Agents.
+
+## Installation
+
+Run from project root:
+
+\`\`\`bash
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh | bash
+\`\`\`
+
+## Agents Installed
+
+- 19 specialized agents
+- 11 workflow commands
+
+## Documentation
+
+See: https://github.com/rcdelacruz/claude-code-agents
+```
 
 ### Keeping Agents Updated
 
-Regularly update to get the latest improvements:
+**Project-Specific Updates:**
+
+```bash
+# In your project directory
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh | bash
+```
+
+The script will overwrite existing agents with the latest versions.
+
+**Global Updates:**
 
 ```bash
 # Weekly update
