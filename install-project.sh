@@ -14,6 +14,11 @@ NC='\033[0m' # No Color
 echo -e "${BLUE}📦 Claude Code Agents - Project-Specific Installation${NC}"
 echo ""
 
+# Save the current directory BEFORE any cd commands
+# This is where the user ran the script from (their project directory)
+PROJECT_DIR="$(pwd)"
+echo -e "${BLUE}Installing to project: ${PROJECT_DIR}${NC}"
+
 # Check if we're in a git repository (recommended but not required)
 if git rev-parse --git-dir > /dev/null 2>&1; then
     echo -e "${GREEN}✓${NC} Git repository detected"
@@ -39,10 +44,6 @@ echo -e "${BLUE}Downloading Claude Code Agents repository...${NC}"
 cd "$TEMP_DIR"
 git clone --depth 1 https://github.com/rcdelacruz/claude-code-agents.git
 cd claude-code-agents
-
-# Get the project directory (where the script was called from)
-PROJECT_DIR="$OLDPWD"
-echo -e "${BLUE}Installing to project: ${PROJECT_DIR}${NC}"
 
 # Create .claude directory structure in project
 echo -e "${BLUE}Creating .claude directory structure...${NC}"
