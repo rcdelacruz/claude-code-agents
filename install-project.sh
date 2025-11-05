@@ -1,6 +1,13 @@
 #!/bin/bash
 # Project-Specific Installation Script for Claude Code Agents
 # Installs agents and commands to .claude/ directory in your project
+#
+# Usage:
+#   cd /path/to/your/project
+#   bash <(curl -fsSL https://raw.githubusercontent.com/.../install-project.sh)
+#
+# Or:
+#   bash install-project.sh [target-directory]
 
 set -e  # Exit on error
 
@@ -14,39 +21,36 @@ NC='\033[0m' # No Color
 echo -e "${BLUE}📦 Claude Code Agents - Project-Specific Installation${NC}"
 echo ""
 
-# Detect project directory
-# When piped from curl, use $PWD from the parent shell environment
-# Otherwise use current directory
-if [ -n "$INSTALL_DIR" ]; then
-    # User specified directory via environment variable
+# Determine installation directory
+if [ -n "$1" ]; then
+    # Argument provided: use it as target directory
+    PROJECT_DIR="$1"
+    echo -e "${BLUE}Installing to specified directory: ${PROJECT_DIR}${NC}"
+elif [ -n "$INSTALL_DIR" ]; then
+    # Environment variable provided
     PROJECT_DIR="$INSTALL_DIR"
-elif [ -n "$PWD" ] && [ "$PWD" != "/" ]; then
-    # Use PWD if available (works with piped scripts)
-    PROJECT_DIR="$PWD"
+    echo -e "${BLUE}Installing to INSTALL_DIR: ${PROJECT_DIR}${NC}"
 else
-    # Fallback to current directory
-    PROJECT_DIR="$(pwd)"
+    # No argument or env var: prompt user
+    echo -e "${YELLOW}Please enter the full path to your project directory:${NC}"
+    echo -e "${YELLOW}(or press Ctrl+C to cancel and run: cd your-project && bash <(curl ...))${NC}"
+    read -p "Project path: " PROJECT_DIR
+
+    # Expand ~ to home directory if present
+    PROJECT_DIR="${PROJECT_DIR/#\~/$HOME}"
 fi
 
-# Verify PROJECT_DIR is not a temp directory
-if [[ "$PROJECT_DIR" == /tmp/* ]] || [[ "$PROJECT_DIR" == /var/folders/* ]]; then
-    echo -e "${RED}❌ Error: Cannot detect project directory${NC}"
+# Validate directory exists
+if [ ! -d "$PROJECT_DIR" ]; then
+    echo -e "${RED}❌ Error: Directory does not exist: ${PROJECT_DIR}${NC}"
     echo ""
-    echo -e "${YELLOW}When using curl pipe, you must specify the installation directory:${NC}"
-    echo ""
-    echo -e "  ${BLUE}cd /path/to/your/project${NC}"
-    echo -e "  ${BLUE}curl -fsSL https://raw.githubusercontent.com/.../install-project.sh | INSTALL_DIR=\$(pwd) bash${NC}"
-    echo ""
-    echo -e "${YELLOW}Or download and run the script directly:${NC}"
-    echo ""
-    echo -e "  ${BLUE}cd /path/to/your/project${NC}"
-    echo -e "  ${BLUE}curl -fsSL https://raw.githubusercontent.com/.../install-project.sh > /tmp/install-project.sh${NC}"
-    echo -e "  ${BLUE}bash /tmp/install-project.sh${NC}"
-    echo ""
+    echo -e "${YELLOW}Please create the directory first or provide a valid path.${NC}"
     exit 1
 fi
 
-echo -e "${BLUE}Installing to project: ${PROJECT_DIR}${NC}"
+# Make path absolute
+PROJECT_DIR="$(cd "$PROJECT_DIR" && pwd)"
+echo -e "${GREEN}✓${NC} Installing to: ${PROJECT_DIR}"
 
 # Check if we're in a git repository (recommended but not required)
 if [ -d "$PROJECT_DIR/.git" ]; then
@@ -59,7 +63,7 @@ fi
 
 # Create temporary directory
 TEMP_DIR=$(mktemp -d)
-echo -e "${BLUE}Creating temporary directory: ${TEMP_DIR}${NC}"
+echo -e "${BLUE}Downloading to temporary directory...${NC}"
 
 # Cleanup function
 cleanup() {

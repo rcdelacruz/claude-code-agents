@@ -17,21 +17,32 @@ Install agents and commands to your current project only:
 
 ```bash
 cd /path/to/your/project
-curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh | INSTALL_DIR=$(pwd) bash
+bash <(curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh)
 ```
 
-**Alternative (download first, then run):**
+**The script will prompt you for the installation path.** Just press Enter to use the current directory, or type a full path.
+
+**Alternative methods:**
 
 ```bash
+# Method 1: Provide path as argument
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh | bash -s /path/to/your/project
+
+# Method 2: Use environment variable
 cd /path/to/your/project
-curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh > /tmp/install-project.sh
-bash /tmp/install-project.sh
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh | INSTALL_DIR="$(pwd)" bash
+
+# Method 3: Download and run (most reliable)
+cd /path/to/your/project
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh > install-project.sh
+bash install-project.sh
+rm install-project.sh
 ```
 
 This will:
 
 1. Auto-download the repository to a temporary directory
-2. Copy agents to `.claude/agents/` in your current project
+2. Copy agents to `.claude/agents/` in your specified project
 3. Copy workflow commands to `.claude/commands/`
 4. Optionally add `.claude/` to `.gitignore`
 5. Clean up temporary files
@@ -39,9 +50,6 @@ This will:
 
 !!! success "Project-Scoped Installation"
     Agents are installed only for this project. Perfect for teams who want version-controlled agent configurations without committing the actual agent files.
-
-!!! tip "Why INSTALL_DIR=$(pwd)?"
-    When piping scripts from curl, bash runs in a subshell and loses track of your current directory. The `INSTALL_DIR=$(pwd)` ensures the script installs to your project directory, not a temp folder.
 
 **Why Project-Specific?**
 
@@ -643,17 +651,17 @@ See: https://github.com/rcdelacruz/claude-code-agents
 **Project-Specific Updates:**
 
 ```bash
-# In your project directory
+# Navigate to your project
 cd /path/to/your/project
-curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh | INSTALL_DIR=$(pwd) bash
+
+# Run installation script (will prompt for path or press Enter for current dir)
+bash <(curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh)
 ```
 
-Or use the download method:
+**Quick update with argument:**
 
 ```bash
-cd /path/to/your/project
-curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh > /tmp/install-project.sh
-bash /tmp/install-project.sh
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh | bash -s /path/to/your/project
 ```
 
 The script will overwrite existing agents with the latest versions.
