@@ -21,15 +21,13 @@ Before starting this workshop, complete these setup steps.
 Ensure you have the following installed:
 
 - **Node.js 20+** - [Download](https://nodejs.org/)
-- **Docker Desktop** - [Download](https://www.docker.com/products/docker-desktop/) (for Playwright MCP)
 - **Git** - [Download](https://git-scm.com/)
 - **Claude Code CLI** or **Claude Code VS Code Extension** - [Installation Guide](../getting-started/installation.md)
 
 Verify installations:
 
 ```bash
-node --version   # Should show v18 or higher
-docker --version # Should show Docker version
+node --version   # Should show v20 or higher
 git --version    # Should show Git version
 ```
 
@@ -65,8 +63,8 @@ For this workshop, we'll use **Project scope** so team members can share the sam
 Add MCP servers using the `claude mcp add` command:
 
 ```bash
-# Add Playwright MCP (Docker-based)
-claude mcp add --transport stdio --scope project playwright -- docker run -i --rm mcp/playwright
+# Add Playwright MCP
+claude mcp add --scope project playwright npx '@playwright/mcp@latest'
 
 # Add Context7 MCP (for latest library docs)
 claude mcp add --transport stdio --scope project context7 -- npx -y @context7/mcp-server
@@ -85,8 +83,8 @@ Create or update `.mcp.json` in your project root:
 {
   "mcpServers": {
     "playwright": {
-      "command": "docker",
-      "args": ["run", "-i", "--rm", "mcp/playwright"]
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
     },
     "context7": {
       "command": "npx",
@@ -554,7 +552,7 @@ Include: Unit tests, integration tests, Playwright E2E tests
 
 Playwright is our E2E testing framework. Playwright MCP allows Claude Code to interact with your browser for testing and debugging.
 
-**Note**: This guide is for **Claude Code** (CLI/VS Code extension), not Claude Desktop. Playwright MCP is available through Docker MCP integration in Claude Code.
+**Note**: This guide is for **Claude Code** (CLI/VS Code extension), not Claude Desktop. Playwright MCP is available as an npm package that can be easily added to Claude Code.
 
 ### Setup Playwright (One-time)
 
@@ -607,21 +605,21 @@ export default defineConfig({
 
 Playwright MCP allows Claude Code to control your browser for testing and debugging.
 
-**Note**: Playwright MCP is already available in Claude Code if you have Docker MCP configured. The browser automation tools are available through the `mcp__MCP_DOCKER__browser_*` functions.
+**Note**: Playwright MCP can be easily added to Claude Code using the `claude mcp add` command. The browser automation tools will be available through the `mcp__playwright__browser_*` functions.
 
 **Verify Playwright MCP is available:**
 
 ```bash
 # In Claude Code, check if browser tools are available by asking:
 # "Do I have access to Playwright MCP browser tools?"
-# You should see mcp__MCP_DOCKER__browser_navigate, browser_click, etc.
+# You should see mcp__playwright__browser_navigate, browser_click, etc.
 ```
 
 **If Playwright MCP is not available**, configure it using one of these methods:
 
 **Using CLI (Recommended):**
 ```bash
-claude mcp add --transport stdio --scope project playwright -- docker run -i --rm mcp/playwright
+claude mcp add --scope project playwright npx '@playwright/mcp@latest'
 ```
 
 **Or manually add to `.mcp.json` in your project root:**
@@ -630,13 +628,8 @@ claude mcp add --transport stdio --scope project playwright -- docker run -i --r
 {
   "mcpServers": {
     "playwright": {
-      "command": "docker",
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "mcp/playwright"
-      ]
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
     }
   }
 }
@@ -646,10 +639,10 @@ claude mcp add --transport stdio --scope project playwright -- docker run -i --r
 
 **Troubleshooting**:
 
-- If browser tools aren't available, make sure Docker is running on your machine
-- Docker is required for Playwright MCP in Claude Code
-- You can verify by running: `docker ps` (should show running containers or at least not error)
-- If you don't have Docker, you can still write Playwright tests manually - just won't have interactive MCP testing
+- If browser tools aren't available, restart Claude Code after adding the MCP server
+- Make sure you have Node.js installed (npx requires Node.js)
+- You can verify the installation by checking available MCP tools in Claude Code
+- If you encounter issues, you can still write Playwright tests manually - just won't have interactive MCP testing
 
 ### Writing E2E Tests with Playwright
 
@@ -742,13 +735,13 @@ Report any issues found
 
 **What Claude Code can do with Playwright MCP:**
 
-- Navigate to pages (`mcp__MCP_DOCKER__browser_navigate`)
-- Take screenshots (`mcp__MCP_DOCKER__browser_take_screenshot`)
-- Click elements (`mcp__MCP_DOCKER__browser_click`)
-- Fill forms (`mcp__MCP_DOCKER__browser_type`)
-- Check element visibility (`mcp__MCP_DOCKER__browser_snapshot`)
-- Get console errors (`mcp__MCP_DOCKER__browser_console_messages`)
-- Monitor network requests (`mcp__MCP_DOCKER__browser_network_requests`)
+- Navigate to pages (`mcp__playwright__browser_navigate`)
+- Take screenshots (`mcp__playwright__browser_take_screenshot`)
+- Click elements (`mcp__playwright__browser_click`)
+- Fill forms (`mcp__playwright__browser_type`)
+- Check element visibility (`mcp__playwright__browser_snapshot`)
+- Get console errors (`mcp__playwright__browser_console_messages`)
+- Monitor network requests (`mcp__playwright__browser_network_requests`)
 
 **Note**: Claude Code will use these MCP tools automatically when you ask it to test with Playwright MCP.
 
@@ -1735,7 +1728,7 @@ Each checkbox must be completed. Do not skip any.
 ```bash
 # 1. Verify Playwright MCP is available in Claude Code
 # In Claude Code, you can ask: "Do I have browser testing tools?"
-# Should see mcp__MCP_DOCKER__browser_* functions available
+# Should see mcp__playwright__browser_* functions available
 
 # 2. Install Playwright in your project (if not done)
 npm install -D @playwright/test
