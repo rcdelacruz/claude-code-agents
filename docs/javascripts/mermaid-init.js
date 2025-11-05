@@ -91,4 +91,60 @@ window.addEventListener('DOMContentLoaded', (event) => {
   document.querySelectorAll('.mermaid').forEach((element) => {
     element.setAttribute('data-mermaid-src', element.innerHTML);
   });
+
+  // Add click-to-zoom functionality for Mermaid diagrams
+  function addMermaidZoom() {
+    document.querySelectorAll('.mermaid').forEach((diagram) => {
+      // Add zoom cursor style
+      diagram.style.cursor = 'zoom-in';
+      diagram.style.transition = 'transform 0.3s ease';
+
+      // Click handler for zoom
+      diagram.addEventListener('click', function(e) {
+        // Check if already zoomed
+        if (this.classList.contains('mermaid-zoomed')) {
+          // Zoom out
+          this.classList.remove('mermaid-zoomed');
+          this.style.position = '';
+          this.style.top = '';
+          this.style.left = '';
+          this.style.width = '';
+          this.style.height = '';
+          this.style.zIndex = '';
+          this.style.backgroundColor = '';
+          this.style.cursor = 'zoom-in';
+          this.style.transform = '';
+          this.style.padding = '';
+          this.style.boxShadow = '';
+          document.body.style.overflow = '';
+        } else {
+          // Zoom in
+          this.classList.add('mermaid-zoomed');
+          this.style.position = 'fixed';
+          this.style.top = '50%';
+          this.style.left = '50%';
+          this.style.width = '90vw';
+          this.style.height = '90vh';
+          this.style.zIndex = '9999';
+          this.style.backgroundColor = 'var(--md-default-bg-color)';
+          this.style.cursor = 'zoom-out';
+          this.style.transform = 'translate(-50%, -50%)';
+          this.style.padding = '20px';
+          this.style.boxShadow = '0 0 0 9999px rgba(0,0,0,0.8)';
+          document.body.style.overflow = 'hidden';
+        }
+        e.stopPropagation();
+      });
+    });
+  }
+
+  // Add zoom functionality after initial render
+  setTimeout(addMermaidZoom, 500);
+
+  // Re-add zoom after theme changes
+  const originalInit = mermaid.init;
+  mermaid.init = function(...args) {
+    originalInit.apply(this, args);
+    setTimeout(addMermaidZoom, 500);
+  };
 });
