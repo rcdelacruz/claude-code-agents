@@ -16,7 +16,16 @@ This guide explains how to install the Claude Code Agents system with the two-ti
 Install agents and commands to your current project only:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh | bash
+cd /path/to/your/project
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh | INSTALL_DIR=$(pwd) bash
+```
+
+**Alternative (download first, then run):**
+
+```bash
+cd /path/to/your/project
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh > /tmp/install-project.sh
+bash /tmp/install-project.sh
 ```
 
 This will:
@@ -30,6 +39,9 @@ This will:
 
 !!! success "Project-Scoped Installation"
     Agents are installed only for this project. Perfect for teams who want version-controlled agent configurations without committing the actual agent files.
+
+!!! tip "Why INSTALL_DIR=$(pwd)?"
+    When piping scripts from curl, bash runs in a subshell and loses track of your current directory. The `INSTALL_DIR=$(pwd)` ensures the script installs to your project directory, not a temp folder.
 
 **Why Project-Specific?**
 
@@ -632,7 +644,16 @@ See: https://github.com/rcdelacruz/claude-code-agents
 
 ```bash
 # In your project directory
-curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh | bash
+cd /path/to/your/project
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh | INSTALL_DIR=$(pwd) bash
+```
+
+Or use the download method:
+
+```bash
+cd /path/to/your/project
+curl -fsSL https://raw.githubusercontent.com/rcdelacruz/claude-code-agents/main/install-project.sh > /tmp/install-project.sh
+bash /tmp/install-project.sh
 ```
 
 The script will overwrite existing agents with the latest versions.

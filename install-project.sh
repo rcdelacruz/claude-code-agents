@@ -14,13 +14,42 @@ NC='\033[0m' # No Color
 echo -e "${BLUE}📦 Claude Code Agents - Project-Specific Installation${NC}"
 echo ""
 
-# Save the current directory BEFORE any cd commands
-# This is where the user ran the script from (their project directory)
-PROJECT_DIR="$(pwd)"
+# Detect project directory
+# When piped from curl, use $PWD from the parent shell environment
+# Otherwise use current directory
+if [ -n "$INSTALL_DIR" ]; then
+    # User specified directory via environment variable
+    PROJECT_DIR="$INSTALL_DIR"
+elif [ -n "$PWD" ] && [ "$PWD" != "/" ]; then
+    # Use PWD if available (works with piped scripts)
+    PROJECT_DIR="$PWD"
+else
+    # Fallback to current directory
+    PROJECT_DIR="$(pwd)"
+fi
+
+# Verify PROJECT_DIR is not a temp directory
+if [[ "$PROJECT_DIR" == /tmp/* ]] || [[ "$PROJECT_DIR" == /var/folders/* ]]; then
+    echo -e "${RED}❌ Error: Cannot detect project directory${NC}"
+    echo ""
+    echo -e "${YELLOW}When using curl pipe, you must specify the installation directory:${NC}"
+    echo ""
+    echo -e "  ${BLUE}cd /path/to/your/project${NC}"
+    echo -e "  ${BLUE}curl -fsSL https://raw.githubusercontent.com/.../install-project.sh | INSTALL_DIR=\$(pwd) bash${NC}"
+    echo ""
+    echo -e "${YELLOW}Or download and run the script directly:${NC}"
+    echo ""
+    echo -e "  ${BLUE}cd /path/to/your/project${NC}"
+    echo -e "  ${BLUE}curl -fsSL https://raw.githubusercontent.com/.../install-project.sh > /tmp/install-project.sh${NC}"
+    echo -e "  ${BLUE}bash /tmp/install-project.sh${NC}"
+    echo ""
+    exit 1
+fi
+
 echo -e "${BLUE}Installing to project: ${PROJECT_DIR}${NC}"
 
 # Check if we're in a git repository (recommended but not required)
-if git rev-parse --git-dir > /dev/null 2>&1; then
+if [ -d "$PROJECT_DIR/.git" ]; then
     echo -e "${GREEN}✓${NC} Git repository detected"
     IN_GIT_REPO=true
 else
