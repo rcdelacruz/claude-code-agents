@@ -32,13 +32,14 @@ elif [ -n "$INSTALL_DIR" ]; then
     echo -e "${BLUE}Installing to INSTALL_DIR: ${PROJECT_DIR}${NC}"
 else
     # No argument or env var: prompt user
+    CURRENT_DIR="$(pwd)"
     echo -e "${YELLOW}Please enter the full path to your project directory:${NC}"
-    echo -e "${YELLOW}(or just press Enter to use current directory: $(pwd))${NC}"
+    echo -e "${YELLOW}(or type . for current directory: ${CURRENT_DIR})${NC}"
     read -p "Project path: " PROJECT_DIR
 
-    # If empty, use current directory
-    if [ -z "$PROJECT_DIR" ]; then
-        PROJECT_DIR="$(pwd)"
+    # If empty or ".", use current directory
+    if [ -z "$PROJECT_DIR" ] || [ "$PROJECT_DIR" = "." ]; then
+        PROJECT_DIR="$CURRENT_DIR"
     else
         # Expand ~ to home directory if present
         PROJECT_DIR="${PROJECT_DIR/#\~/$HOME}"
