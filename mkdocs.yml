@@ -108,6 +108,7 @@ nav:
       - Architecture Agents: agents/architecture-agents.md
       - Cross-Cutting Specialists: agents/cross-cutting-specialists.md
   - Guides:
+      - Workshop - AI-Assisted Development: guides/workshop-ai-assisted-development.md
       - New Project Setup: guides/new-project-setup.md
       - Requirements Workflow: guides/requirements-workflow.md
       - Document Organization: guides/document-organization.md

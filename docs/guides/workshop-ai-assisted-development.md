@@ -8,43 +8,273 @@
 
 **What You Have**: Development tasks in `documents/03-dev-tasks/` with detailed requirements, acceptance criteria, and technical notes.
 
-**What You'll Learn**: How to translate those task cards into production-ready code using AI agents and Playwright MCP for testing.
+**What You'll Learn**: How to translate those task cards into production-ready code using AI agents, Playwright MCP for testing, and useful MCP servers for enhanced development.
 
 ---
 
-## Your Daily Workflow (Simple 5-Step Process)
+## Prerequisites and Setup
+
+Before starting this workshop, complete these setup steps.
+
+### 1. Required Software
+
+Ensure you have the following installed:
+
+- **Node.js 20+** - [Download](https://nodejs.org/)
+- **Docker Desktop** - [Download](https://www.docker.com/products/docker-desktop/) (for Playwright MCP)
+- **Git** - [Download](https://git-scm.com/)
+- **Claude Code CLI** or **Claude Code VS Code Extension** - [Installation Guide](../getting-started/installation.md)
+
+Verify installations:
+
+```bash
+node --version   # Should show v18 or higher
+docker --version # Should show Docker version
+git --version    # Should show Git version
+```
+
+### 2. Project Setup
+
+Clone and setup the project:
+
+```bash
+# Navigate to your project directory
+cd /path/to/your/project
+
+# Install dependencies
+npm install
+
+# Install Playwright browsers
+npx playwright install
+```
+
+### 3. Configure MCP Servers
+
+MCP (Model Context Protocol) servers enhance Claude Code with additional capabilities. Configure these in your project.
+
+Create or update `.claude/mcp.json` in your project root:
+
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "mcp/playwright"]
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@context7/mcp-server"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "your_github_token_here"
+      }
+    }
+  }
+}
+```
+
+**MCP Servers Explained**:
+
+- **Playwright MCP**
+    - Interactive browser testing and debugging
+    - Take screenshots
+    - Click elements
+    - Fill forms
+    - Check console errors
+    - Monitor network requests
+
+- **Context7 MCP**
+    - Access up-to-date library documentation
+    - Get latest Next.js docs
+    - Query React documentation
+    - Access framework guides
+    - Find API references
+
+- **GitHub MCP**
+    - Interact with GitHub repositories
+    - Create issues
+    - Search code
+    - List pull requests
+    - Get repository information
+
+### 4. Setup GitHub Token (Optional but Recommended)
+
+To use GitHub MCP, **each developer must create their own personal access token**.
+
+**Important: DO NOT share tokens between team members!**
+
+Why each developer needs their own token:
+
+- Commits and actions are attributed to the correct person
+- Audit trail shows who made which changes
+- Individual token revocation without affecting the team
+- GitHub tracks rate limits per token
+- Security best practice (tokens are like passwords)
+
+**Create Your Personal Token:**
+
+1. Go to GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)
+2. Click "Generate new token (classic)"
+3. Give it a descriptive name: "Claude Code - [Your Name]"
+4. Select scopes: `repo`, `read:org`, `read:user`
+5. Set expiration: 90 days (recommended for security)
+6. Click "Generate token"
+7. **Copy the token immediately** (you won't see it again!)
+
+**Add Token to Your Local Configuration:**
+
+**Option 1: Environment Variable (Recommended for teams)**
+
+Add to your shell profile (`~/.zshrc` or `~/.bashrc`):
+
+```bash
+export GITHUB_PERSONAL_ACCESS_TOKEN="your_personal_token_here"
+```
+
+Reload your shell:
+```bash
+source ~/.zshrc  # or source ~/.bashrc
+```
+
+**Option 2: In Project Config (Less secure - token in file)**
+
+Add to `.claude/mcp.json` (make sure this file is in `.gitignore`):
+
+```json
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "your_personal_token_here"
+      }
+    }
+  }
+}
+```
+
+**Verify `.gitignore` includes:**
+```
+.claude/mcp.json
+```
+
+This prevents accidentally committing tokens to the repository.
+
+### 5. Verify Setup
+
+Check that everything is working:
+
+```bash
+# Start dev server
+npm run dev
+
+# In another terminal, verify Docker is running
+docker ps
+
+# In Claude Code, verify MCP servers are loaded
+# Ask: "What MCP tools do I have access to?"
+# You should see: browser tools, context7 docs, github tools
+```
+
+### 6. Access Your Development Tasks
+
+Your tasks are located in:
+
+```bash
+documents/03-dev-tasks/
+├── login-authentication-dev-tasks.md
+├── dashboard-dev-tasks.md
+├── documents-dev-tasks.md
+├── messages-contact-dev-tasks.md
+├── payments-dev-tasks.md
+├── property-milestones-dev-tasks.md
+└── ... (more task files)
+```
+
+Each file contains:
+
+- Task summary table
+- Detailed task cards with:
+  - User stories
+  - Descriptions
+  - Acceptance criteria
+  - Technical notes
+  - Dependencies
+
+---
+
+## Your Daily Workflow (Simple 6-Step Process)
 
 ```mermaid
 flowchart LR
     A[1. Pick Task] --> B[2. Code]
     B --> C[3. Test]
     C --> D[4. Quality Check]
-    D --> E[5. Commit]
+    D --> E[5. Update Task]
+    E --> F[6. Commit]
 
     style A fill:#4a90e2,stroke:#333,stroke-width:2px,color:#fff
     style B fill:#7cb342,stroke:#333,stroke-width:2px,color:#fff
     style C fill:#ffa726,stroke:#333,stroke-width:2px,color:#fff
     style D fill:#ab47bc,stroke:#333,stroke-width:2px,color:#fff
-    style E fill:#66bb6a,stroke:#333,stroke-width:2px,color:#fff
+    style E fill:#29b6f6,stroke:#333,stroke-width:2px,color:#fff
+    style F fill:#66bb6a,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 ### Step 1: Pick Your Task (2 min)
+
 Open your task file and find your assigned task:
+
 ```bash
 # Example: You're assigned TASK-012 from login-authentication-dev-tasks.md
 open documents/03-dev-tasks/login-authentication-dev-tasks.md
 ```
 
 ### Step 2: Code It (Main work)
-Use the right agent based on what the task needs
+
+Use the right agent based on what the task needs.
+
+**Pro Tip: Use Context7 MCP for Latest Documentation**
+
+When you need up-to-date information about libraries or frameworks:
+
+```bash
+# Example: Need to know latest Next.js 15 Server Actions patterns
+Use Context7 MCP to get latest Next.js Server Actions documentation
+
+Question: What are the best practices for Server Actions in Next.js 15?
+
+# Example: React 19 features
+Use Context7 MCP to get React 19 documentation
+
+Question: How to use the new useOptimistic hook in React 19?
+
+# Example: Prisma latest features
+Use Context7 MCP to get Prisma documentation
+
+Question: What's the syntax for Prisma 5 JSON filtering?
+```
+
+Context7 MCP provides current documentation, eliminating outdated Stack Overflow answers.
 
 ### Step 3: Test It (After coding)
+
 Write tests for what you built
 
 ### Step 4: Quality Check (Before commit)
+
 Run code review, security, and performance checks
 
-### Step 5: Commit (Final)
+### Step 5: Update Task (Mark complete)
+
+Ask Claude Code to mark the task as completed in the dev-tasks file
+
+### Step 6: Commit (Final)
+
 Commit with clear message referencing the task
 
 ---
@@ -70,6 +300,7 @@ Look at your task's **Role** and **Description** to pick the right agent:
 #### Example 1: Database Task (TASK-002)
 
 **Your Task Card Says:**
+
 ```
 TASK-002: Create Prisma schema for authentication
 Role: Backend
@@ -81,10 +312,24 @@ Acceptance Criteria:
 ```
 
 **What You Do:**
+
+**First, use Context7 MCP to get latest Prisma and NextAuth.js patterns:**
+
+```bash
+Use Context7 MCP to get latest Prisma and NextAuth.js documentation
+
+Questions:
+1. What's the recommended Prisma schema structure for NextAuth.js v5?
+2. What are the latest Prisma indexing best practices for performance?
+3. How to set up Prisma with NextAuth.js adapter in Next.js 15?
+```
+
+**Then, implement with the database agent:**
+
 ```bash
 Use database to implement TASK-002 from documents/03-dev-tasks/login-authentication-dev-tasks.md
 
-Create Prisma schema with these models:
+Based on latest documentation from Context7 MCP, create Prisma schema with these models:
 1. User (email, password, firstName, lastName, profilePhoto, role)
 2. Account (for OAuth - Google, Facebook)
 3. Session (NextAuth.js session management)
@@ -92,20 +337,28 @@ Create Prisma schema with these models:
 5. ActivationToken (account activation)
 
 Include:
-- Indexes on email fields and foreign keys
+- Indexes on email fields and foreign keys (use latest Prisma indexing syntax)
 - Unique constraints on email
 - UserRole enum (BUYER, ADMIN, SUPPORT)
 - Timestamps (createdAt, updatedAt)
-- Prisma Adapter compatibility for NextAuth.js
+- Prisma Adapter compatibility for NextAuth.js v5 (use latest adapter patterns)
 ```
 
-**Agent Response**: Creates complete Prisma schema file with all models
+**Agent Response**: Creates complete Prisma schema file with all models using latest best practices
+
+**Why Use Context7 MCP First?**
+
+- Ensures you're using latest Prisma 5 syntax
+- Gets current NextAuth.js v5 adapter patterns
+- Avoids deprecated methods
+- Uses latest performance optimizations
 
 ---
 
 #### Example 2: UI Component Task (TASK-012)
 
 **Your Task Card Says:**
+
 ```
 TASK-012: Build login page UI with email input
 Role: Fullstack
@@ -120,6 +373,20 @@ Acceptance Criteria:
 ```
 
 **What You Do:**
+
+**First, check latest patterns with Context7 MCP:**
+
+```bash
+Use Context7 MCP to get latest React and Next.js documentation
+
+Questions:
+1. What are the latest React 19 form handling patterns with useFormState?
+2. How to properly implement Client Components with Server Actions in Next.js 15?
+3. What are the current shadcn/ui form component best practices?
+```
+
+**Then, implement with the frontend-ui agent:**
+
 ```bash
 Use frontend-ui to implement TASK-012 from documents/03-dev-tasks/login-authentication-dev-tasks.md
 
@@ -130,21 +397,29 @@ Create login page UI with:
 4. Error message area (rate limit, invalid email)
 5. Success message: "Check your email for magic link"
 
-Technical requirements:
-- Use shadcn/ui components (Card, Input, Button)
-- Client Component (needs form state)
+Technical requirements (based on latest Context7 MCP documentation):
+- Use shadcn/ui components (Card, Input, Button) with latest patterns
+- Client Component with React 19 useFormState hook
 - Integrate with TASK-011 server action (already implemented)
 - Responsive design (mobile and desktop)
-- Accessibility (ARIA labels, keyboard navigation)
+- Accessibility (ARIA labels, keyboard navigation, announcements)
 ```
 
-**Agent Response**: Creates login page component with all requirements
+**Agent Response**: Creates login page component with all requirements using latest React 19 patterns
+
+**Context7 MCP Advantage:**
+
+- Gets latest React 19 hook usage (useFormState, useOptimistic)
+- Current Next.js 15 Server Action integration patterns
+- Latest shadcn/ui component APIs
+- Up-to-date accessibility guidelines
 
 ---
 
 #### Example 3: API/Backend Task (TASK-021)
 
 **Your Task Card Says:**
+
 ```
 TASK-021: Create getDashboardData server action
 Role: Backend
@@ -159,6 +434,7 @@ Acceptance Criteria:
 ```
 
 **What You Do:**
+
 ```bash
 Use backend-api to implement TASK-021 from documents/03-dev-tasks/dashboard-dev-tasks.md
 
@@ -197,6 +473,7 @@ After coding, immediately write tests. Your task card often includes testing req
 ### Testing Tasks
 
 Look for tasks like:
+
 - TASK-037: Create unit tests for authentication services
 - TASK-039: Implement E2E tests for login flows
 - TASK-046: Write unit tests for repositories and use cases
@@ -204,6 +481,7 @@ Look for tasks like:
 ### Quick Testing Guide
 
 **For Unit Tests:**
+
 ```bash
 Use qa-tester to write unit tests for TASK-011
 
@@ -216,6 +494,7 @@ Test cases from acceptance criteria:
 ```
 
 **For E2E Tests with Playwright:**
+
 ```bash
 Use qa-tester to write Playwright E2E tests for TASK-012
 
@@ -230,6 +509,7 @@ User flow to test:
 ```
 
 **Use Comprehensive Testing Workflow:**
+
 ```bash
 /workflow-qa-e2e
 
@@ -248,18 +528,21 @@ Playwright is our E2E testing framework. Playwright MCP allows Claude Code to in
 ### Setup Playwright (One-time)
 
 **Install Playwright:**
+
 ```bash
 npm install -D @playwright/test
 npx playwright install
 ```
 
 **Create Playwright config:**
+
 ```bash
 # Generate playwright.config.ts
 npx playwright init
 ```
 
 **Configure for Next.js:**
+
 ```typescript
 // playwright.config.ts
 import { defineConfig, devices } from '@playwright/test';
@@ -296,6 +579,7 @@ Playwright MCP allows Claude Code to control your browser for testing and debugg
 **Note**: Playwright MCP is already available in Claude Code if you have Docker MCP configured. The browser automation tools are available through the `mcp__MCP_DOCKER__browser_*` functions.
 
 **Verify Playwright MCP is available:**
+
 ```bash
 # In Claude Code, check if browser tools are available by asking:
 # "Do I have access to Playwright MCP browser tools?"
@@ -325,6 +609,7 @@ Add to `.claude/mcp.json` in your project root:
 **No restart needed** - Claude Code loads MCP servers automatically from project configuration.
 
 **Troubleshooting**:
+
 - If browser tools aren't available, make sure Docker is running on your machine
 - Docker is required for Playwright MCP in Claude Code
 - You can verify by running: `docker ps` (should show running containers or at least not error)
@@ -335,6 +620,7 @@ Add to `.claude/mcp.json` in your project root:
 #### Method 1: Let Agent Write Tests (Recommended)
 
 **For simple flows:**
+
 ```bash
 Use qa-tester to write Playwright E2E test for login flow (TASK-012)
 
@@ -356,6 +642,7 @@ Use Playwright best practices:
 ```
 
 **Agent creates:**
+
 ```typescript
 // tests/e2e/login.spec.ts
 import { test, expect } from '@playwright/test';
@@ -396,11 +683,13 @@ test.describe('Login Flow', () => {
 Use Playwright MCP to **interactively test your app** and let Claude see what's happening.
 
 **Start your app:**
+
 ```bash
 npm run dev
 ```
 
 **Tell Claude Code to test using MCP:**
+
 ```bash
 Use Playwright MCP to test the login page at http://localhost:3000/login
 
@@ -416,6 +705,7 @@ Report any issues found
 ```
 
 **What Claude Code can do with Playwright MCP:**
+
 - Navigate to pages (`mcp__MCP_DOCKER__browser_navigate`)
 - Take screenshots (`mcp__MCP_DOCKER__browser_take_screenshot`)
 - Click elements (`mcp__MCP_DOCKER__browser_click`)
@@ -427,6 +717,7 @@ Report any issues found
 **Note**: Claude Code will use these MCP tools automatically when you ask it to test with Playwright MCP.
 
 **Example - Debug a failing feature:**
+
 ```bash
 Use Playwright MCP to debug the login form
 
@@ -444,6 +735,7 @@ Please:
 ```
 
 **Claude will interact with the browser and report:**
+
 ```
 I found the issue:
 1. Submit button is clicked successfully
@@ -460,6 +752,7 @@ The validateEmail function is imported but not defined.
 #### 1. Use Data-testid for Stable Selectors
 
 **Add to your components:**
+
 ```tsx
 // components/auth/login-form.tsx
 export function LoginForm() {
@@ -482,6 +775,7 @@ export function LoginForm() {
 ```
 
 **Use in tests:**
+
 ```typescript
 await page.getByTestId('email-input').fill('test@example.com');
 await page.getByTestId('submit-button').click();
@@ -491,6 +785,7 @@ await expect(page.getByTestId('error-message')).toHaveText('Invalid email');
 #### 2. Page Object Model
 
 **Create page objects for reusability:**
+
 ```typescript
 // tests/e2e/pages/login.page.ts
 import { Page } from '@playwright/test';
@@ -522,6 +817,7 @@ export class LoginPage {
 ```
 
 **Use in tests:**
+
 ```typescript
 import { LoginPage } from './pages/login.page';
 
@@ -538,6 +834,7 @@ test('successful login', async ({ page }) => {
 #### 3. Fixtures for Test Data
 
 **Create fixtures:**
+
 ```typescript
 // tests/e2e/fixtures.ts
 import { test as base } from '@playwright/test';
@@ -555,6 +852,7 @@ export const test = base.extend({
 ```
 
 **Use in tests:**
+
 ```typescript
 import { test } from './fixtures';
 
@@ -647,31 +945,37 @@ test('mobile navigation', async ({ page }) => {
 ### Running Playwright Tests
 
 **Run all tests:**
+
 ```bash
 npx playwright test
 ```
 
 **Run specific test file:**
+
 ```bash
 npx playwright test tests/e2e/login.spec.ts
 ```
 
 **Run in headed mode (see browser):**
+
 ```bash
 npx playwright test --headed
 ```
 
 **Run in debug mode:**
+
 ```bash
 npx playwright test --debug
 ```
 
 **Run in UI mode (interactive):**
+
 ```bash
 npx playwright test --ui
 ```
 
 **View test report:**
+
 ```bash
 npx playwright show-report
 ```
@@ -681,17 +985,20 @@ npx playwright show-report
 When using Playwright MCP through Claude, you can ask Claude to:
 
 **Navigation:**
+
 - "Navigate to http://localhost:3000/login"
 - "Go to the dashboard page"
 - "Click the back button"
 
 **Interaction:**
+
 - "Click the submit button"
 - "Fill the email input with test@example.com"
 - "Select 'Option 1' from the dropdown"
 - "Check the terms checkbox"
 
 **Verification:**
+
 - "Take a screenshot"
 - "Check if error message is visible"
 - "Get the page title"
@@ -699,6 +1006,7 @@ When using Playwright MCP through Claude, you can ask Claude to:
 - "List all network requests"
 
 **Debugging:**
+
 - "Find all buttons on the page"
 - "Get the text of the error message"
 - "Check if the form is disabled"
@@ -709,6 +1017,7 @@ When using Playwright MCP through Claude, you can ask Claude to:
 **Your task: TASK-039 (Implement E2E tests for login flows)**
 
 **Step 1: Manual exploration with MCP**
+
 ```bash
 Use Playwright MCP to explore the login flow
 
@@ -727,6 +1036,7 @@ Report what you observe so I can write proper tests
 ```
 
 **Step 2: Write tests based on observations**
+
 ```bash
 Use qa-tester to write Playwright tests for TASK-039
 
@@ -743,6 +1053,7 @@ Use the Page Object Model pattern.
 ### Troubleshooting Playwright
 
 **Problem: Tests timeout**
+
 ```typescript
 // Increase timeout for slow operations
 test('slow operation', async ({ page }) => {
@@ -754,6 +1065,7 @@ test('slow operation', async ({ page }) => {
 ```
 
 **Problem: Element not found**
+
 ```typescript
 // Use proper waits
 await page.getByTestId('submit-button').waitFor({ state: 'visible' });
@@ -761,6 +1073,7 @@ await page.getByTestId('submit-button').click();
 ```
 
 **Problem: Flaky tests**
+
 ```typescript
 // Use auto-waiting instead of arbitrary timeouts
 // ❌ Bad
@@ -771,6 +1084,7 @@ await expect(page.getByText('Success')).toBeVisible();
 ```
 
 **Problem: Test works locally but fails in CI**
+
 ```typescript
 // Use CI-specific configuration
 export default defineConfig({
@@ -790,6 +1104,7 @@ export default defineConfig({
 Before committing, run these 3 checks to ensure production quality:
 
 ### Check 1: Code Review (15 min)
+
 ```bash
 /workflow-review-code
 
@@ -800,6 +1115,7 @@ Task reference: TASK-XXX from documents/03-dev-tasks/[feature]-dev-tasks.md
 ```
 
 **What it checks:**
+
 - Code quality and TypeScript types
 - Error handling
 - Best practices
@@ -811,6 +1127,7 @@ Task reference: TASK-XXX from documents/03-dev-tasks/[feature]-dev-tasks.md
 ---
 
 ### Check 2: Security Audit (15 min)
+
 ```bash
 /workflow-review-security
 
@@ -819,6 +1136,7 @@ Focus: OWASP Top 10, input validation, authentication security
 ```
 
 **Critical for tasks involving:**
+
 - Authentication (login, signup, OAuth)
 - User input (forms, search)
 - Data storage (database operations)
@@ -830,6 +1148,7 @@ Focus: OWASP Top 10, input validation, authentication security
 ---
 
 ### Check 3: Performance Check (10 min)
+
 ```bash
 /workflow-review-performance
 
@@ -838,6 +1157,7 @@ Check: Load time, bundle size, Core Web Vitals
 ```
 
 **Important for tasks involving:**
+
 - UI components (bundle size)
 - Dashboard/pages (load time)
 - API calls (response time)
@@ -849,9 +1169,30 @@ Check: Load time, bundle size, Core Web Vitals
 
 ## Step 5: Commit
 
-After all quality checks pass, commit your work.
+After all quality checks pass, commit your work and update the task status.
 
-### Commit Message Format
+### Before Committing: Update Task Status
+
+**IMPORTANT**: Ask Claude Code to update the task markdown file to mark it as complete:
+
+```bash
+Please update documents/03-dev-tasks/[feature]-dev-tasks.md
+
+Mark TASK-XXX as completed by:
+1. Adding a ✅ emoji or [COMPLETED] tag to the task title
+2. Adding completion date
+3. Adding any implementation notes or deviations from original plan
+
+Example:
+### TASK-012: Build login page UI with email input ✅
+- **Status**: Completed on 2024-01-15
+- **Implemented by**: [Your Name]
+- **Notes**: Used shadcn/ui instead of custom components for faster development
+```
+
+This keeps the task file updated for the team and tracks progress.
+
+### Option 1: Commit with Git Commands (Traditional)
 
 ```bash
 git add .
@@ -876,6 +1217,63 @@ Task: TASK-XXX
 File: documents/03-dev-tasks/[feature]-dev-tasks.md
 Dependencies: [List dependency tasks if any]
 "
+```
+
+### Option 2: Commit with GitHub MCP (Recommended)
+
+Use GitHub MCP to create commits and optionally create issues or PRs directly from Claude Code:
+
+```bash
+Use GitHub MCP to commit my changes
+
+Commit details:
+- Type: feat
+- Task: TASK-012 - Build login page UI with email input
+- Summary: Implement login page with magic link authentication
+
+Changes:
+- Created app/(auth)/login/page.tsx with login layout
+- Created components/auth/login-form.tsx with email validation
+- Integrated with TASK-011 server action
+- Added OAuth buttons for Google and Facebook
+- Implemented loading states and error handling
+
+Testing completed:
+- 8 unit tests passing
+- 6 E2E tests passing
+- Code review clean
+- Security audit passed
+- Performance optimized
+
+Please create the commit and push to current branch.
+```
+
+**GitHub MCP Benefits:**
+
+- Automatically formats commit messages
+- Can create GitHub issues for follow-up tasks
+- Can open draft PRs for review
+- Links commits to issues automatically
+
+**Create Issue from Task:**
+
+```bash
+Use GitHub MCP to create an issue for follow-up work
+
+Title: Add password reset flow to login page
+Body:
+Based on TASK-012 implementation, we should add password reset functionality.
+
+Requirements:
+- "Forgot password?" link on login page
+- Email-based reset flow
+- Token expiration (15 minutes)
+- Rate limiting (3 attempts per hour)
+
+Related to: TASK-012
+Dependencies: TASK-010 (magic link service)
+
+Labels: enhancement, authentication
 ```
 
 ### Real Commit Example
@@ -921,53 +1319,56 @@ Dependencies: TASK-011 (email login server action)
 **Pick a task**: TASK-001 (Setup Neon DB PostgreSQL database)
 
 1. **Read the task** (5 min)
-   - Open: `documents/03-dev-tasks/login-authentication-dev-tasks.md`
-   - Find TASK-001
-   - Read: User Story, Description, Acceptance Criteria, Technical Notes
+    - Open: `documents/03-dev-tasks/login-authentication-dev-tasks.md`
+    - Find TASK-001
+    - Read: User Story, Description, Acceptance Criteria, Technical Notes
 
 2. **Implement** (15 min)
-   ```bash
-   Use database to implement TASK-001
 
-   Setup Neon DB PostgreSQL database:
-   - Create Neon DB project with PostgreSQL 16
-   - Configure connection pooling
-   - Setup environment variables (DATABASE_URL, DIRECT_DATABASE_URL)
-   - Separate dev and production environments
-   - Test connection from Next.js
-   ```
+    ```bash
+    Use database to implement TASK-001
+
+    Setup Neon DB PostgreSQL database:
+    - Create Neon DB project with PostgreSQL 16
+    - Configure connection pooling
+    - Setup environment variables (DATABASE_URL, DIRECT_DATABASE_URL)
+    - Separate dev and production environments
+    - Test connection from Next.js
+    ```
 
 3. **Quality Check** (15 min)
-   ```bash
-   /workflow-review-code
-   # Fix any issues
 
-   /workflow-review-security
-   # Verify environment variables are secure
-   ```
+    ```bash
+    /workflow-review-code
+    # Fix any issues
+
+    /workflow-review-security
+    # Verify environment variables are secure
+    ```
 
 4. **Commit** (10 min)
-   ```bash
-   git commit -m "feat: setup Neon DB PostgreSQL database
 
-   Implemented TASK-001: Setup Neon DB PostgreSQL database
+    ```bash
+    git commit -m "feat: setup Neon DB PostgreSQL database
 
-   Changes:
-   - Created Neon DB project with PostgreSQL 16
-   - Configured connection pooling
-   - Added DATABASE_URL and DIRECT_DATABASE_URL to .env.local
-   - Separated dev and production environments
-   - Tested connection from Next.js app
+    Implemented TASK-001: Setup Neon DB PostgreSQL database
 
-   Testing:
-   - [X] Database connection successful
-   - [X] Security review passed (env vars in .gitignore)
+    Changes:
+    - Created Neon DB project with PostgreSQL 16
+    - Configured connection pooling
+    - Added DATABASE_URL and DIRECT_DATABASE_URL to .env.local
+    - Separated dev and production environments
+    - Tested connection from Next.js app
 
-   Task: TASK-001
-   File: documents/03-dev-tasks/login-authentication-dev-tasks.md
-   Dependencies: None
-   "
-   ```
+    Testing:
+    - [X] Database connection successful
+    - [X] Security review passed (env vars in .gitignore)
+
+    Task: TASK-001
+    File: documents/03-dev-tasks/login-authentication-dev-tasks.md
+    Dependencies: None
+    "
+    ```
 
 ---
 
@@ -977,11 +1378,11 @@ Dependencies: TASK-011 (email login server action)
 
 Follow all 5 steps:
 
-1. **Read task** → Understand requirements
-2. **Code** → Use `frontend-ui` agent
-3. **Test** → Use `qa-tester` agent
-4. **Quality** → Run 3 checks (code, security, performance)
-5. **Commit** → Clear commit message
+1. **Read task** - Understand requirements
+2. **Code** - Use `frontend-ui` agent
+3. **Test** - Use `qa-tester` agent
+4. **Quality** - Run 3 checks (code, security, performance)
+5. **Commit** - Clear commit message
 
 **Challenge**: Complete in under 90 minutes (task estimate is 6 hours, but AI speeds you up!)
 
@@ -994,28 +1395,30 @@ Follow all 5 steps:
 **Key learning**: Check dependencies first!
 
 1. **Check dependencies** (5 min)
-   - Task says: "Dependencies: TASK-013,TASK-014,TASK-015,TASK-016"
-   - Verify these are done (repositories exist)
+    - Task says: "Dependencies: TASK-013,TASK-014,TASK-015,TASK-016"
+    - Verify these are done (repositories exist)
 
 2. **Implement** (30 min)
-   ```bash
-   Use backend-api to implement TASK-020
 
-   Context: Repositories already implemented (TASK-013 through TASK-016)
+    ```bash
+    Use backend-api to implement TASK-020
 
-   [Paste full task description]
-   ```
+    Context: Repositories already implemented (TASK-013 through TASK-016)
+
+    [Paste full task description]
+    ```
 
 3. **Test integration** (15 min)
-   ```bash
-   Use qa-tester to write integration tests
 
-   Test that getDashboardData correctly:
-   - Calls all 4 repositories
-   - Aggregates data properly
-   - Handles errors from each source
-   - Returns correct TypeScript types
-   ```
+    ```bash
+    Use qa-tester to write integration tests
+
+    Test that getDashboardData correctly:
+    - Calls all 4 repositories
+    - Aggregates data properly
+    - Handles errors from each source
+    - Returns correct TypeScript types
+    ```
 
 4. **Quality + Commit** (10 min)
 
@@ -1028,11 +1431,13 @@ Follow all 5 steps:
 **Key learning**: Use Playwright MCP for exploration before writing tests
 
 **Prerequisites**:
+
 - Login feature already implemented (TASK-012)
 - App running (`npm run dev`)
 - Playwright MCP configured
 
 **Step 1: Manual exploration (15 min)**
+
 ```bash
 Use Playwright MCP to explore and test the login flow at http://localhost:3000/login
 
@@ -1054,6 +1459,7 @@ For each step, describe what you see and any issues.
 **Step 2: Debug any issues found (10 min)**
 
 If MCP found issues:
+
 ```bash
 Use Playwright MCP to debug [specific issue]
 
@@ -1067,11 +1473,13 @@ Please:
 ```
 
 Then fix the issue with appropriate agent:
+
 ```bash
 Use frontend-ui to fix [issue description]
 ```
 
 **Step 3: Write automated tests (15 min)**
+
 ```bash
 Use qa-tester to write Playwright E2E tests for TASK-039
 
@@ -1087,6 +1495,7 @@ Create tests/e2e/login.spec.ts
 ```
 
 **Step 4: Run tests and verify (5 min)**
+
 ```bash
 # Run the Playwright tests
 npx playwright test tests/e2e/login.spec.ts --headed
@@ -1096,6 +1505,7 @@ Use Playwright MCP to debug failing test: [test name]
 ```
 
 **Bonus Challenge**: Test OAuth buttons
+
 ```bash
 Use Playwright MCP to test OAuth flow
 
@@ -1128,6 +1538,7 @@ Report findings.
 ### Playwright MCP Special Commands
 
 **Interactive Testing & Debugging:**
+
 - `Use Playwright MCP to test the login page` - Test features interactively
 - `Use Playwright MCP to debug [feature]` - Debug issues with screenshots and console logs
 - `Use Playwright MCP to take screenshots of [page]` - Visual verification
@@ -1162,53 +1573,53 @@ Use [agent-name] to implement TASK-XXX from documents/03-dev-tasks/[feature]-dev
 ### ✅ DO
 
 1. **Read the full task** before prompting the agent
-   - User Story (why)
-   - Description (what)
-   - Acceptance Criteria (checklist)
-   - Technical Notes (how)
+    - User Story (why)
+    - Description (what)
+    - Acceptance Criteria (checklist)
+    - Technical Notes (how)
 
 2. **Check dependencies first**
-   - Don't start TASK-012 if TASK-011 isn't done
-   - Ask team: "Is TASK-011 completed?"
+    - Don't start TASK-012 if TASK-011 isn't done
+    - Ask team: "Is TASK-011 completed?"
 
 3. **Copy-paste task details** into agent prompts
-   - Don't paraphrase or summarize
-   - Agent needs full context
+    - Don't paraphrase or summarize
+    - Agent needs full context
 
 4. **Test immediately** after coding
-   - While task context is fresh
-   - Easier to debug
+    - While task context is fresh
+    - Easier to debug
 
 5. **Run all 3 quality checks** before committing
-   - Code review
-   - Security
-   - Performance
+    - Code review
+    - Security
+    - Performance
 
 6. **Reference task in commits**
-   - `Task: TASK-XXX`
-   - `File: documents/03-dev-tasks/...`
+    - `Task: TASK-XXX`
+    - `File: documents/03-dev-tasks/...`
 
 ### ❌ DON'T
 
 1. **Don't skip quality checks**
-   - "I'll fix it later" = technical debt
-   - Takes 30 min now, 3 hours later
+    - "I'll fix it later" = technical debt
+    - Takes 30 min now, 3 hours later
 
 2. **Don't commit without tests**
-   - No tests = production bugs
-   - Tests save debugging time
+    - No tests = production bugs
+    - Tests save debugging time
 
 3. **Don't ignore dependencies**
-   - Building TASK-020 before TASK-013-016 = wasted work
-   - Check dependencies are done first
+    - Building TASK-020 before TASK-013-016 = wasted work
+    - Check dependencies are done first
 
 4. **Don't vague prompts**
-   - ❌ "Build login page"
-   - ✅ "Implement TASK-012 with all acceptance criteria"
+    - ❌ "Build login page"
+    - ✅ "Implement TASK-012 with all acceptance criteria"
 
 5. **Don't skip acceptance criteria**
-   - Every checkbox in acceptance criteria must be done
-   - Agent helps you complete ALL criteria
+    - Every checkbox in acceptance criteria must be done
+    - Agent helps you complete ALL criteria
 
 ---
 
@@ -1217,6 +1628,7 @@ Use [agent-name] to implement TASK-XXX from documents/03-dev-tasks/[feature]-dev
 ### Problem: "Agent doesn't understand what I need"
 
 **Solution**: Paste the full task from the markdown file
+
 ```bash
 Use backend-api to implement TASK-011
 
@@ -1233,6 +1645,7 @@ Use backend-api to implement TASK-011
 ### Problem: "My task depends on other tasks not done yet"
 
 **Solution**:
+
 1. Ask team which tasks are done
 2. Only pick tasks where all dependencies are complete
 3. If blocked, pick a different task with no dependencies or completed dependencies
@@ -1242,6 +1655,7 @@ Use backend-api to implement TASK-011
 ### Problem: "Quality check found issues"
 
 **Solution**: Fix and re-check
+
 ```bash
 /workflow-review-code
 # Finds 5 issues
@@ -1261,6 +1675,7 @@ Use [appropriate-agent] to fix these issues:
 ### Problem: "Agent created something different from acceptance criteria"
 
 **Solution**: Be more specific and reference acceptance criteria explicitly
+
 ```bash
 Use frontend-ui to implement login form
 
@@ -1280,6 +1695,7 @@ Each checkbox must be completed. Do not skip any.
 ## Quick Reference: Your First Day
 
 ### Morning (Setup)
+
 ```bash
 # 1. Verify Playwright MCP is available in Claude Code
 # In Claude Code, you can ask: "Do I have browser testing tools?"
@@ -1303,29 +1719,40 @@ npm run dev
 ```
 
 ### Working on Task (Repeat for each task)
+
 ```bash
 # 1. Read task thoroughly (5 min)
 
-# 2. Code with agent (30-120 min depending on task)
-Use [agent] to implement TASK-XXX
+# 2. Research with Context7 MCP (5 min) - Get latest documentation
+Use Context7 MCP to get latest [framework] documentation
+# Questions: Latest patterns, best practices, API changes
 
-# 3. Test with Playwright MCP first (10 min) - Interactive exploration
+# 3. Code with agent (30-120 min depending on task)
+Use [agent] to implement TASK-XXX
+# Use insights from Context7 MCP research
+
+# 4. Test with Playwright MCP first (10 min) - Interactive exploration
 Use Playwright MCP to test [feature] at http://localhost:3000/[page]
 # Take screenshots, check console, verify behavior
 
-# 4. Write automated tests (20 min)
+# 5. Write automated tests (20 min)
 Use qa-tester to write Playwright tests for TASK-XXX based on MCP findings
 
-# 5. Quality checks (30 min)
+# 6. Quality checks (30 min)
 /workflow-review-code
 /workflow-review-security
 /workflow-review-performance
 
-# 6. Commit (5 min)
-git commit -m "feat: [task title]..."
+# 7. Update task status (2 min)
+# Ask Claude Code to mark task as completed in dev-tasks file
+
+# 8. Commit with GitHub MCP (5 min) - Recommended
+Use GitHub MCP to commit my changes
+# Or use traditional git commands
 ```
 
 ### End of Day (Review)
+
 ```bash
 # Check what you completed today
 git log --oneline --since="today"
@@ -1426,27 +1853,40 @@ Steps:
 
 ## Summary
 
-**The 5-Step Workflow:**
-1. **Pick Task** → Open task file, read full task
-2. **Code It** → Use right agent with full task context
-3. **Test It** → Write tests immediately (use Playwright MCP for exploration!)
-4. **Quality Check** → Code review + Security + Performance
-5. **Commit** → Clear message referencing task
+**The 6-Step Workflow:**
+
+1. **Pick Task** - Open task file, read full task
+2. **Code It** - Use right agent with full task context
+3. **Test It** - Write tests immediately (use Playwright MCP for exploration!)
+4. **Quality Check** - Code review + Security + Performance
+5. **Update Task** - Mark task as completed in dev-tasks file
+6. **Commit** - Clear message referencing task
 
 **Key Success Factors:**
+
 - Always paste the FULL task details to agents
 - Check dependencies before starting
 - Complete ALL acceptance criteria
 - Use Playwright MCP for interactive testing and debugging
+- Use Context7 MCP for latest library documentation
+- Use GitHub MCP for repository interactions
+- Update task status before committing
 - Run quality checks before committing
 - Reference task number in commits
 
+**MCP Servers Enhance Your Workflow:**
+
+- **Playwright MCP** - Visual debugging with screenshots and console logs
+- **Context7 MCP** - Access latest Next.js, React, and library documentation
+- **GitHub MCP** - Create issues, search code, manage PRs without leaving Claude Code
+
 **Time Expectations:**
+
 - Simple tasks (4h estimate): ~2-3 hours with AI
 - Medium tasks (6-8h estimate): ~3-5 hours with AI
 - Complex tasks (10-12h estimate): ~5-7 hours with AI
 
-**AI speeds you up ~40-50%**, and Playwright MCP makes debugging 10x faster with visual feedback.
+**AI speeds you up ~40-50%**, Playwright MCP makes debugging 10x faster, and Context7 MCP eliminates documentation hunting.
 
 ---
 
